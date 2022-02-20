@@ -1,0 +1,14 @@
+{
+  "name": "@harrystevens/directly-labelling-lines",
+  "main": "0d9c2574383fac15@531.js",
+  "version": "531.0.0",
+  "homepage": "https://observablehq.com/@harrystevens/directly-labelling-lines",
+  "author": {
+    "name": "Harry Stevens",
+    "url": "https://observablehq.com/@harrystevens"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}
