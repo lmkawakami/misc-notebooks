@@ -51,6 +51,7 @@ const globals = {
   // balance
   _balance: document.getElementById('balance'),
   set balance(v) {
+    console.log("Aaaaa")
     if (v>1)
       v=1
     if (v<0)
@@ -65,6 +66,7 @@ const globals = {
     plotNomralDist()
     plotNormalThresholLine()
     fillNormalDist()
+    fillConfusionMatrix()
   },
   get balance() {
     return +this._balance.value;
@@ -83,6 +85,7 @@ const globals = {
     plotNomralDist()
     plotNormalThresholLine()
     fillNormalDist()
+    fillConfusionMatrix()
   },
   get healthyMu() {
     return +this._healthyMu.value;
@@ -101,6 +104,7 @@ const globals = {
     plotNomralDist()
     plotNormalThresholLine()
     fillNormalDist()
+    fillConfusionMatrix()
   },
   get sickMu() {
     return +this._sickMu.value;
@@ -119,6 +123,7 @@ const globals = {
     plotNomralDist()
     plotNormalThresholLine()
     fillNormalDist()
+    fillConfusionMatrix()
   },
   get healthySigma() {
     return +this._healthySigma.value;

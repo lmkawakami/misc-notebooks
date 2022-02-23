@@ -52,16 +52,12 @@ const plotConfusionMatrixAxes = () => {
 
 const fillConfusionMatrix = () => {
   calcCoefs()
-  P_TP = globals.P_TP
-  P_TN = globals.P_TN
-  P_FP = globals.P_FP
-  P_FN = globals.P_FN
 
   data = [
-    {test:'Negative', condition:'Healthy', P:P_TN, color:TNfill},
-    {test:'Negative', condition:'Sick', P:P_FN, color:FNfill},
-    {test:'Positive', condition:'Healthy', P:P_FP, color:FPfill},
-    {test:'Positive', condition:'Sick', P:P_TP, color:TPfill},
+    {test:'Negative', condition:'Healthy', P:globals.P_TN, color:TNfill},
+    {test:'Negative', condition:'Sick', P:globals.P_FN, color:FNfill},
+    {test:'Positive', condition:'Healthy', P:globals.P_FP, color:FPfill},
+    {test:'Positive', condition:'Sick', P:globals.P_TP, color:TPfill},
   ]
 
   confusion_matrix_svg.selectAll('.confusion-matrix-rects').remove();

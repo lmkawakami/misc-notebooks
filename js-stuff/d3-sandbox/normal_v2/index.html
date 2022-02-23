@@ -56,12 +56,12 @@
 </head>
 <body>
   <div id='inputs-container'>
-    Threshold : <input type="number" id="threshold" onchange="globals.setThreshold(event)">
-    Balance : <input type="number" id="balance" onchange="globals.setBalance(event)">
-    Healthy μ : <input type="number" id="healthy_mu" onchange="globals.setHealthyMu(event)">
-    Sick μ : <input type="number" id="sick_mu" onchange="globals.setSickMu(event)">
-    Healthy σ : <input type="number" id="healthy_sigma" onchange="globals.setHealthySigma(event)">
-    Sick σ : <input type="number" id="sick_sigma" onchange="globals.setSickSigma(event)">
+    Threshold : <input type="number" step=".1" id="threshold" onchange="globals.setThreshold(event)">
+    Balance : <input type="number" step=".05" id="balance" onchange="globals.setBalance(event)">
+    Healthy μ : <input type="number" step=".5" id="healthy_mu" onchange="globals.setHealthyMu(event)">
+    Sick μ : <input type="number" step=".5" id="sick_mu" onchange="globals.setSickMu(event)">
+    Healthy σ : <input type="number" step=".1" id="healthy_sigma" onchange="globals.setHealthySigma(event)">
+    Sick σ : <input type="number" step=".1" id="sick_sigma" onchange="globals.setSickSigma(event)">
   </div>
   <div id='plots-container'>
     <div id="normal_dist_div"></div>
