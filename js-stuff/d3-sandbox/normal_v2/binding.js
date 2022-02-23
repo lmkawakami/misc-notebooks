@@ -42,6 +42,7 @@ const globals = {
     calcNormalHelpers()
     plotNormalThresholLine()
     fillNormalDist()
+    fillConfusionMatrix()
   },
   get threshold() {
     return +this._threshold.value;

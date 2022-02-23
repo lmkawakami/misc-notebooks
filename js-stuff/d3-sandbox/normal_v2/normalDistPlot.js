@@ -159,8 +159,9 @@ plotNormalThresholLine = () => {
     threshold = globals.threshold
     fillNormalDist()
     plotNormalThresholLine()
+    fillConfusionMatrix()
   }
-  dragged = _.throttle(dragged,30)
+  dragged = _.throttle(dragged,50)
   const dragended = (e,d)=>{
     document.documentElement.style.setProperty("cursor", 'default');
   }

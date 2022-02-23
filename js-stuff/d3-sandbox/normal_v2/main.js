@@ -7,4 +7,5 @@ const TNcolor = "seagreen"
 
 initGlobal()
 
-plotNormalDistribuiton(globals.sickDist, globals.healthyDist, globals.yMax, globals.xMin, globals.xMax, globals.threshold)
+plotNormalDistribuiton()
+plotConfusionMatrix(.25, .25, .25, .25)
