@@ -12002,21 +12002,23 @@ normalDist = [
   }
 ]
 
-const normalTransform = (mu,sigma,xMin,xMax) => {
+const normalTransform = (mu,sigma,xMin,xMax,amplitude) => {
   console.log(xMin, xMax, mu, sigma)
   newNormal =  normalDist.map(p => {
     return {
       ...p,
       x: p.x*sigma+mu,
-      pdf: p.pdf/sigma
+      pdf: p.pdf/sigma*amplitude,
+      cdf: p.cdf*amplitude,
+      sf: p.sf*amplitude
     }
   })
   if (newNormal[0].x>xMin) {
-    np = {x:xMin, pdf:0, sf:1, cdf:0}
+    np = {x:xMin, pdf:0, sf:amplitude, cdf:0}
     newNormal.splice(0,0,np)
   }
   if (newNormal[newNormal.length-1].x<xMax){
-    np = {x:xMax, pdf:0, sf:0, cdf:1}
+    np = {x:xMax, pdf:0, sf:0, cdf:amplitude}
     newNormal.splice(newNormal.length,0,np)
   }
   console.log(newNormal.length)

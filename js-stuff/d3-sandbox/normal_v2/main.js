@@ -9,5 +9,5 @@ initGlobal()
 
 
 
-console.log(globals.sickDist)
-plotDistribuiton(globals.sickDist, globals.healthyDist, globals.yMax, globals.xMin, globals.xMax, globals.threshold)
+console.log(globals.healthyDist)
+plotNormalDistribuiton(globals.sickDist, globals.healthyDist, globals.yMax, globals.xMin, globals.xMax, globals.threshold)

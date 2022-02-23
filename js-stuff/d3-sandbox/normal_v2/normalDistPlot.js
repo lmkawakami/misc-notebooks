@@ -16,7 +16,7 @@ const normal_dist_svg = d3.select("#normal_dist_div")
 // helpers
 let xMin, xMax, yMax, x, xI, y, yI, healthyDist, sickDist, threshold
 
-calcHelpers = () => {
+calcNormalHelpers = () => {
   xMin = globals.xMin
   xMax = globals.xMax
   yMax = globals.yMax
@@ -85,6 +85,7 @@ plotNomralDist = () => {
 }
 
 fillNormalDist = () => {
+  console.log("Filling normal distribution")
   // Add false negative fill
   normal_dist_svg.select('#false-negative-fill').remove();
   normal_dist_svg
@@ -144,7 +145,8 @@ fillNormalDist = () => {
     )
 }
 
-plotThresholLine = () => {
+plotNormalThresholLine = () => {
+  console.log("Plotting threshold line", )
   normal_dist_svg.select('#threshold-line').remove();
 
   const dragstarted = (e,d)=>{
@@ -155,7 +157,7 @@ plotThresholLine = () => {
     globals.threshold = nx
     threshold = globals.threshold
     fillNormalDist()
-    plotThresholLine()
+    plotNormalThresholLine()
   }
   dragged = _.throttle(dragged,30)
   const dragended = (e,d)=>{
@@ -181,13 +183,13 @@ plotThresholLine = () => {
 }
 
 
-const plotDistribuiton = () => {
+plotNormalDistribuiton = () => {
   console.log(yMax)
   normal_dist_svg.selectAll('*').remove();
   
-  calcHelpers()
+  calcNormalHelpers()
   plotNormalDistAxis()
   plotNomralDist()
   fillNormalDist()
-  plotThresholLine()
+  plotNormalThresholLine()
 }

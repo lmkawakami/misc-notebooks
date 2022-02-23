@@ -56,7 +56,7 @@
 </head>
 <body>
   <div id='inputs-container'>
-    Threshold : <input type="number" id="threshold" onkeyup="globals.setThreshold(event)">
+    Threshold : <input type="number" id="threshold" onchange="globals.setThreshold(event)">
     Balance : <input type="number" id="balance" onkeyup="globals.setBalance(event)">
     Healthy mu : <input type="number" id="healthy_mu" onkeyup="globals.setHealthy_mu(event)">
     Sick mu : <input type="number" id="sick_mu" onkeyup="globals.setSick_mu(event)">
@@ -68,8 +68,8 @@
   </div>
 </body>
 <script src="./normalDistr.js"></script>
-<script src="./binding.js"></script>
 <script src="./normalDistPlot.js"></script>
+<script src="./binding.js"></script>
 <script src="./main.js"></script>
 
 </html>

@@ -1,8 +1,15 @@
+const void_func = () => {}
+
+// ugly inits
+// let plotNormalDistribuiton = void_func()
+// let fillNormalDist = void_func()
+// let plotNormalThresholLine = void_func()
+
 const DEFAULT_xMin = 1
 const DEFAULT_xMax = 16
 const DEFAULT_threshold = 8
-const DEFAULT_balance = 0.5           // sick_population/total_population
-const DEFAULT_healthyMu = 7
+const DEFAULT_balance = 0.15           // sick_population/total_population
+const DEFAULT_healthyMu = 6
 const DEFAULT_sickMu = 10
 const DEFAULT_healthySigma = 1
 const DEFAULT_sickSigma = 1
@@ -28,8 +35,13 @@ const globals = {
       v = this.xMin
     this._threshold.value = v;
   },
-  setThreshold(v) {
-    this.threshold = this._threshold.value
+  setThreshold(e) {
+    const newValue = e.srcElement.valueAsNumber
+    this.threshold = newValue
+    console.log("Setting threshold")
+    calcNormalHelpers()
+    plotNormalThresholLine()
+    fillNormalDist()
   },
   get threshold() {
     return +this._threshold.value;
@@ -97,8 +109,9 @@ const globals = {
 }
 
 const  calcDistributions = () => {
-  globals.sickDist = normalTransform(globals.sickMu, globals.sickSigma, globals.xMin, globals.xMax)
-  globals.healthyDist = normalTransform(globals.healthyMu, globals.healthySigma, globals.xMin, globals.xMax)
+  globals.sickDist = normalTransform(globals.sickMu, globals.sickSigma, globals.xMin, globals.xMax, globals.balance)
+  globals.healthyDist = normalTransform(globals.healthyMu, globals.healthySigma, globals.xMin, globals.xMax, 1-globals.balance)
+  // globals.yMax = 0.45/Math.min(globals.healthySigma/(1-globals.balance), globals.sickSigma/globals.balance)
   globals.yMax = 0.45/Math.min(globals.healthySigma, globals.sickSigma)
 }
 
