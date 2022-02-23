@@ -18,3 +18,26 @@ input {
   width: 4em;
 }
 
+h2 {
+  margin: 0;
+  text-align: center;
+}
+
+
+#plots-container {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* align-items: center; */
+  align-items: baseline;
+  align-content: space-around;
+}
+
+#normal_dist_div {
+  width: 50vw;
+}
+
+#confusion_matrix_div {
+  width: 20vw;
+}

@@ -55,6 +55,15 @@
   </svg>
 </head>
 <body>
+  <div id='plots-container'>
+    <div id="normal_dist_div"><h2>Population Distribution</h2></div>
+    <div id="confusion_matrix_div"><h2>Confusion Matrix</h2></div>
+    <div id="full_tree_map_div"><h2>Full Tree Map</h2></div>
+    <div id="sick_tree_map_div"><h2>Sick Tree Map</h2></div>
+    <div id="healthy_tree_map_div"><h2>Healthy Tree Map</h2></div>
+    <div id="positive_tree_map_div"><h2>Positive Tree Map</h2></div>
+    <div id="negative_tree_map_div"><h2>Negative Tree Map</h2></div>
+  </div>
   <div id='inputs-container'>
     Threshold : <input type="number" step=".1" id="threshold" onchange="globals.setThreshold(event)">
     Balance : <input type="number" step=".05" id="balance" onchange="globals.setBalance(event)">
@@ -62,11 +71,6 @@
     Sick μ : <input type="number" step=".5" id="sick_mu" onchange="globals.setSickMu(event)">
     Healthy σ : <input type="number" step=".1" id="healthy_sigma" onchange="globals.setHealthySigma(event)">
     Sick σ : <input type="number" step=".1" id="sick_sigma" onchange="globals.setSickSigma(event)">
-  </div>
-  <div id='plots-container'>
-    <div id="normal_dist_div"></div>
-    <!-- <div id="confusion_matrix_div"></div> -->
-    <div id="full_tree_map_div"></div>
   </div>
 </body>
 <script src="./normalDistr.js"></script>

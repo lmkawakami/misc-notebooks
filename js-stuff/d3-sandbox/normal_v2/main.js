@@ -13,4 +13,5 @@ initGlobal()
 
 plotNormalDistribuiton()
 plotConfusionMatrix(.25, .25, .25, .25)
-plotFullTreeMap()
+plotTreeMaps()
+plotSickTreeMap()

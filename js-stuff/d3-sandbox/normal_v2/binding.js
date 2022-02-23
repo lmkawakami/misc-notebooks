@@ -44,7 +44,7 @@ const globals = {
     fillNormalDist()
     calcCoefs()
     fillConfusionMatrix()
-    plotFullTreeMap()
+    plotTreeMaps()
   },
   get threshold() {
     return +this._threshold.value;
@@ -69,7 +69,7 @@ const globals = {
     fillNormalDist()
     calcCoefs()
     fillConfusionMatrix()
-    plotFullTreeMap()
+    plotTreeMaps()
   },
   get balance() {
     return +this._balance.value;
@@ -90,7 +90,7 @@ const globals = {
     fillNormalDist()
     calcCoefs()
     fillConfusionMatrix()
-    plotFullTreeMap()
+    plotTreeMaps()
   },
   get healthyMu() {
     return +this._healthyMu.value;
@@ -111,7 +111,7 @@ const globals = {
     fillNormalDist()
     calcCoefs()
     fillConfusionMatrix()
-    plotFullTreeMap()
+    plotTreeMaps()
   },
   get sickMu() {
     return +this._sickMu.value;
@@ -132,7 +132,7 @@ const globals = {
     fillNormalDist()
     calcCoefs()
     fillConfusionMatrix()
-    plotFullTreeMap()
+    plotTreeMaps()
   },
   get healthySigma() {
     return +this._healthySigma.value;
@@ -153,7 +153,7 @@ const globals = {
     fillNormalDist()
     calcCoefs()
     fillConfusionMatrix()
-    plotFullTreeMap()
+    plotTreeMaps()
   },
   get sickSigma() {
     return +this._sickSigma.value;

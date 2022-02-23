@@ -3,16 +3,16 @@ const cmv = {}
 
 // set the dimensions and margins of the confusin matrix
 const confusion_matrix_margin = {top: 30, right: 1, bottom: 30, left: 50},
-  confusion_matrix_width = 300 - confusion_matrix_margin.left - confusion_matrix_margin.right,
-  confusion_matrix_height = 300 - confusion_matrix_margin.top - confusion_matrix_margin.bottom;
+  confusion_matrix_width = 250 - confusion_matrix_margin.left - confusion_matrix_margin.right,
+  confusion_matrix_height = 250 - confusion_matrix_margin.top - confusion_matrix_margin.bottom;
 
 // append the svg object to the body of the confusin matrix
 const confusion_matrix_svg = d3.select("#confusion_matrix_div")
 .append("svg")
+  .attr('id','confusion_matrix')
   .attr("width", confusion_matrix_width + confusion_matrix_margin.left + confusion_matrix_margin.right)
   .attr("height", confusion_matrix_height + confusion_matrix_margin.top + confusion_matrix_margin.bottom)
   .attr("viewBox", `0 0 ${confusion_matrix_width + confusion_matrix_margin.left + confusion_matrix_margin.right} ${confusion_matrix_height + confusion_matrix_margin.top + confusion_matrix_margin.bottom}`)
-  .attr('id','confusion_matrix')
   .append("g")
   .attr("transform", `translate(${confusion_matrix_margin.left},${confusion_matrix_margin.top})`);
 

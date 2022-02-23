@@ -161,7 +161,7 @@ plotNormalThresholLine = () => {
     plotNormalThresholLine()
     calcCoefs()
     fillConfusionMatrix()
-    plotFullTreeMap()
+    plotTreeMaps()
   }
   dragged = _.throttle(dragged,50)
   const dragended = (e,d)=>{
