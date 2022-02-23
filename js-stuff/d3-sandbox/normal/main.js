@@ -212,7 +212,7 @@ const plotConfusionMatrix = (P_TP, P_TN, P_FP, P_FN) => {
     ]
     console.log(data)
 
-    let squares = confusion_matrix_svg.selectAll()
+    confusion_matrix_svg.selectAll()
       .data(data, function(d) {return d.test+':'+d.condition;})
       .join("rect")
       .attr("x", function(d) { return x(d.test) })
@@ -221,10 +221,11 @@ const plotConfusionMatrix = (P_TP, P_TN, P_FP, P_FN) => {
       .attr("height", y.bandwidth() )
       .style("fill", function(d) { return myColor(d.P)} )
     
-    let texts = confusion_matrix_svg.selectAll()
+    confusion_matrix_svg.selectAll()
       .data(data, function(d) {return d.test+':'+d.condition;})
       .join("text")
       .attr("text-anchor", "middle")
+      .attr("font-family", "sans-serif")
       .attr("x", function(d) { return x(d.test)+x.bandwidth()/2 })
       .attr("y", function(d) { return y(d.condition)+x.bandwidth()/2 })
       .attr("dy", ".35em")
@@ -250,7 +251,7 @@ const normal_dist_margin = { top: 10, right: 10, bottom: 30, left: 10 },
   normal_dist_height = 300 - normal_dist_margin.top - normal_dist_margin.bottom;
 
 // append the svg object to the body of the page
-const normal_dist_svg = d3.select("#my_dataviz")
+const normal_dist_svg = d3.select("#normal_dist_div")
   .append("svg")
   .attr("width", normal_dist_width + normal_dist_margin.left + normal_dist_margin.right)
   .attr("height", normal_dist_height + normal_dist_margin.top + normal_dist_margin.bottom)
@@ -266,14 +267,41 @@ const confusion_matrix_margin = {top: 30, right: 1, bottom: 30, left: 50},
   confusion_matrix_height = 300 - confusion_matrix_margin.top - confusion_matrix_margin.bottom;
 
 // append the svg object to the body of the confusin matrix
-const confusion_matrix_svg = d3.select("#my_dataviz2")
+const confusion_matrix_svg = d3.select("#confusion_matrix_div")
 .append("svg")
   .attr("width", confusion_matrix_width + confusion_matrix_margin.left + confusion_matrix_margin.right)
   .attr("height", confusion_matrix_height + confusion_matrix_margin.top + confusion_matrix_margin.bottom)
+  .attr("viewBox", `0 0 ${confusion_matrix_width + confusion_matrix_margin.left + confusion_matrix_margin.right} ${confusion_matrix_height + confusion_matrix_margin.top + confusion_matrix_margin.bottom}`)
+  .attr('id','confusion_matrix')
   .append("g")
   .attr("transform", `translate(${confusion_matrix_margin.left},${confusion_matrix_margin.top})`);
 
+// set the dimensions and margins of the full tree map
+const margin = {top: 10, right: 10, bottom: 10, left: 10},
+  width = 445 - margin.left - margin.right,
+  height = 445 - margin.top - margin.bottom;
 
+// append the svg object to the body of the page
+const full_tree_svg = d3.select("#full_tree_map_div")
+  .append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+  .attr("transform",
+        `translate(${margin.left}, ${margin.top})`);
+
+
+// Read data
+d3.csv('https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_hierarchy_1level.csv').then(function(data) {
+
+  // stratify the data: reformatting for d3.js
+  const root = d3.stratify()
+    .id(function(d) { return d.name; })   // Name of the entity (column name is name in csv)
+    .parentId(function(d) { return d.parent; })   // Name of the parent (column name is parent in csv)
+    (data);
+  root.sum(function(d) { return +d.value })   // Compute the numeric value for each entity
+  console.log(root)
+})
 
 
 healthyMu = 6

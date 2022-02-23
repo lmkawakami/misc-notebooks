@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://d3js.org/d3.v6.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+  <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+      <pattern id="orange-c" patternUnits="userSpaceOnUse" width="10" height="10">
+        <image
+          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAH1JREFUOE+t1EsOwCAIBFC4s8fonW1oKkFLlZ8bjcpLZjPYL+jwLmyA42zd5TzN4LiowBiswh7QGk3+W2PKNze4xRqgCzxhrsgWzAxaMRPowY6gF9uCEewXjGIqmME+YBabwAqMwSpsqi+tJCItxH24ghGMkqpgFFMjZzACbzdTSturajLDAAAAAElFTkSuQmCC"
+          x="0"
+          y="0"
+          width="10"
+          height="10"
+        ></image>
+      </pattern>
+
+      <pattern id="orange-c2" patternUnits="userSpaceOnUse" width="12" height="12">
+        <image
+          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAJZJREFUSEu11t0OwBAMBWB9Z4+xd7ZYRrCO/py6IRX9knOjVK5U0rsoJ2pn7z72rb2oFSKRDkUjD+SNaHy/xjXewaAtkhNBoBMCiU6CuCEp4oI0iBnSIibIgqghK6KCPIgY8iIiCIEcIRSyhZDIL4RGWCgC+UBRyARFIh2KRqbhhPvSkbNEn4JWCInUxFgIjbDRRSAVugGIvFzh603qCwAAAABJRU5ErkJggg=="
+          x="0"
+          y="0"
+          width="12"
+          height="12"
+        ></image>
+      </pattern>
+
+      <pattern id="green-c" patternUnits="userSpaceOnUse" width="10" height="10">
+        <image
+          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAIVJREFUOE+t1NsNgCAMBVC7kOs4iVM4ieuwkKZGmoIV+uIHAvQk9+fCemzX8q6yn1DP2p3P4wzUiwyMwCzsAbXR+L8+Jn8zgyMMk5rAGWaKrMHUoBZTgRZsClqxIejBfkEvJoIR7ANGsQbMwAjMwpr6kkrC00LUhz3owTCpCHoxMXIEQ/AG7yhaftVUrtsAAAAASUVORK5CYII="
+          x="0"
+          y="0"
+          width="10"
+          height="10"
+        ></image>
+      </pattern>
+
+      <pattern id="green-c2" patternUnits="userSpaceOnUse" width="12" height="12">
+        <image
+          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAJtJREFUSEu11tsNgCAMBVBZyHWcxCmcxHVcSCOJBJBHH/fyBT+cpKWlYT22e8nWtZ8hP3v2+d2hht6LGVgTYmBdCI3FfLTC9+UGFcaUeDZWvDAm9nvKLKxZMwysW5xobNgFkNi03aCwKYSqMxGEwMSQF1NBHkwNWTETZMHMkBZzQRrMDUkxCCTBYNAMizMD6rseYWk4YWPFFMTEHloFcoR9SeWRAAAAAElFTkSuQmCC"
+          x="0"
+          y="0"
+          width="12"
+          height="12"
+        ></image>
+      </pattern>
+
+    </defs>
+  </svg>
+</head>
+<body>
+  <div id='inputs-container'>
+    Threshold : <input type="number" id="threshold" onkeyup="globals.setThreshold(event)">
+    Balance : <input type="number" id="balance" onkeyup="globals.setBalance(event)">
+    Healthy mu : <input type="number" id="healthy_mu" onkeyup="globals.setHealthy_mu(event)">
+    Sick mu : <input type="number" id="sick_mu" onkeyup="globals.setSick_mu(event)">
+    Healthy sigma : <input type="number" id="healthy_sigma" onkeyup="globals.setHealthy_sigma(event)">
+    Sick sigma : <input type="number" id="sick_sigma" onkeyup="globals.setSick_sigma(event)">
+  </div>
+  <div id='plots-container'>
+    <div id="normal_dist_div"></div>
+  </div>
+</body>
+<script src="./normalDistr.js"></script>
+<script src="./binding.js"></script>
+<script src="./normalDistPlot.js"></script>
+<script src="./main.js"></script>
+
+</html>

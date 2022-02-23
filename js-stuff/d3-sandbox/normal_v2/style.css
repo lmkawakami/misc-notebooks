@@ -1,0 +1,19 @@
+#threshold-line {
+  /* stroke-dasharray: 5; */
+  stroke: #00000073;
+  stroke-width: 2px;
+  cursor: col-resize;
+}
+
+body {
+  /* background-color: #181616;
+  color: antiquewhite; */
+  background-color: antiquewhite;
+  color: #181616;
+  font-family: monospace;
+}
+
+input {
+  font-family: monospace;
+  width: 5em;
+}

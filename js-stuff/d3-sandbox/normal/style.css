@@ -7,11 +7,11 @@
 
 #container {
   /* background-color: #4548ff57; */
-  position: absolute;
+  /* position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0;
+  right: 0; */
 
 
   display: flex; /* or inline-flex */
@@ -22,10 +22,11 @@
   align-content: space-around;
 }
 
-#my_dataviz {
-  /* background-color: #ff45450e; */
-  flex-grow: 4;
-  width: 70%;
+#normal_dist_div {
+  background-color: #ff45450e;
+  /* flex-grow: 4; */
+  width: 58vw;
+  height: 19vw;
   /* position: absolute;
   left: 0;
   top: 0;
@@ -37,9 +38,51 @@
   height: 100%;
 }
 
-#my_dataviz2 {
-  display: inline;
-  /* background-color: #45ff9933; */
-  flex-grow: 4;
-  width: 30%;
+#confusion_matrix_div {
+  background-color: #45ff9933;
+  width: 19vw;
+  height: 19vw;
+}
+
+#confusion_matrix {
+  width: 100%;
+  height: 100%;
+}
+
+#roc_div {
+  /* display: inline; */
+  background-color: #00000073;
+  width: 19vw;
+  height: 19vw;
+}
+
+
+#full_tree_map_div {
+  background-color: #ff454512;
+  width: 19vw;
+  height: 19vw;
+}
+
+#sick_tree_map_div {
+  background-color: #fff34512;
+  width: 19vw;
+  height: 19vw;
+}
+
+#healthy_tree_map_div {
+  background-color: #7aff4512;
+  width: 19vw;
+  height: 19vw;
+}
+
+#positive_tree_map_div {
+  background-color: #45ffff12;
+  width: 19vw;
+  height: 19vw;
+}
+
+#negative_tree_map_div {
+  background-color: #4548ff12;
+  width: 19vw;
+  height: 19vw;
 }
