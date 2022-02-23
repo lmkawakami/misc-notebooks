@@ -139,7 +139,7 @@ fillNormalDist = () => {
     .datum(createFillData(sickDist, threshold, 'right'))
     // .attr("fill", "darkorange")
     .attr("fill", TPfill)
-    .style("opacity", .7)
+    .style("opacity", FILL_OPACITY)
     .attr("stroke", "none")
     .attr("d", d3.line()
       .x(function(d) { return x(d.x) })
@@ -159,7 +159,9 @@ plotNormalThresholLine = () => {
     threshold = globals.threshold
     fillNormalDist()
     plotNormalThresholLine()
+    calcCoefs()
     fillConfusionMatrix()
+    plotFullTreeMap()
   }
   dragged = _.throttle(dragged,50)
   const dragended = (e,d)=>{

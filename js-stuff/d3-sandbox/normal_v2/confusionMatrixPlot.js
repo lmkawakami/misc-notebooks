@@ -51,8 +51,6 @@ const plotConfusionMatrixAxes = () => {
 }
 
 const fillConfusionMatrix = () => {
-  calcCoefs()
-
   data = [
     {test:'Negative', condition:'Healthy', P:globals.P_TN, color:TNfill},
     {test:'Negative', condition:'Sick', P:globals.P_FN, color:FNfill},

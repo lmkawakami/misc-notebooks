@@ -42,7 +42,9 @@ const globals = {
     calcNormalHelpers()
     plotNormalThresholLine()
     fillNormalDist()
+    calcCoefs()
     fillConfusionMatrix()
+    plotFullTreeMap()
   },
   get threshold() {
     return +this._threshold.value;
@@ -51,7 +53,6 @@ const globals = {
   // balance
   _balance: document.getElementById('balance'),
   set balance(v) {
-    console.log("Aaaaa")
     if (v>1)
       v=1
     if (v<0)
@@ -66,7 +67,9 @@ const globals = {
     plotNomralDist()
     plotNormalThresholLine()
     fillNormalDist()
+    calcCoefs()
     fillConfusionMatrix()
+    plotFullTreeMap()
   },
   get balance() {
     return +this._balance.value;
@@ -85,7 +88,9 @@ const globals = {
     plotNomralDist()
     plotNormalThresholLine()
     fillNormalDist()
+    calcCoefs()
     fillConfusionMatrix()
+    plotFullTreeMap()
   },
   get healthyMu() {
     return +this._healthyMu.value;
@@ -104,7 +109,9 @@ const globals = {
     plotNomralDist()
     plotNormalThresholLine()
     fillNormalDist()
+    calcCoefs()
     fillConfusionMatrix()
+    plotFullTreeMap()
   },
   get sickMu() {
     return +this._sickMu.value;
@@ -123,7 +130,9 @@ const globals = {
     plotNomralDist()
     plotNormalThresholLine()
     fillNormalDist()
+    calcCoefs()
     fillConfusionMatrix()
+    plotFullTreeMap()
   },
   get healthySigma() {
     return +this._healthySigma.value;
@@ -142,6 +151,9 @@ const globals = {
     plotNomralDist()
     plotNormalThresholLine()
     fillNormalDist()
+    calcCoefs()
+    fillConfusionMatrix()
+    plotFullTreeMap()
   },
   get sickSigma() {
     return +this._sickSigma.value;
