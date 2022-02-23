@@ -50,10 +50,20 @@ const globals = {
   // balance
   _balance: document.getElementById('balance'),
   set balance(v) {
+    if (v>1)
+      v=1
+    if (v<0)
+      v=0
     this._balance.value = v;
   },
-  setBalance(v) {
-    this.balance = this._balance.value
+  setBalance(e) {
+    const newValue = e.srcElement.valueAsNumber
+    this.balance = newValue
+    calcDistributions()
+    calcNormalHelpers()
+    plotNomralDist()
+    plotNormalThresholLine()
+    fillNormalDist()
   },
   get balance() {
     return +this._balance.value;
@@ -64,8 +74,14 @@ const globals = {
   set healthyMu(v) {
     this._healthyMu.value = v;
   },
-  setHealthyMu(v) {
-    this.healthyMu = this._healthyMu.value
+  setHealthyMu(e) {
+    const newValue = e.srcElement.valueAsNumber
+    this.healthyMu = newValue
+    calcDistributions()
+    calcNormalHelpers()
+    plotNomralDist()
+    plotNormalThresholLine()
+    fillNormalDist()
   },
   get healthyMu() {
     return +this._healthyMu.value;
@@ -76,8 +92,14 @@ const globals = {
   set sickMu(v) {
     this._sickMu.value = v;
   },
-  setSickMu(v) {
-    this.sickMu = this._sickMu.value
+  setSickMu(e) {
+    const newValue = e.srcElement.valueAsNumber
+    this.sickMu = newValue
+    calcDistributions()
+    calcNormalHelpers()
+    plotNomralDist()
+    plotNormalThresholLine()
+    fillNormalDist()
   },
   get sickMu() {
     return +this._sickMu.value;
@@ -88,8 +110,14 @@ const globals = {
   set healthySigma(v) {
     this._healthySigma.value = v;
   },
-  setHealthySigma(v) {
-    this.healthySigma = this._healthySigma.value
+  setHealthySigma(e) {
+    const newValue = e.srcElement.valueAsNumber
+    this.healthySigma = newValue
+    calcDistributions()
+    calcNormalHelpers()
+    plotNomralDist()
+    plotNormalThresholLine()
+    fillNormalDist()
   },
   get healthySigma() {
     return +this._healthySigma.value;
@@ -100,8 +128,14 @@ const globals = {
   set sickSigma(v) {
     this._sickSigma.value = v;
   },
-  setSickSigma(v) {
-    this.sickSigma = this._sickSigma.value
+  setSickSigma(e) {
+    const newValue = e.srcElement.valueAsNumber
+    this.sickSigma = newValue
+    calcDistributions()
+    calcNormalHelpers()
+    plotNomralDist()
+    plotNormalThresholLine()
+    fillNormalDist()
   },
   get sickSigma() {
     return +this._sickSigma.value;
@@ -115,6 +149,13 @@ const  calcDistributions = () => {
   globals.yMax = 0.45/Math.min(globals.healthySigma, globals.sickSigma)
 }
 
+const calcCoefs = () => {
+  globals.P_TP = globals.sickDist.find(p=>p.x>globals.threshold).sf
+  globals.P_TN = globals.healthyDist.find(p=>p.x>globals.threshold).cdf
+  globals.P_FP = globals.healthyDist.find(p=>p.x>globals.threshold).sf
+  globals.P_FN = globals.sickDist.find(p=>p.x>globals.threshold).cdf
+}
+
 const initGlobal = () => {
   globals.threshold = DEFAULT_threshold
   globals.balance = DEFAULT_balance
@@ -124,4 +165,5 @@ const initGlobal = () => {
   globals.sickSigma = DEFAULT_sickSigma
 
   calcDistributions()
+  calcCoefs()
 }

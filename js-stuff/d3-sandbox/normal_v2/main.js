@@ -7,7 +7,4 @@ const TNcolor = "seagreen"
 
 initGlobal()
 
-
-
-console.log(globals.healthyDist)
 plotNormalDistribuiton(globals.sickDist, globals.healthyDist, globals.yMax, globals.xMin, globals.xMax, globals.threshold)

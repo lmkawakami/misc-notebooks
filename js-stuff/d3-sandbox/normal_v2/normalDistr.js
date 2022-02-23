@@ -12003,7 +12003,6 @@ normalDist = [
 ]
 
 const normalTransform = (mu,sigma,xMin,xMax,amplitude) => {
-  console.log(xMin, xMax, mu, sigma)
   newNormal =  normalDist.map(p => {
     return {
       ...p,
@@ -12021,9 +12020,7 @@ const normalTransform = (mu,sigma,xMin,xMax,amplitude) => {
     np = {x:xMax, pdf:0, sf:0, cdf:amplitude}
     newNormal.splice(newNormal.length,0,np)
   }
-  console.log(newNormal.length)
   newNormal = newNormal.filter(p=>p.x>=xMin && p.x<=xMax)
-  console.log(newNormal.length)
   return newNormal
 }
 

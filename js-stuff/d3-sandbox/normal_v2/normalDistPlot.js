@@ -59,9 +59,10 @@ plotNormalDistAxis = () => {
 
 plotNomralDist = () => {
   // Add healthy  distr. line
-  console.log(healthyDist)
+  normal_dist_svg.select('#healthy-dist-line-plot').remove();
   normal_dist_svg
     .append("path")
+    .attr('id','healthy-dist-line-plot')
     .datum(healthyDist)
     .attr("fill", "none")
     .attr("stroke", TNcolor)
@@ -72,8 +73,10 @@ plotNomralDist = () => {
     )
 
   // Add sick distr. line
+  normal_dist_svg.select('#sick-dist-line-plot').remove();
   normal_dist_svg
     .append("path")
+    .attr('id','sick-dist-line-plot')
     .datum(sickDist)
     .attr("fill", "none")
     .attr("stroke", TPcolor)
@@ -85,7 +88,6 @@ plotNomralDist = () => {
 }
 
 fillNormalDist = () => {
-  console.log("Filling normal distribution")
   // Add false negative fill
   normal_dist_svg.select('#false-negative-fill').remove();
   normal_dist_svg
@@ -146,7 +148,6 @@ fillNormalDist = () => {
 }
 
 plotNormalThresholLine = () => {
-  console.log("Plotting threshold line", )
   normal_dist_svg.select('#threshold-line').remove();
 
   const dragstarted = (e,d)=>{
@@ -184,7 +185,6 @@ plotNormalThresholLine = () => {
 
 
 plotNormalDistribuiton = () => {
-  console.log(yMax)
   normal_dist_svg.selectAll('*').remove();
   
   calcNormalHelpers()
