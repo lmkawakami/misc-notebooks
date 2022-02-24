@@ -7,8 +7,8 @@ const void_func = () => {}
 
 const DEFAULT_xMin = 0
 const DEFAULT_xMax = 100
-const DEFAULT_threshold = 55
-const DEFAULT_balance = 0.15           // sick_population/total_population
+const DEFAULT_threshold = 48.5
+const DEFAULT_balance = 0.10           // sick_population/total_population
 const DEFAULT_healthyMu = 35
 const DEFAULT_sickMu = 65
 const DEFAULT_healthySigma = 10
@@ -175,10 +175,10 @@ const  calcDistributions = () => {
 const showCoefs = () => {
   const showPercent = (val) => (100*val).toFixed(2)+'%'
 
-  document.getElementById('td-TP').innerText = showPercent(globals.P_TP)
-  document.getElementById('td-TN').innerText = showPercent(globals.P_TN)
-  document.getElementById('td-FP').innerText = showPercent(globals.P_FP)
-  document.getElementById('td-FN').innerText = showPercent(globals.P_FN)
+  // document.getElementById('td-TP').innerText = showPercent(globals.P_TP)
+  // document.getElementById('td-TN').innerText = showPercent(globals.P_TN)
+  // document.getElementById('td-FP').innerText = showPercent(globals.P_FP)
+  // document.getElementById('td-FN').innerText = showPercent(globals.P_FN)
 
   document.getElementById('td-TPR').innerText = showPercent(globals.TPR)
   document.getElementById('td-FPR').innerText = showPercent(globals.FPR)
