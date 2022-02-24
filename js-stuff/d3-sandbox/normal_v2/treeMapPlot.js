@@ -1,3 +1,5 @@
+const treeMapsPadding = 1
+
 // set the dimensions and margins of the graph
 const tree_map_margin = {top: 10, right: 10, bottom: 10, left: 10},
   width = 200 - tree_map_margin.left - tree_map_margin.right,
@@ -55,10 +57,38 @@ const calcTreeData = () => {
     {name: 'True Positive', parent: 'FullTreeMap', value: globals.P_TP, color:TPfill, stroke: TPcolor},
   ]
 
-  sickTreeData = fullTreeData.filter(l=>['FullTreeMap', 'True Positive', 'False Negative'].includes(l.name))
-  healthyTreeData = fullTreeData.filter(l=>['FullTreeMap', 'True Negative', 'False Positive'].includes(l.name))
-  positiveTreeData = fullTreeData.filter(l=>['FullTreeMap', 'True Positive', 'False Positive'].includes(l.name))
-  negativeTreeData = fullTreeData.filter(l=>['FullTreeMap', 'True Negative', 'False Negative'].includes(l.name))
+  sickTreeData = fullTreeData
+    .filter(l=>['FullTreeMap', 'True Positive', 'False Negative'].includes(l.name))
+    .map(l=>{
+      return {
+        ...l,
+        percentage: (100*l.value/(globals.P_TP+globals.P_FN)).toFixed(2)+'%'
+      }
+    })
+  healthyTreeData = fullTreeData
+    .filter(l=>['FullTreeMap', 'True Negative', 'False Positive'].includes(l.name))
+    .map(l=>{
+      return {
+        ...l,
+        percentage: (100*l.value/(globals.P_FP+globals.P_TN)).toFixed(2)+'%'
+      }
+    })
+  positiveTreeData = fullTreeData
+    .filter(l=>['FullTreeMap', 'True Positive', 'False Positive'].includes(l.name))
+    .map(l=>{
+      return {
+        ...l,
+        percentage: (100*l.value/(globals.P_TP+globals.P_FP)).toFixed(2)+'%'
+      }
+    })
+  negativeTreeData = fullTreeData
+    .filter(l=>['FullTreeMap', 'True Negative', 'False Negative'].includes(l.name))
+    .map(l=>{
+      return {
+        ...l,
+        percentage: (100*l.value/(globals.P_TN+globals.P_FN)).toFixed(2)+'%'
+      }
+    })
 }
 
 const plotFullTreeMap = () => {
@@ -75,7 +105,7 @@ const plotFullTreeMap = () => {
   // The coordinates are added to the root object above
   d3.treemap()
     .size([width, height])
-    .padding(4)
+    .padding(treeMapsPadding)
     (root)
 
   // use this information to add rectangles:
@@ -93,16 +123,17 @@ const plotFullTreeMap = () => {
       .style("opacity", FILL_OPACITY);
 
   // and to add the text labels
-  // full_tree_map_svg.selectAll('text').remove();
-  // full_tree_map_svg
-  //   .selectAll("text")
-  //   .data(root.leaves())
-  //   .join("text")
-  //     .attr("x", function(d){ return d.x0+10})    // +10 to adjust position (more right)
-  //     .attr("y", function(d){ return d.y0+20})    // +20 to adjust position (lower)
-  //     .text(function(d){ return d.data.name})
-  //     .attr("font-size", "15px")
-  //     .attr("fill", "black")
+  full_tree_map_svg.selectAll('text').remove();
+  full_tree_map_svg
+    .selectAll("text")
+    .data(root.leaves())
+    .join("text")
+      .attr("text-anchor", "middle")
+      .attr("x", function(d){ return d.x0+(d.x1 - d.x0)/2})    // +10 to adjust position (more right)
+      .attr("y", function(d){ return d.y0+(d.y1 - d.y0)/2})    // +20 to adjust position (lower)
+      .text(function(d){ return (100*d.data.value).toFixed(2)+'%'})
+      .attr("font-size", "15px")
+      .attr("fill", "black")
 
 }
 
@@ -118,7 +149,7 @@ const plotSickTreeMap = () => {
   // The coordinates are added to the root object above
   d3.treemap()
     .size([width, height])
-    .padding(4)
+    .padding(treeMapsPadding)
     (root)
 
   // use this information to add rectangles:
@@ -136,16 +167,17 @@ const plotSickTreeMap = () => {
       .style("opacity", FILL_OPACITY);
 
   // and to add the text labels
-  // full_tree_map_svg.selectAll('text').remove();
-  // full_tree_map_svg
-  //   .selectAll("text")
-  //   .data(root.leaves())
-  //   .join("text")
-  //     .attr("x", function(d){ return d.x0+10})    // +10 to adjust position (more right)
-  //     .attr("y", function(d){ return d.y0+20})    // +20 to adjust position (lower)
-  //     .text(function(d){ return d.data.name})
-  //     .attr("font-size", "15px")
-  //     .attr("fill", "black")
+  sick_tree_map_svg.selectAll('text').remove();
+  sick_tree_map_svg
+    .selectAll("text")
+    .data(root.leaves())
+    .join("text")
+    .attr("text-anchor", "middle")
+      .attr("x", function(d){ return d.x0+(d.x1 - d.x0)/2})    // +10 to adjust position (more right)
+      .attr("y", function(d){ return d.y0+(d.y1 - d.y0)/2})    // +20 to adjust position (lower)
+      .text(function(d){ return d.data.percentage})
+      .attr("font-size", "15px")
+      .attr("fill", "black")
 
 }
 
@@ -161,7 +193,7 @@ const plotHealthyTreeMap = () => {
   // The coordinates are added to the root object above
   d3.treemap()
     .size([width, height])
-    .padding(4)
+    .padding(treeMapsPadding)
     (root)
 
   // use this information to add rectangles:
@@ -179,16 +211,17 @@ const plotHealthyTreeMap = () => {
       .style("opacity", FILL_OPACITY);
 
   // and to add the text labels
-  // full_tree_map_svg.selectAll('text').remove();
-  // full_tree_map_svg
-  //   .selectAll("text")
-  //   .data(root.leaves())
-  //   .join("text")
-  //     .attr("x", function(d){ return d.x0+10})    // +10 to adjust position (more right)
-  //     .attr("y", function(d){ return d.y0+20})    // +20 to adjust position (lower)
-  //     .text(function(d){ return d.data.name})
-  //     .attr("font-size", "15px")
-  //     .attr("fill", "black")
+  healthy_tree_map_svg.selectAll('text').remove();
+  healthy_tree_map_svg
+    .selectAll("text")
+    .data(root.leaves())
+    .join("text")
+    .attr("text-anchor", "middle")
+      .attr("x", function(d){ return d.x0+(d.x1 - d.x0)/2})    // +10 to adjust position (more right)
+      .attr("y", function(d){ return d.y0+(d.y1 - d.y0)/2})    // +20 to adjust position (lower)
+      .text(function(d){ return d.data.percentage})
+      .attr("font-size", "15px")
+      .attr("fill", "black")
 
 }
 
@@ -204,7 +237,7 @@ const plotPositiveTreeMap = () => {
   // The coordinates are added to the root object above
   d3.treemap()
     .size([width, height])
-    .padding(4)
+    .padding(treeMapsPadding)
     (root)
 
   // use this information to add rectangles:
@@ -222,16 +255,17 @@ const plotPositiveTreeMap = () => {
       .style("opacity", FILL_OPACITY);
 
   // and to add the text labels
-  // positive_tree_map_svg.selectAll('text').remove();
-  // positive_tree_map_svg
-  //   .selectAll("text")
-  //   .data(root.leaves())
-  //   .join("text")
-  //     .attr("x", function(d){ return d.x0+10})    // +10 to adjust position (more right)
-  //     .attr("y", function(d){ return d.y0+20})    // +20 to adjust position (lower)
-  //     .text(function(d){ return d.data.name})
-  //     .attr("font-size", "15px")
-  //     .attr("fill", "black")
+  positive_tree_map_svg.selectAll('text').remove();
+  positive_tree_map_svg
+    .selectAll("text")
+    .data(root.leaves())
+    .join("text")
+    .attr("text-anchor", "middle")
+      .attr("x", function(d){ return d.x0+(d.x1 - d.x0)/2})    // +10 to adjust position (more right)
+      .attr("y", function(d){ return d.y0+(d.y1 - d.y0)/2})    // +20 to adjust position (lower)
+      .text(function(d){ return d.data.percentage})
+      .attr("font-size", "15px")
+      .attr("fill", "black")
 
 }
 
@@ -247,7 +281,7 @@ const plotNegativeTreeMap = () => {
   // The coordinates are added to the root object above
   d3.treemap()
     .size([width, height])
-    .padding(4)
+    .padding(treeMapsPadding)
     (root)
 
   // use this information to add rectangles:
@@ -265,17 +299,18 @@ const plotNegativeTreeMap = () => {
       .style("opacity", FILL_OPACITY);
 
   // and to add the text labels
-  // negative_tree_map_svg.selectAll('text').remove();
-  // negative_tree_map_svg
-  //   .selectAll("text")
-  //   .data(root.leaves())
-  //   .join("text")
-  //     .attr("x", function(d){ return d.x0+10})    // +10 to adjust position (more right)
-  //     .attr("y", function(d){ return d.y0+20})    // +20 to adjust position (lower)
-  //     .text(function(d){ return d.data.name})
-  //     .attr("font-size", "15px")
-  //     .attr("fill", "black")
-
+  negative_tree_map_svg.selectAll('text').remove();
+  negative_tree_map_svg
+    .selectAll("text")
+    .data(root.leaves())
+    .join("text")
+      .attr("text-anchor", "middle")
+      .attr("x", function(d){ return d.x0+(d.x1 - d.x0)/2})    // +10 to adjust position (more right)
+      .attr("y", function(d){ return d.y0+(d.y1 - d.y0)/2})    // +20 to adjust position (lower)
+      .attr("dy", "0em")
+      .text(function(d){ return d.data.percentage})
+      .attr("font-size", "15px")
+      .attr("fill", "black")
 }
 
 const plotTreeMaps = () => {

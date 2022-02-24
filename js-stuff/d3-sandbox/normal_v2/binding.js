@@ -5,14 +5,14 @@ const void_func = () => {}
 // let fillNormalDist = void_func()
 // let plotNormalThresholLine = void_func()
 
-const DEFAULT_xMin = 1
-const DEFAULT_xMax = 16
-const DEFAULT_threshold = 8
+const DEFAULT_xMin = 0
+const DEFAULT_xMax = 100
+const DEFAULT_threshold = 55
 const DEFAULT_balance = 0.15           // sick_population/total_population
-const DEFAULT_healthyMu = 6
-const DEFAULT_sickMu = 10
-const DEFAULT_healthySigma = 1
-const DEFAULT_sickSigma = 1
+const DEFAULT_healthyMu = 35
+const DEFAULT_sickMu = 65
+const DEFAULT_healthySigma = 10
+const DEFAULT_sickSigma = 10
 
 // const DEFAULT_population = 200000000  // BR population
 
@@ -45,6 +45,7 @@ const globals = {
     calcCoefs()
     fillConfusionMatrix()
     plotTreeMaps()
+    plotRocCurve()
   },
   get threshold() {
     return +this._threshold.value;
@@ -53,10 +54,10 @@ const globals = {
   // balance
   _balance: document.getElementById('balance'),
   set balance(v) {
-    if (v>1)
-      v=1
-    if (v<0)
-      v=0
+    if (v>=1)
+      v=.999
+    if (v<=0)
+      v=0.001
     this._balance.value = v;
   },
   setBalance(e) {
@@ -91,6 +92,7 @@ const globals = {
     calcCoefs()
     fillConfusionMatrix()
     plotTreeMaps()
+    plotRocCurve()
   },
   get healthyMu() {
     return +this._healthyMu.value;
@@ -112,6 +114,7 @@ const globals = {
     calcCoefs()
     fillConfusionMatrix()
     plotTreeMaps()
+    plotRocCurve()
   },
   get sickMu() {
     return +this._sickMu.value;
@@ -133,6 +136,7 @@ const globals = {
     calcCoefs()
     fillConfusionMatrix()
     plotTreeMaps()
+    plotRocCurve()
   },
   get healthySigma() {
     return +this._healthySigma.value;
@@ -154,6 +158,7 @@ const globals = {
     calcCoefs()
     fillConfusionMatrix()
     plotTreeMaps()
+    plotRocCurve()
   },
   get sickSigma() {
     return +this._sickSigma.value;
@@ -172,6 +177,24 @@ const calcCoefs = () => {
   globals.P_TN = globals.healthyDist.find(p=>p.x>globals.threshold).cdf
   globals.P_FP = globals.healthyDist.find(p=>p.x>globals.threshold).sf
   globals.P_FN = globals.sickDist.find(p=>p.x>globals.threshold).cdf
+
+  globals.TPR = globals.P_TP/(globals.P_TP+globals.P_FN)
+  globals.FPR = globals.P_FP/(globals.P_FP+globals.P_TN)
+
+  const rocPoints = []
+  for(let i=1; i<=99; i++) {
+    const pSick = globals.sickDist.find(p=>p.x>=i)
+    const pHealthy = globals.healthyDist.find(p=>p.x>=i)
+    const P_TP = pSick.sf
+    const P_TN = pHealthy.cdf
+    const P_FP = pHealthy.sf
+    const P_FN = pSick.cdf
+    rocPoints.push({
+      TPR: P_TP/(P_TP+P_FN),
+      FPR: P_FP/(P_FP+P_TN)
+    })
+  }
+  globals.rocPoints = rocPoints
 }
 
 const initGlobal = () => {
