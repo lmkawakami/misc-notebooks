@@ -1,9 +1,9 @@
 let rocX, rocXI, rocY, rocYI
 
 // set the dimensions and margins of the confusin matrix
-const roc_margin = {top: 30, right: 10, bottom: 40, left: 50},
+const roc_margin = {top: 10, right: 10, bottom: 40, left: 50},
   roc_width = 250 - roc_margin.left - roc_margin.right,
-  roc_height = 250 - roc_margin.top - roc_margin.bottom;
+  roc_height = 230 - roc_margin.top - roc_margin.bottom;
 
 // append the svg object to the body of the confusin matrix
 const roc_svg = d3.select("#roc_div")
@@ -48,7 +48,7 @@ plotRocAxis = () => {
   roc_svg.append("text")
     .attr("text-anchor", "middle")
     .attr("x", roc_width/2)
-    .attr("y", roc_height + roc_margin.top+10)
+    .attr("y", roc_height + roc_margin.top+30)
     .text("FPR");
 
   // Add Y axis

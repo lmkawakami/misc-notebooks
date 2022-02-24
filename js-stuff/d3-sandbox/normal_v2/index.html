@@ -63,48 +63,52 @@
     <div id="full_tree_map_div"><h2>Whole population</h2></div>
     <div id="sick_tree_map_div"><h2>Sick individuals</h2></div>
     <div id="healthy_tree_map_div"><h2>Healthy individuals</h2></div>
-    <div id="positive_tree_map_div"><h2>Tested positive</h2></div>
-    <div id="negative_tree_map_div"><h2>Tested negative</h2></div>
+    <div id="positive_tree_map_div"><h2>Positive tests</h2></div>
+    <div id="negative_tree_map_div"><h2>Negative tests</h2></div>
   </div>
-  <div id='inputs-container'>
-    <span class="input-span">Healthy μ : <input type="number" step=".5" id="healthy_mu" onchange="globals.setHealthyMu(event)"></span>
-    <span class="input-span">Sick μ : <input type="number" step=".5" id="sick_mu" onchange="globals.setSickMu(event)"></span>
-    <span class="input-span">Threshold : <input type="number" step=".1" id="threshold" onchange="globals.setThreshold(event)"></span>
-    
-    
-    <br>
-    
-    <span class="input-span">Healthy σ : <input type="number" step=".1" id="healthy_sigma" onchange="globals.setHealthySigma(event)"></span>
-    <span class="input-span">Sick σ : <input type="number" step=".1" id="sick_sigma" onchange="globals.setSickSigma(event)"></span>
-    <span class="input-span">Balance&nbsp&nbsp : <input type="number" step=".05" id="balance" onchange="globals.setBalance(event)"></span>
-  </div>
-  <div id='coefs-container'>
-    <table>
-      <tr>
-        <th title="TP/(TP+FP+TN+FN)">TP</th>
-        <th title="TN/(TP+FP+TN+FN)">TN</th>
-        <th title="FP/(TP+FP+TN+FN)">FP</th>
-        <th title="FN/(TP+FP+TN+FN)">FN</th>
-        <th title="True positive rate = TP/(TP+FP)">TPR / recall<br> sensitivity</th>
-        <th title="False positive rate = FP/(TN+FN)">FPR</th>
-        <th title="True negative rate = TN/(TN+FN)">TNR <br> specificity </th>
-        <th title="Positive predictive value = TP/(TP+FP)">PPV <br> precision</th>
-        <th>accuracy</th>
-        <th>balanced <br> accuracy</th>
-      </tr>
-      <tr>
-        <td id="td-TP">a</td>
-        <td id="td-TN"></td>
-        <td id="td-FP"></td>
-        <td id="td-FN"></td>
-        <td id="td-TPR"></td>
-        <td id="td-FPR"></td>
-        <td id="td-TNR"></td>
-        <td id="td-PPV"></td>
-        <td id="td-ACC"></td>
-        <td id="td-BACC"></td>
-      </tr>
-    </table>
+  <div id='inputs_and_coefs_div'>
+    <div id='inputs-container'>
+      <strong>Inputs:</strong> <br>
+      <span>
+        <span class="input-span">Healthy μ : <input type="number" step=".5" id="healthy_mu" onchange="globals.setHealthyMu(event)"></span>
+        <span class="input-span">Sick μ : <input type="number" step=".5" id="sick_mu" onchange="globals.setSickMu(event)"></span>
+        <span class="input-span">Threshold : <input type="number" step=".1" id="threshold" onchange="globals.setThreshold(event)"></span>
+      </span>
+      <br>
+      <span>
+        <span class="input-span">Healthy σ : <input type="number" step=".1" id="healthy_sigma" onchange="globals.setHealthySigma(event)"></span>
+        <span class="input-span">Sick σ : <input type="number" step=".1" id="sick_sigma" onchange="globals.setSickSigma(event)"></span>
+        <span class="input-span">Balance&nbsp&nbsp : <input type="number" step=".05" id="balance" onchange="globals.setBalance(event)"></span>
+      </span>
+    </div>
+    <div id='coefs-container'>
+      <table>
+        <tr>
+          <th title="True Positives = TP/(TP+FP+TN+FN)">TP</th>
+          <th title="True Negatives = TN/(TP+FP+TN+FN)">TN</th>
+          <th title="False Positives = FP/(TP+FP+TN+FN)">FP</th>
+          <th title="False Negatives = FN/(TP+FP+TN+FN)">FN</th>
+          <th title="True positive rate = TP/(TP+FP)">TPR / recall<br> sensitivity</th>
+          <th title="False positive rate = FP/(TN+FN)">FPR</th>
+          <th title="True negative rate = TN/(TN+FN)">TNR <br> specificity </th>
+          <th title="Positive predictive value = TP/(TP+FP)">PPV <br> precision</th>
+          <th title="Accuracy = (TP + TN)/(TP+FP+TN+FN)">accuracy</th>
+          <th title="Balanced Accuracy = (TPR + TNR)/2">balanced <br> accuracy</th>
+        </tr>
+        <tr>
+          <td id="td-TP"></td>
+          <td id="td-TN"></td>
+          <td id="td-FP"></td>
+          <td id="td-FN"></td>
+          <td id="td-TPR"></td>
+          <td id="td-FPR"></td>
+          <td id="td-TNR"></td>
+          <td id="td-PPV"></td>
+          <td id="td-ACC"></td>
+          <td id="td-BACC"></td>
+        </tr>
+      </table>
+    </div>
   </div>
 </body>
 <script src="./normalDistr.js"></script>

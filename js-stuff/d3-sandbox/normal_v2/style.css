@@ -11,7 +11,8 @@
 }
 
 #bayesian_separator h1 {
-  margin-bottom: .3em;
+  margin-bottom: .15em;
+  margin-bottom: 0em;
 }
 
 body {
@@ -29,6 +30,7 @@ input {
   color: #181616;
   /* border-radius: 3px; */
   border-style: solid;
+  border-color: gray;
 }
 
 h2 {
@@ -36,26 +38,44 @@ h2 {
   text-align: center;
 }
 
-#inputs-container, #coefs-container {
-  width: 40vw;
-  display: inline;
-  height: 20em;
+#inputs_and_coefs_div {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* align-items: center; */
+  align-items: baseline;
+  align-content: space-around;
 }
 
+#inputs-container {
+  margin-bottom: auto;
+  top: 0;
+}
 
-table {
-  display: inline;
+#coefs-container {
+  margin-bottom: auto;
+  top: 0;
 }
 
 th {
-  padding-left: 1.4em;
-  padding-right: 1.4em;
-  border: 1px solid #dddddd;
+  
+  background-color: #d3d3d3;
+  border-color: gray !important;
+  border-style: solid !important;
+  border-width: 1px !important;
+  cursor: help;
 }
 
 td {
-  text-align: center;
-  border: 1px solid #dddddd;
+  padding-left: 1.4em;
+  padding-right: 1.4em;
+  background-color: #ebebeb;
+  border-color: gray !important;
+  border-style: solid !important;
+  border-width: 1px !important;
+  padding-top: .2em;
+  padding-bottom: .2em;
 }
 
 #plots-container {

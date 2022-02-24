@@ -2,8 +2,8 @@ const treeMapsPadding = 1
 
 // set the dimensions and margins of the graph
 const tree_map_margin = {top: 10, right: 10, bottom: 10, left: 10},
-  width = 200 - tree_map_margin.left - tree_map_margin.right,
-  height = 200 - tree_map_margin.top - tree_map_margin.bottom;
+  width = 190 - tree_map_margin.left - tree_map_margin.right,
+  height = 190 - tree_map_margin.top - tree_map_margin.bottom;
 
 // append the svgs object to the body of the page
 const full_tree_map_svg = d3.select("#full_tree_map_div")
