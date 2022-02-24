@@ -5,10 +5,14 @@
   cursor: col-resize;
 }
 
+#bayesian_separator {
+  width: 100%;
+  text-align: center;
+}
+
 body {
-  /* background-color: #181616;
-  color: antiquewhite; */
   background-color: antiquewhite;
+  background-color: rgb(248, 240, 230);
   color: #181616;
   font-family: monospace;
 }
@@ -16,6 +20,7 @@ body {
 input {
   font-family: monospace;
   width: 4em;
+  margin-right: 1em;
 }
 
 h2 {
@@ -23,6 +28,27 @@ h2 {
   text-align: center;
 }
 
+#inputs-container, #coefs-container {
+  width: 40vw;
+  display: inline;
+  height: 20em;
+}
+
+
+table {
+  display: inline;
+}
+
+th {
+  padding-left: 1.4em;
+  padding-right: 1.4em;
+  border: 1px solid #dddddd;
+}
+
+td {
+  text-align: center;
+  border: 1px solid #dddddd;
+}
 
 #plots-container {
   display: flex; /* or inline-flex */
@@ -35,7 +61,7 @@ h2 {
 }
 
 #normal_dist_div {
-  width: 50vw;
+  width: fit-content;
 }
 
 #confusion_matrix_div {

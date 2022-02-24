@@ -1,7 +1,7 @@
 let rocX, rocXI, rocY, rocYI
 
 // set the dimensions and margins of the confusin matrix
-const roc_margin = {top: 30, right: 10, bottom: 30, left: 50},
+const roc_margin = {top: 30, right: 10, bottom: 40, left: 50},
   roc_width = 250 - roc_margin.left - roc_margin.right,
   roc_height = 250 - roc_margin.top - roc_margin.bottom;
 
@@ -44,10 +44,25 @@ plotRocAxis = () => {
     .attr("transform", `translate(0, ${roc_height+10})`)
     .call(d3.axisBottom(rocX));
 
+  // Add X axis label:
+  roc_svg.append("text")
+    .attr("text-anchor", "middle")
+    .attr("x", roc_width/2)
+    .attr("y", roc_height + roc_margin.top+10)
+    .text("FPR");
+
   // Add Y axis
   roc_svg.append("g")
     .attr("transform", `translate(-10, 0)`)
     .call(d3.axisLeft(rocY));
+  
+  // Y axis label:
+  roc_svg.append("text")
+    .attr("text-anchor", "middle")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -roc_margin.left+10)
+    .attr("x", -roc_height/2)
+    .text("TPR")
 }
 
 plotRocCurve = () => {

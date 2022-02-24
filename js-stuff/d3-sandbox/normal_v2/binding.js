@@ -172,6 +172,24 @@ const  calcDistributions = () => {
   globals.yMax = 0.45/Math.min(globals.healthySigma, globals.sickSigma)
 }
 
+const showCoefs = () => {
+  const showPercent = (val) => (100*val).toFixed(2)+'%'
+
+  document.getElementById('td-TP').innerText = showPercent(globals.P_TP)
+  document.getElementById('td-TN').innerText = showPercent(globals.P_TN)
+  document.getElementById('td-FP').innerText = showPercent(globals.P_FP)
+  document.getElementById('td-FN').innerText = showPercent(globals.P_FN)
+
+  document.getElementById('td-TPR').innerText = showPercent(globals.TPR)
+  document.getElementById('td-FPR').innerText = showPercent(globals.FPR)
+
+  document.getElementById('td-TNR').innerText = showPercent(globals.TNR)
+  document.getElementById('td-PPV').innerText = showPercent(globals.PPV)
+  document.getElementById('td-PPV').innerText = showPercent(globals.PPV)
+  document.getElementById('td-ACC').innerText = showPercent(globals.ACC)
+  document.getElementById('td-BACC').innerText = showPercent(globals.BACC)
+}
+
 const calcCoefs = () => {
   globals.P_TP = globals.sickDist.find(p=>p.x>globals.threshold).sf
   globals.P_TN = globals.healthyDist.find(p=>p.x>globals.threshold).cdf
@@ -181,7 +199,10 @@ const calcCoefs = () => {
   globals.TPR = globals.P_TP/(globals.P_TP+globals.P_FN)
   globals.FPR = globals.P_FP/(globals.P_FP+globals.P_TN)
 
-  const rocPoints = []
+  const rocPoints = [{
+    TPR: 1,
+    FPR: 1
+  }]
   for(let i=1; i<=99; i++) {
     const pSick = globals.sickDist.find(p=>p.x>=i)
     const pHealthy = globals.healthyDist.find(p=>p.x>=i)
@@ -194,7 +215,18 @@ const calcCoefs = () => {
       FPR: P_FP/(P_FP+P_TN)
     })
   }
+  rocPoints.push({
+    TPR: 0,
+    FPR: 0
+  })
   globals.rocPoints = rocPoints
+
+  globals.TNR = globals.P_TN/(globals.P_TN + globals.P_FN)
+  globals.PPV = globals.P_TP/(globals.P_TP + globals.P_FP)
+  globals.ACC = (globals.P_TP + globals.P_TN)
+  globals.BACC = (globals.TPR + globals.TNR)/2
+
+  showCoefs()
 }
 
 const initGlobal = () => {

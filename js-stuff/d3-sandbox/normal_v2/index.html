@@ -59,6 +59,7 @@
     <div id="normal_dist_div"><h2>Population Distribution</h2></div>
     <div id="confusion_matrix_div"><h2>Confusion Matrix</h2></div>
     <div id="roc_div"><h2>Roc</h2></div>
+    <div id="bayesian_separator"><h1>Bayesian view:</h1></div>
     <div id="full_tree_map_div"><h2>Full Tree Map</h2></div>
     <div id="sick_tree_map_div"><h2>Sick Tree Map</h2></div>
     <div id="healthy_tree_map_div"><h2>Healthy Tree Map</h2></div>
@@ -66,12 +67,44 @@
     <div id="negative_tree_map_div"><h2>Negative Tree Map</h2></div>
   </div>
   <div id='inputs-container'>
-    Threshold : <input type="number" step=".1" id="threshold" onchange="globals.setThreshold(event)">
-    Balance : <input type="number" step=".05" id="balance" onchange="globals.setBalance(event)">
-    Healthy μ : <input type="number" step=".5" id="healthy_mu" onchange="globals.setHealthyMu(event)">
-    Sick μ : <input type="number" step=".5" id="sick_mu" onchange="globals.setSickMu(event)">
-    Healthy σ : <input type="number" step=".1" id="healthy_sigma" onchange="globals.setHealthySigma(event)">
-    Sick σ : <input type="number" step=".1" id="sick_sigma" onchange="globals.setSickSigma(event)">
+    <span class="input-span">Healthy μ : <input type="number" step=".5" id="healthy_mu" onchange="globals.setHealthyMu(event)"></span>
+    <span class="input-span">Sick μ : <input type="number" step=".5" id="sick_mu" onchange="globals.setSickMu(event)"></span>
+    <span class="input-span">Threshold : <input type="number" step=".1" id="threshold" onchange="globals.setThreshold(event)"></span>
+    
+    
+    <br>
+    
+    <span class="input-span">Healthy σ : <input type="number" step=".1" id="healthy_sigma" onchange="globals.setHealthySigma(event)"></span>
+    <span class="input-span">Sick σ : <input type="number" step=".1" id="sick_sigma" onchange="globals.setSickSigma(event)"></span>
+    <span class="input-span">Balance&nbsp&nbsp : <input type="number" step=".05" id="balance" onchange="globals.setBalance(event)"></span>
+  </div>
+  <div id='coefs-container'>
+    <table>
+      <tr>
+        <th title="TP/(TP+FP+TN+FN)">TP</th>
+        <th title="TN/(TP+FP+TN+FN)">TN</th>
+        <th title="FP/(TP+FP+TN+FN)">FP</th>
+        <th title="FN/(TP+FP+TN+FN)">FN</th>
+        <th title="True positive rate = TP/(TP+FP)">TPR <br> sensitivity <br> recall</th>
+        <th title="False positive rate = FP/(TN+FN)">FPR</th>
+        <th title="True negative rate = TN/(TN+FN)">TNR <br> specificity </th>
+        <th title="Positive predictive value = TP/(TP+FP)">PPV <br> precision</th>
+        <th>accuracy</th>
+        <th>balanced <br> accuracy</th>
+      </tr>
+      <tr>
+        <td id="td-TP">a</td>
+        <td id="td-TN"></td>
+        <td id="td-FP"></td>
+        <td id="td-FN"></td>
+        <td id="td-TPR"></td>
+        <td id="td-FPR"></td>
+        <td id="td-TNR"></td>
+        <td id="td-PPV"></td>
+        <td id="td-ACC"></td>
+        <td id="td-BACC"></td>
+      </tr>
+    </table>
   </div>
 </body>
 <script src="./normalDistr.js"></script>

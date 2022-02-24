@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
 const normal_dist_margin = { top: 10, right: 10, bottom: 30, left: 10 },
-  normal_dist_width = 800 - normal_dist_margin.left - normal_dist_margin.right,
-  normal_dist_height = 300 - normal_dist_margin.top - normal_dist_margin.bottom;
+  normal_dist_width = 700 - normal_dist_margin.left - normal_dist_margin.right,
+  normal_dist_height = 250 - normal_dist_margin.top - normal_dist_margin.bottom;
 
 // append the svg object to the body of the page
 const normal_dist_svg = d3.select("#normal_dist_div")
@@ -162,6 +162,7 @@ plotNormalThresholLine = () => {
     calcCoefs()
     fillConfusionMatrix()
     plotTreeMaps()
+    plotRocCurve()
   }
   dragged = _.throttle(dragged,50)
   const dragended = (e,d)=>{
