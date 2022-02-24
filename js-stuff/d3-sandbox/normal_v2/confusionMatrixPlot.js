@@ -1,5 +1,7 @@
 // confusion matrix vars
 const cmv = {}
+// const confusionMatrixColor = "#69b3a2"
+const confusionMatrixColor = "lightslategray"
 
 // set the dimensions and margins of the confusin matrix
 const confusion_matrix_margin = {top: 30, right: 1, bottom: 30, left: 50},
@@ -23,7 +25,7 @@ cmv.myVars = ["Sick", "Healthy"]
 
 // Build color scale
 cmv.myColor = d3.scaleLinear()
-  .range(["white", "#69b3a2"])
+  .range(["white", confusionMatrixColor])
   .domain([0,1])
 
 // Build X scales and axis:

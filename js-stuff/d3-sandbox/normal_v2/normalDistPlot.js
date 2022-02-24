@@ -187,11 +187,84 @@ plotNormalThresholLine = () => {
     );
 }
 
+plotLegend = () => {
+  // create a list of keys
+  var keys = [
+    {
+      text:"True Negative",
+      fill:TNfill,
+      color:TNcolor,
+    },
+    {
+      text:"True Positive",
+      fill:TPfill,
+      color:TPcolor,
+    },
+    {
+      text:"False Positive",
+      fill:FPfill,
+      color:FPColor,
+    },
+    {
+      text:"False Negative",
+      fill:FNfill,
+      color:FNColor,
+    }
+  ];
+
+  const x0 = 0
+  const y0 = 0
+  const size = 20;
+
+  // Add one dot in the legend for each name.
+  normal_dist_svg.select('.legend-rect').remove();
+  normal_dist_svg.selectAll("mydots")
+    .data(keys)
+    .enter()
+    .append("rect")
+    .attr('class','legend-rect')
+    .attr("x", x0)
+    .attr("y", function (d, i) {
+      return y0 + i * (size + 5);
+    }) // 100 is where the first dot appears. 25 is the distance between dots
+    .attr("width", size)
+    .attr("height", size)
+    .style("fill", function (d) {
+      return d.fill;
+    })
+    .style("fill-opacity", FILL_OPACITY)
+    .style("stroke-opacity", 1)
+    .style("stroke", function (d) {
+      return d.color;
+    })
+    ;
+
+  // Add one dot in the legend for each name.
+  normal_dist_svg.select('.legend-text').remove();
+  normal_dist_svg.selectAll("mylabels")
+    .data(keys)
+    .enter()
+    .append("text")
+    .attr('class','legend-text')
+    .attr("x", x0 + size * 1.2)
+    .attr("y", function (d, i) {
+      return y0 + i * (size + 5) + size / 2;
+    }) // 100 is where the first dot appears. 25 is the distance between dots
+    .style("fill", function (d) {
+      return d.color;
+    })
+    .text(function (d) {
+      return d.text;
+    })
+    .attr("text-anchor", "left")
+    .style("alignment-baseline", "middle");
+}
 
 plotNormalDistribuiton = () => {
   normal_dist_svg.selectAll('*').remove();
   
   calcNormalHelpers()
+  plotLegend()
   plotNormalDistAxis()
   plotNomralDist()
   fillNormalDist()
