@@ -10,6 +10,10 @@
   text-align: center;
 }
 
+#bayesian_separator h1 {
+  margin-bottom: .3em;
+}
+
 body {
   background-color: antiquewhite;
   background-color: rgb(248, 240, 230);
@@ -21,6 +25,10 @@ input {
   font-family: monospace;
   width: 4em;
   margin-right: 1em;
+  background-color: white;
+  color: #181616;
+  /* border-radius: 3px; */
+  border-style: solid;
 }
 
 h2 {
