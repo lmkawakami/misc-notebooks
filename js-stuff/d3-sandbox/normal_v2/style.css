@@ -31,6 +31,7 @@ input {
   /* border-radius: 3px; */
   border-style: solid;
   border-color: gray;
+  border-width: 1px;
 }
 
 h2 {
@@ -51,6 +52,7 @@ h2 {
 #inputs-container {
   margin-bottom: auto;
   top: 0;
+  background-color: #2e2e2e13;
   border-color: gray !important;
   border-style: solid !important;
   border-width: 1px !important;

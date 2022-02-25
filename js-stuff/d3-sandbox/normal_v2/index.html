@@ -113,14 +113,15 @@
     </div>
   </div>
   <hr>
-  <h1>Disease Testing Statistics Visualization:</h1>
-  <p>This interactive page ilustrates a fraction of the complexyty of disease testing and some of it's tradeoffs, focusing in the statistical/probabilistal side.</p>
-  <p>It's a simplification, just a toy model with some knobs, made by an electrical engineer without any serious medicine knolege. Take any conclusion with a grain of salt.</p>
+  <h1>Visualization of Disease Testing Statistics:</h1>
+  <p>This interactive page ilustrates a fraction of the complexyty of disease testing and some of it's tradeoffs, focusing on the statistical/probabilistal side.</p>
+  <p>It's a simplification, just a toy model with some knobs, made by an electrical engineer without any serious medical knolege. Take any conclusion with a grain of salt.</p>
+  <p>To illustrate a real situation data from a published paper was used, showing how two different tests can differ. Clicking on the "apply" buttons below you can simulate the conditions reported on the journal and see the difference between the two kinds of test and what happen when some parameters are changed. There is a <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0248921">link to the article HERE</a> and on the botton of this page.</p>
 
-  <h1>Visualização Estatística de Testes para Doenças</h1>
+  <!-- <h1>Visualização Estatística de Testes para Doenças</h1>
   <p>Esta página interativa ilustra uma fração da complexidade dos testes de doenças e algumas das relações custo/benefício, focando mais nos aspectos estatísticos/probabilísticos.</p>
   <p>É uma simplificação, apenas um modelo com alguns controles que foi construído por um engenheiro elétricista sem domínio de conhecimentos médidos.</p>
-  <p>Para ilustrar uma situação real, peguei os dados de uma públicação científica que explorava os dados de 2 tipos diferentes de testes para COVID e tentei replicar o comportamento no modelo. Basta clicar em um dos botões para que todos os controles sejam ajustados para os respectivos valores adequados.</p>
+  <p>Para ilustrar uma situação real, peguei os dados de uma públicação científica que explorava os dados de 2 tipos diferentes de testes para COVID e tentei replicar o comportamento no modelo. Basta clicar em um dos botões para que todos os controles sejam ajustados para os respectivos valores adequados.</p> -->
   <table id="demo_table">
     <tr>
       <th class="demo_table">
@@ -233,8 +234,12 @@
       </td>
     </tr>
   </table>
-  <p>*Obs: "Sick μ" and "Healthy μ" were inverted because the model expects "Sick μ" to be greater than "Healthy μ", witch was not the case for the measurements from the journal, but this don't impact the analysis</p>
+  <p>*Obs1: "Sick μ" and "Healthy μ" were inverted because the model expects "Sick μ" to be greater than "Healthy μ", witch was not the case for the measurements from the journal, but this don't impact the analysis. <br>
+    *Obs2: The values were scaled down 10x to fit in the range [0:100], but this don't impact the analysis either.</p>
   <p>"Standard Q" and "Panbio" tests data source: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0248921">Diagnostic accuracy of two commercial SARS-CoV-2 antigen-detecting rapid tests at the point of care in community-based testing centers</a></p>
+  <hr>
+  <p>If you know more about the subject or have more real data from disease tests and want to share, please contact me. Any contribuition is welcome, preferebly via pull request, creating an <a href="https://github.com/lmkawakami/misc-notebooks/issues">issue on this repo</a> or via email</p>
+  <p style="text-align: center;">Author: Lincoln Makoto Kawakami</p>
 </body>
 <script src="./normalDistr.js"></script>
 <script src="./normalDistPlot.js"></script>
