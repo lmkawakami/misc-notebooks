@@ -221,7 +221,7 @@ const calcCoefs = () => {
   })
   globals.rocPoints = rocPoints
 
-  globals.TNR = globals.P_TN/(globals.P_TN + globals.P_FN)
+  globals.TNR = globals.P_TN/(globals.P_TN + globals.P_FP)
   globals.PPV = globals.P_TP/(globals.P_TP + globals.P_FP)
   globals.ACC = (globals.P_TP + globals.P_TN)
   globals.BACC = (globals.TPR + globals.TNR)/2
@@ -239,4 +239,38 @@ const initGlobal = () => {
 
   calcDistributions()
   calcCoefs()
+}
+
+const applyStandardQCoefs = () => {
+  const wrapVal=(val)=>{
+    return {
+      srcElement: {
+        valueAsNumber: val
+      }
+    }
+  }
+
+  globals.setThreshold(wrapVal(29.14))
+  globals.setBalance(wrapVal(0.361))
+  globals.setHealthyMu(wrapVal(19.1))
+  globals.setSickMu(wrapVal(37))
+  globals.setHealthySigma(wrapVal(3.61))
+  globals.setSickSigma(wrapVal(6.39))
+}
+
+const applyPanbioCoefs = () => {
+  const wrapVal=(val)=>{
+    return {
+      srcElement: {
+        valueAsNumber: val
+      }
+    }
+  }
+
+  globals.setThreshold(wrapVal(67.4))
+  globals.setBalance(wrapVal(0.232))
+  globals.setHealthyMu(wrapVal(31.5))
+  globals.setSickMu(wrapVal(74.9))
+  globals.setHealthySigma(wrapVal(2.96))
+  globals.setSickSigma(wrapVal(7.04))
 }

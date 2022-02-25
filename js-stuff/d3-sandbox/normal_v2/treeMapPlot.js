@@ -131,7 +131,7 @@ const plotFullTreeMap = () => {
       .attr("text-anchor", "middle")
       .attr("x", function(d){ return d.x0+(d.x1 - d.x0)/2})    // +10 to adjust position (more right)
       .attr("y", function(d){ return d.y0+(d.y1 - d.y0)/2})    // +20 to adjust position (lower)
-      .text(function(d){ return (100*d.data.value).toFixed(2)+'%'})
+      .text(function(d){ return d.data.value>0.01?(100*d.data.value).toFixed(2)+'%':''})
       .attr("font-size", "15px")
       .attr("fill", "black")
 

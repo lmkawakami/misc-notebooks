@@ -63,7 +63,7 @@ h2 {
   top: 0;
 }
 
-th {
+th.coefs {
   
   background-color: #d3d3d3;
   border-color: gray !important;
@@ -72,7 +72,7 @@ th {
   cursor: help;
 }
 
-td {
+td.coefs {
   padding-left: 1.4em;
   padding-right: 1.4em;
   background-color: #ebebeb;
@@ -81,6 +81,33 @@ td {
   border-width: 1px !important;
   padding-top: .2em;
   padding-bottom: .2em;
+}
+
+th.demo_table {
+  width: 30vw;
+}
+
+td.demo_table {
+  text-align: center;
+}
+
+#demo_table tr:nth-child(odd) {
+  background-color: #cccccc;
+}
+
+#demo_table {
+  border-color: rgb(49, 49, 49) !important;
+  border-style: solid !important;
+  border-width: 1px !important;
+}
+
+.demo_table {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  /* border-color: gray !important;
+  border-style: solid !important;
+  border-width: 1px !important; */
 }
 
 #plots-container {

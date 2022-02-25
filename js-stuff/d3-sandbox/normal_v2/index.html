@@ -84,32 +84,157 @@
     <div id='coefs-container'>
       <table>
         <tr>
-          <!-- <th title="True Positives = TP/(TP+FP+TN+FN)">TP</th>
-          <th title="True Negatives = TN/(TP+FP+TN+FN)">TN</th>
-          <th title="False Positives = FP/(TP+FP+TN+FN)">FP</th>
-          <th title="False Negatives = FN/(TP+FP+TN+FN)">FN</th> -->
-          <th title="True positive rate = TP/(TP+FP)">TPR / recall<br> sensitivity</th>
-          <th title="Accuracy = (TP + TN)/(TP+FP+TN+FN)">accuracy</th>
-          <th title="False positive rate = FP/(TN+FN)">FPR</th>
-          <th title="Positive predictive value = TP/(TP+FP)">PPV <br> precision</th>
-          <th title="True negative rate = TN/(TN+FN)">TNR <br> specificity </th>
-          <th title="Balanced Accuracy = (TPR + TNR)/2">balanced <br> accuracy</th>
+          <!-- <th class='coefs' title="True Positives = TP/(TP+FP+TN+FN)">TP</th>
+          <th class='coefs' title="True Negatives = TN/(TP+FP+TN+FN)">TN</th>
+          <th class='coefs' title="False Positives = FP/(TP+FP+TN+FN)">FP</th>
+          <th class='coefs' title="False Negatives = FN/(TP+FP+TN+FN)">FN</th> -->
+          
+          <th class='coefs' title="Accuracy = (TP + TN)/(TP+FP+TN+FN)">accuracy</th>
+          <th class='coefs' title="True positive rate = TP/(TP+FN)">TPR / recall<br> sensitivity</th>
+          <th class='coefs' title="False positive rate = FP/(FP+TN)">FPR</th>
+          <th class='coefs' title="Positive predictive value = TP/(TP+FP)">PPV <br> precision</th>
+          <th class='coefs' title="True negative rate = TN/(TN+FP)">TNR <br> specificity </th>
+          <th class='coefs' title="Balanced Accuracy = (TPR + TNR)/2">balanced <br> accuracy</th>
         </tr>
         <tr>
-          <!-- <td id="td-TP"></td>
-          <td id="td-TN"></td>
-          <td id="td-FP"></td>
-          <td id="td-FN"></td> -->
-          <td id="td-TPR"></td>
-          <td id="td-ACC"></td>
-          <td id="td-FPR"></td>
-          <td id="td-PPV"></td>
-          <td id="td-TNR"></td>
-          <td id="td-BACC"></td>
+          <!-- <td class='coefs' id="td-TP"></td>
+          <td class='coefs' id="td-TN"></td>
+          <td class='coefs' id="td-FP"></td>
+          <td class='coefs' id="td-FN"></td> -->
+          
+          <td class='coefs' id="td-ACC"></td>
+          <td class='coefs' id="td-TPR"></td>
+          <td class='coefs' id="td-FPR"></td>
+          <td class='coefs' id="td-PPV"></td>
+          <td class='coefs' id="td-TNR"></td>
+          <td class='coefs' id="td-BACC"></td>
         </tr>
       </table>
     </div>
   </div>
+  <hr>
+  <h1>Disease Testing Statistics Visualization:</h1>
+  <p>This interactive page ilustrates a fraction of the complexyty of disease testing and some of it's tradeoffs, focusing in the statistical/probabilistal side.</p>
+  <p>It's a simplification, just a toy model with some knobs, made by an electrical engineer without any serious medicine knolege. Take any conclusion with a grain of salt.</p>
+
+  <h1>Visualização Estatística de Testes para Doenças</h1>
+  <p>Esta página interativa ilustra uma fração da complexidade dos testes de doenças e algumas das relações custo/benefício, focando mais nos aspectos estatísticos/probabilísticos.</p>
+  <p>É uma simplificação, apenas um modelo com alguns controles que foi construído por um engenheiro elétricista sem domínio de conhecimentos médidos.</p>
+  <p>Para ilustrar uma situação real, peguei os dados de uma públicação científica que explorava os dados de 2 tipos diferentes de testes para COVID e tentei replicar o comportamento no modelo. Basta clicar em um dos botões para que todos os controles sejam ajustados para os respectivos valores adequados.</p>
+  <table id="demo_table">
+    <tr>
+      <th class="demo_table">
+        <h3>Statistic</h3>
+      </th>
+      <th class="demo_table">
+        <h3>Standard Q <button onclick="applyStandardQCoefs()">apply</button></h3>
+      </th>
+      <th class="demo_table">
+        <h3>Panbio <button onclick="applyPanbioCoefs()">apply</button></h3>
+      </th>
+    </tr>
+    <tr>
+      <td class="demo_table">
+        Total
+      </td>
+      <td class="demo_table">
+        529
+      </td>
+      <td class="demo_table">
+        535
+      </td>
+    </tr>
+    <tr>
+      <td class="demo_table">
+        True Positive
+      </td>
+      <td class="demo_table">
+        170 (32.14%)
+      </td>
+      <td class="demo_table">
+        106 (19.81%)
+      </td>
+    </tr>
+    <tr>
+      <td class="demo_table">
+        False Negative
+      </td>
+      <td class="demo_table">
+        21 (3.97%)
+      </td>
+      <td class="demo_table">
+        18 (3.36%)
+      </td>
+    </tr>
+    <tr>
+      <td class="demo_table">
+        False Positive
+      </td>
+      <td class="demo_table">
+        1 (0.19%)
+      </td>
+      <td class="demo_table">
+        0 (0.00%)
+      </td>
+    </tr>
+    <tr>
+      <td class="demo_table">
+        True Negative
+      </td>
+      <td class="demo_table">
+        337 (63,71%)
+      </td>
+      <td class="demo_table">
+        411 (76,82%)
+      </td>
+    </tr>
+    <tr>
+      <td class="demo_table">
+        sensitivity - SN (95%CI)
+      </td>
+      <td class="demo_table">
+        89.0% (89.0% - 93.1%)
+      </td>
+      <td class="demo_table">
+        85.5% (78.0% - 91.2%)
+      </td>
+    </tr>
+    <tr>
+      <td class="demo_table">
+        specificity - SP (95%CI)
+      </td>
+      <td class="demo_table">
+        99.7% (98.4% - 100%)
+      </td>
+      <td class="demo_table">
+        100% (99.1% - 100%)
+      </td>
+    </tr>
+    <tr>
+      <td class="demo_table">
+        positive predict value - PPV (95%CI)
+      </td>
+      <td class="demo_table">
+        99.4% (96.8% - 100%)
+      </td>
+      <td class="demo_table">
+        100% (96.6% - 100%)
+      </td>
+    </tr>
+    <tr>
+      <td class="demo_table">
+        negative predict value - NPV (95%CI)
+      </td>
+      <td class="demo_table">
+        94.1% (91.2% - 96.3%)
+      </td>
+      <td class="demo_table">
+        95.8% (93.4% - 97.5%)
+      </td>
+    </tr>
+  </table>
+  <p>*Obs: "Sick μ" and "Healthy μ" were inverted because the model expects "Sick μ" to be greater than "Healthy μ", witch was not the case for the measurements from the journal, but this don't impact the analysis</p>
+  <p>"Standard Q" and "Panbio" tests data source: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0248921">Diagnostic accuracy of two commercial SARS-CoV-2 antigen-detecting rapid tests at the point of care in community-based testing centers</a></p>
 </body>
 <script src="./normalDistr.js"></script>
 <script src="./normalDistPlot.js"></script>
