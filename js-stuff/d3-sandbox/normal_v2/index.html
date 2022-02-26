@@ -56,7 +56,7 @@
 </head>
 <body>
   <div id='plots-container'>
-    <div id="normal_dist_div"><h2>Population Distribution</h2></div>
+    <div id="normal_dist_div"><h2>Population Distribution</h2><div style="text-align: center;">(click and drag the threshold line)</div></div>
     <div id="confusion_matrix_div"><h2>Confusion Matrix</h2></div>
     <div id="roc_div"><h2>Roc</h2></div>
     <div id="bayesian_separator"><h1>Bayesian views:</h1></div>
@@ -68,7 +68,7 @@
   </div>
   <div id='inputs_and_coefs_div'>
     <div id='inputs-container'>
-      <strong>Inputs:</strong> <br>
+      <strong>Inputs:</strong> (increase and decrease the inputs and see the effects)<br>
       <span>
         <span class="input-span">Healthy μ : <input type="number" step=".5" id="healthy_mu" onchange="globals.setHealthyMu(event)"></span>
         <span class="input-span">Sick μ : <input type="number" step=".5" id="sick_mu" onchange="globals.setSickMu(event)"></span>
@@ -83,40 +83,71 @@
     </div>
     <div id='coefs-container'>
       <table>
-        <tr>
-          <!-- <th class='coefs' title="True Positives = TP/(TP+FP+TN+FN)">TP</th>
-          <th class='coefs' title="True Negatives = TN/(TP+FP+TN+FN)">TN</th>
-          <th class='coefs' title="False Positives = FP/(TP+FP+TN+FN)">FP</th>
-          <th class='coefs' title="False Negatives = FN/(TP+FP+TN+FN)">FN</th> -->
-          
+        <tr>          
           <th class='coefs' title="Accuracy = (TP + TN)/(TP+FP+TN+FN)">accuracy</th>
+          <th class='coefs' title="Balanced Accuracy = (TPR + TNR)/2">balanced <br> accuracy</th>
           <th class='coefs' title="True positive rate = TP/(TP+FN)">TPR / recall<br> sensitivity</th>
+          <th class='coefs' title="True negative rate = TN/(TN+FP)">TNR <br> specificity </th>
           <th class='coefs' title="False positive rate = FP/(FP+TN)">FPR</th>
           <th class='coefs' title="Positive predictive value = TP/(TP+FP)">PPV <br> precision</th>
-          <th class='coefs' title="True negative rate = TN/(TN+FP)">TNR <br> specificity </th>
-          <th class='coefs' title="Balanced Accuracy = (TPR + TNR)/2">balanced <br> accuracy</th>
+          
+          <th class='coefs' title="Negative predictive value = TN/(TN+FN)">NPV</th>
         </tr>
         <tr>
-          <!-- <td class='coefs' id="td-TP"></td>
-          <td class='coefs' id="td-TN"></td>
-          <td class='coefs' id="td-FP"></td>
-          <td class='coefs' id="td-FN"></td> -->
-          
-          <td class='coefs' id="td-ACC"></td>
-          <td class='coefs' id="td-TPR"></td>
-          <td class='coefs' id="td-FPR"></td>
-          <td class='coefs' id="td-PPV"></td>
-          <td class='coefs' id="td-TNR"></td>
-          <td class='coefs' id="td-BACC"></td>
+          <td class='coefs model-ACC'></td>
+          <td class='coefs model-BACC'></td>
+          <td class='coefs model-TPR'></td>
+          <td class='coefs model-TNR'></td>
+          <td class='coefs model-FPR'></td>
+          <td class='coefs model-PPV'></td>
+
+          <td class='coefs model-NPV'></td>
         </tr>
       </table>
     </div>
   </div>
   <hr>
-  <h1>Visualization of Disease Testing Statistics:</h1>
-  <p>This interactive page ilustrates a fraction of the complexyty of disease testing and some of it's tradeoffs, focusing on the statistical/probabilistal side.</p>
-  <p>It's a simplification, just a toy model with some knobs, made by an electrical engineer without any serious medical knolege. Take any conclusion with a grain of salt.</p>
-  <p>To illustrate a real situation data from a published paper was used, showing how two different tests can differ. Clicking on the "apply" buttons below you can simulate the conditions reported on the journal and see the difference between the two kinds of test and what happen when some parameters are changed. There is a <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0248921">link to the article HERE</a> and on the botton of this page.</p>
+  <h2>Visual Interpretations</h2>
+  <p>This interactive page ilustrates a fraction of the complexyty of disease testing and some of it's tradeoffs, focusing on the statistical/probabilistal side.<br>
+    <strong>DISCLAIMER:</strong> It's a simplification, just a toy model with some knobs, made by an electrical engineer without any medical knowledge.</p>
+  <h4>Populations Distribution:</h4>
+  <ul>
+    <li>The green curve represents the distribution of healthy individuals, and the orange curve represents the distribution of sick individuals</li>
+    <li>The green hatched area represents the healthy individuals that tested negative (True Negatives)</li>
+    <li>The blue area represents the healthy individuals misdiagnosed as sick (False Positives)</li>
+    <li>The orange hatched area represents the sick individuals that tested positive (True Positives)</li>
+    <li>The red area represents the sick individuals misclassified as healthy (False Negative)</li>
+    <li>Poor tests present wide overlaps between the two distributions</li>
+    <li>When the threshold is increased, the proportion of false negatives goes down, but the false negatives go up.</li>
+  </ul>
+  <h4>Confusion Matrix:</h4>
+  <ul>
+    <li>Ideally, the bottom-left cell (false negative) and the top-right cell (false positive) tend to zero</li>
+  </ul>
+  <h4>Roc
+    <button onclick="simulatePerfectTest()">simulate "perfect test"</button>
+    <button onclick="simulateHalfwayTest()">simulate "halfway test"</button>
+    <button onclick="simulatePoorTest()">simulate "poor test"</button>
+  </h4>
+  <ul>
+    <li>The ROC curve shows how well the test can differentiate sick individuals from healthy ones</li>
+    <li>When the sick and healthy means and standard deviations are the same, the test can't differentiate sick from healthy, and the ROC curve becomes a straight line from (x=0, y=0) to (x=1, y=1)</li>
+    <li>When the sick and the healthy can be totally segregated (perfect test), the ROC curve goes straight from (x=0, y=0) to (x=0, y=1) to (x=1, y=1) like an "upside-down L"</li>
+    <li>Poor tests show ROC curves closer to the diagonal, and superior tests show ROC curves closer to the "upside-down L"</li>
+  </ul>
+  <h4>Bayesian views:
+    <button onclick="simulatePreciseTest()">simulate "precise-test"</button>
+    <button onclick="simulateSensitiveTest()">simulate "sensitive-test"</button>
+  </h4>
+  <ul>
+    <li>The Bayesian views show the non-intuitive behavior of testing and illustrate why a single measure isn't sufficient to corroborate how good the test is</li>
+    <li>The "precise-test" present 95% of precision, but only 42% of sensitivity (less than half of the sick individuals are correctly diagnosed as sick)</li>
+    <li>The "sensitive-test" present 95% of sensitivity, but only 30% of precision (70% of the individuals diagnosed as sick are healthy)</li>
+    <li>The only difference between the simulated "precise-test" and "sensitive-test" is the threshold value</li>
+  </ul>
+  <hr>
+  <h2>Visualization of Real-life Disease Testing:</h2>
+  <p>To illustrate a real-life situation data from a published paper was reproduced, showing how two different tests can differ. Clicking on the "simulate" buttons below, you can simulate the conditions reported on the journal and see the differences between the two kinds of tests and what happens when some parameters are changed. There is a <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0248921">link to the article HERE</a> and on the botton of this page.</p>
 
   <!-- <h1>Visualização Estatística de Testes para Doenças</h1>
   <p>Esta página interativa ilustra uma fração da complexidade dos testes de doenças e algumas das relações custo/benefício, focando mais nos aspectos estatísticos/probabilísticos.</p>
@@ -128,10 +159,13 @@
         <h3>Statistic</h3>
       </th>
       <th class="demo_table">
-        <h3>Standard Q <button onclick="applyStandardQCoefs()">apply</button></h3>
+        <h3>Standard Q <button onclick="simulateStandardQTest()">simulate standad Q</button></h3>
       </th>
       <th class="demo_table">
-        <h3>Panbio <button onclick="applyPanbioCoefs()">apply</button></h3>
+        <h3>Panbio <button onclick="simulatePanbioTest()">simulate Panbio</button></h3>
+      </th>
+      <th class="demo_table">
+        <h3>Current Model</h3>
       </th>
     </tr>
     <tr>
@@ -139,15 +173,18 @@
         Total
       </td>
       <td class="demo_table">
-        529
+        529 (100%)
       </td>
       <td class="demo_table">
-        535
+        535 (100%)
+      </td>
+      <td class="demo_table">
+        100%
       </td>
     </tr>
     <tr>
       <td class="demo_table">
-        True Positive
+        True Positives
       </td>
       <td class="demo_table">
         170 (32.14%)
@@ -155,10 +192,12 @@
       <td class="demo_table">
         106 (19.81%)
       </td>
+      <td class="demo_table model-TP">
+      </td>
     </tr>
     <tr>
       <td class="demo_table">
-        False Negative
+        False Negatives
       </td>
       <td class="demo_table">
         21 (3.97%)
@@ -166,10 +205,12 @@
       <td class="demo_table">
         18 (3.36%)
       </td>
+      <td class="demo_table model-FN">
+      </td>
     </tr>
     <tr>
       <td class="demo_table">
-        False Positive
+        False Positives
       </td>
       <td class="demo_table">
         1 (0.19%)
@@ -177,16 +218,20 @@
       <td class="demo_table">
         0 (0.00%)
       </td>
+      <td class="demo_table model-FP">
+      </td>
     </tr>
     <tr>
       <td class="demo_table">
-        True Negative
+        True Negatives
       </td>
       <td class="demo_table">
         337 (63,71%)
       </td>
       <td class="demo_table">
         411 (76,82%)
+      </td>
+      <td class="demo_table model-TN">
       </td>
     </tr>
     <tr>
@@ -199,6 +244,8 @@
       <td class="demo_table">
         85.5% (78.0% - 91.2%)
       </td>
+      <td class="demo_table model-TPR">
+      </td>
     </tr>
     <tr>
       <td class="demo_table">
@@ -209,6 +256,8 @@
       </td>
       <td class="demo_table">
         100% (99.1% - 100%)
+      </td>
+      <td class="demo_table model-TNR">
       </td>
     </tr>
     <tr>
@@ -221,6 +270,8 @@
       <td class="demo_table">
         100% (96.6% - 100%)
       </td>
+      <td class="demo_table model-PPV">
+      </td>
     </tr>
     <tr>
       <td class="demo_table">
@@ -232,14 +283,22 @@
       <td class="demo_table">
         95.8% (93.4% - 97.5%)
       </td>
+      <td class="demo_table model-NPV">
+      </td>
     </tr>
   </table>
-  <p>*Obs1: "Sick μ" and "Healthy μ" were inverted because the model expects "Sick μ" to be greater than "Healthy μ", witch was not the case for the measurements from the journal, but this don't impact the analysis. <br>
-    *Obs2: The values were scaled down 10x to fit in the range [0:100], but this don't impact the analysis either.</p>
+  <p>Assuming that the model and distributions are correct, the Panbio test can differentiate sick individuals from healthy individuals better than the Standard-Q test. Reducing the Panbio threshold to 50 its sensitivity and NPV are enhanced, reaching almost 100%, without degrading other indicators. <br> Apparently, both tests prioritized specificity over sensitivity.</p>
+  <p>*Obs1: "Sick μ" and "Healthy μ" were inverted because the model expects "Sick μ" to be greater than "Healthy μ" which was not the case for the measurements from the journal, but the inversion doesn't impact the analysis. <br></p>
   <p>"Standard Q" and "Panbio" tests data source: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0248921">Diagnostic accuracy of two commercial SARS-CoV-2 antigen-detecting rapid tests at the point of care in community-based testing centers</a></p>
   <hr>
-  <p>If you know more about the subject or have more real data from disease tests and want to share, please contact me. Any contribuition is welcome, preferebly via pull request, creating an <a href="https://github.com/lmkawakami/misc-notebooks/issues">issue on this repo</a> or via email</p>
-  <p style="text-align: center;">Author: Lincoln Makoto Kawakami</p>
+  <p>If you know more about the medical aspects or have real-life data from disease tests and want to enhance this page, you can <a href="https://www.linkedin.com/in/lincoln-makoto-kawakami-a19270106/">DM me</a>, <a href="https://github.com/lmkawakami/misc-notebooks/pulls">submit a pull request</a> or <a href="https://github.com/lmkawakami/misc-notebooks/issues">create an issue</a>. Any suggestions, contributions, or comments are welcome.</p>
+
+  <p style="text-align: center;">Lincoln Makoto Kawakami</p>
+
+  Other useful links:
+  <a href="https://en.wikipedia.org/wiki/Precision_and_recall#Definition_(classification_context)">link-0</a>
+  <a href="https://www.bjid.org.br/en-covid-19-meta-analysis-diagnostic-test-accuracy-articulo-S1413867020300295#:~:text=However%2C%20it%20is%20important%20to%20highlight%20that%20the%20rate%20of,ranged%20from%2010%20to%2044%25.">link-1</a>
+  <a href="https://virologyj.biomedcentral.com/articles/10.1186/s12985-020-01452-5">link-2</a>
 </body>
 <script src="./normalDistr.js"></script>
 <script src="./normalDistPlot.js"></script>

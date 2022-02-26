@@ -39,6 +39,14 @@ h2 {
   text-align: center;
 }
 
+h4 {
+  margin-bottom: 0;
+}
+
+ul {
+  margin: 0;
+}
+
 #inputs_and_coefs_div {
   display: flex; /* or inline-flex */
   flex-direction: row;

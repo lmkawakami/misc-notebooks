@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
 const normal_dist_margin = { top: 10, right: 10, bottom: 30, left: 20 },
   normal_dist_width = 730 - normal_dist_margin.left - normal_dist_margin.right,
-  normal_dist_height = 230 - normal_dist_margin.top - normal_dist_margin.bottom;
+  normal_dist_height = 215 - normal_dist_margin.top - normal_dist_margin.bottom;
 
 // append the svg object to the body of the page
 const normal_dist_svg = d3.select("#normal_dist_div")
@@ -66,7 +66,7 @@ plotNomralDist = () => {
     .datum(healthyDist)
     .attr("fill", "none")
     .attr("stroke", TNcolor)
-    .attr("stroke-width", 1.5)
+    .attr("stroke-width", 2)
     .attr("d", d3.line()
       .x(function(d) { return x(d.x) })
       .y(function(d) { return y(d.pdf) })
@@ -80,7 +80,7 @@ plotNomralDist = () => {
     .datum(sickDist)
     .attr("fill", "none")
     .attr("stroke", TPcolor)
-    .attr("stroke-width", 1.5)
+    .attr("stroke-width", 2)
     .attr("d", d3.line()
       .x(function(d) { return x(d.x) })
       .y(function(d) { return y(d.pdf) })

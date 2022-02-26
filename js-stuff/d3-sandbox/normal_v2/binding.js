@@ -174,20 +174,25 @@ const  calcDistributions = () => {
 
 const showCoefs = () => {
   const showPercent = (val) => (100*val).toFixed(2)+'%'
+  const insertText = (className, value) => {
+    els = document.getElementsByClassName(className)
+    for (let el of els) {
+      el.innerText = value
+    }
+  }
 
-  // document.getElementById('td-TP').innerText = showPercent(globals.P_TP)
-  // document.getElementById('td-TN').innerText = showPercent(globals.P_TN)
-  // document.getElementById('td-FP').innerText = showPercent(globals.P_FP)
-  // document.getElementById('td-FN').innerText = showPercent(globals.P_FN)
+  insertText('model-TP', showPercent(globals.P_TP))
+  insertText('model-TN', showPercent(globals.P_TN))
+  insertText('model-FP', showPercent(globals.P_FP))
+  insertText('model-FN', showPercent(globals.P_FN))
 
-  document.getElementById('td-TPR').innerText = showPercent(globals.TPR)
-  document.getElementById('td-FPR').innerText = showPercent(globals.FPR)
-
-  document.getElementById('td-TNR').innerText = showPercent(globals.TNR)
-  document.getElementById('td-PPV').innerText = showPercent(globals.PPV)
-  document.getElementById('td-PPV').innerText = showPercent(globals.PPV)
-  document.getElementById('td-ACC').innerText = showPercent(globals.ACC)
-  document.getElementById('td-BACC').innerText = showPercent(globals.BACC)
+  insertText('model-ACC', showPercent(globals.ACC))
+  insertText('model-TPR', showPercent(globals.TPR))
+  insertText('model-FPR', showPercent(globals.FPR))
+  insertText('model-PPV', showPercent(globals.PPV))
+  insertText('model-TNR', showPercent(globals.TNR))
+  insertText('model-BACC', showPercent(globals.BACC))
+  insertText('model-NPV', showPercent(globals.NPV))
 }
 
 const calcCoefs = () => {
@@ -225,6 +230,7 @@ const calcCoefs = () => {
   globals.PPV = globals.P_TP/(globals.P_TP + globals.P_FP)
   globals.ACC = (globals.P_TP + globals.P_TN)
   globals.BACC = (globals.TPR + globals.TNR)/2
+  globals.NPV = globals.P_TN/(globals.P_TN+globals.P_FN)
 
   showCoefs()
 }
@@ -241,7 +247,7 @@ const initGlobal = () => {
   calcCoefs()
 }
 
-const applyStandardQCoefs = () => {
+const simulateStandardQTest = () => {
   const wrapVal=(val)=>{
     return {
       srcElement: {
@@ -258,7 +264,7 @@ const applyStandardQCoefs = () => {
   globals.setSickSigma(wrapVal(6.39))
 }
 
-const applyPanbioCoefs = () => {
+const simulatePanbioTest = () => {
   const wrapVal=(val)=>{
     return {
       srcElement: {
@@ -273,4 +279,89 @@ const applyPanbioCoefs = () => {
   globals.setSickMu(wrapVal(74.9))
   globals.setHealthySigma(wrapVal(2.96))
   globals.setSickSigma(wrapVal(7.04))
+}
+
+const simulatePoorTest = () => {
+  const wrapVal=(val)=>{
+    return {
+      srcElement: {
+        valueAsNumber: val
+      }
+    }
+  }
+
+  globals.setThreshold(wrapVal(49.95))
+  globals.setBalance(wrapVal(.5))
+  globals.setHealthyMu(wrapVal(50))
+  globals.setSickMu(wrapVal(50))
+  globals.setHealthySigma(wrapVal(10))
+  globals.setSickSigma(wrapVal(10))
+}
+
+const simulateHalfwayTest = () => {
+  const wrapVal=(val)=>{
+    return {
+      srcElement: {
+        valueAsNumber: val
+      }
+    }
+  }
+
+  globals.setThreshold(wrapVal(49.95))
+  globals.setBalance(wrapVal(.5))
+  globals.setHealthyMu(wrapVal(40))
+  globals.setSickMu(wrapVal(60))
+  globals.setHealthySigma(wrapVal(10))
+  globals.setSickSigma(wrapVal(10))
+}
+
+const simulatePerfectTest = () => {
+  const wrapVal=(val)=>{
+    return {
+      srcElement: {
+        valueAsNumber: val
+      }
+    }
+  }
+
+  globals.setThreshold(wrapVal(50))
+  globals.setBalance(wrapVal(.5))
+  globals.setHealthyMu(wrapVal(20))
+  globals.setSickMu(wrapVal(80))
+  globals.setHealthySigma(wrapVal(5))
+  globals.setSickSigma(wrapVal(5))
+}
+
+const simulatePreciseTest = () => {
+  const wrapVal=(val)=>{
+    return {
+      srcElement: {
+        valueAsNumber: val
+      }
+    }
+  }
+
+  globals.setThreshold(wrapVal(67))
+  globals.setBalance(wrapVal(.05))
+  globals.setHealthyMu(wrapVal(36.5))
+  globals.setSickMu(wrapVal(65))
+  globals.setHealthySigma(wrapVal(10))
+  globals.setSickSigma(wrapVal(10))
+}
+
+const simulateSensitiveTest = () => {
+  const wrapVal=(val)=>{
+    return {
+      srcElement: {
+        valueAsNumber: val
+      }
+    }
+  }
+
+  globals.setThreshold(wrapVal(48.4))
+  globals.setBalance(wrapVal(.05))
+  globals.setHealthyMu(wrapVal(36.5))
+  globals.setSickMu(wrapVal(65))
+  globals.setHealthySigma(wrapVal(10))
+  globals.setSickSigma(wrapVal(10))
 }
