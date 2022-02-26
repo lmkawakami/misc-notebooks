@@ -131,9 +131,10 @@
   </h4>
   <ul>
     <li>The ROC curve shows how well the test can differentiate sick individuals from healthy ones</li>
-    <li>When the sick and healthy means and standard deviations are the same, the test can't differentiate sick from healthy, and the ROC curve becomes a straight line from (x=0, y=0) to (x=1, y=1)</li>
+    <li>When  the test can't differentiate sick from healthy (poor test), the ROC curve becomes a straight diagonal line from (x=0, y=0) to (x=1, y=1)</li>
     <li>When the sick and the healthy can be totally segregated (perfect test), the ROC curve goes straight from (x=0, y=0) to (x=0, y=1) to (x=1, y=1) like an "upside-down L"</li>
     <li>Poor tests show ROC curves closer to the diagonal, and superior tests show ROC curves closer to the "upside-down L"</li>
+    <li>Every threshold value is represented by a point over the Roc curve. Dragging the threshold line you can see the point "moving" over the Roc curve</li>
   </ul>
   <h4>Bayesian views:
     <button onclick="simulatePreciseTest()">simulate "precise-test"</button>
@@ -288,7 +289,7 @@
     </tr>
   </table>
   <p>Assuming that the model and distributions are correct, the Panbio test can differentiate sick individuals from healthy individuals better than the Standard-Q test. Reducing the Panbio threshold to 50 its sensitivity and NPV are enhanced, reaching almost 100%, without degrading other indicators. <br> Apparently, both tests prioritized specificity over sensitivity.</p>
-  <p>*Obs1: "Sick μ" and "Healthy μ" were inverted because the model expects "Sick μ" to be greater than "Healthy μ" which was not the case for the measurements from the journal, but the inversion doesn't impact the analysis. <br></p>
+  <p>*Obs: "Sick μ" and "Healthy μ" were inverted because the model expects "Sick μ" to be greater than "Healthy μ" which was not the case for the measurements from the journal, but the inversion doesn't impact the analysis. <br></p>
   <p>"Standard Q" and "Panbio" tests data source: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0248921">Diagnostic accuracy of two commercial SARS-CoV-2 antigen-detecting rapid tests at the point of care in community-based testing centers</a></p>
   <hr>
   <p>If you know more about the medical aspects or have real-life data from disease tests and want to enhance this page, you can <a href="https://www.linkedin.com/in/lincoln-makoto-kawakami-a19270106/">DM me</a>, <a href="https://github.com/lmkawakami/misc-notebooks/pulls">submit a pull request</a> or <a href="https://github.com/lmkawakami/misc-notebooks/issues">create an issue</a>. Any suggestions, contributions, or comments are welcome.</p>
