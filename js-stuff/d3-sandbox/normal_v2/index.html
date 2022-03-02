@@ -9,52 +9,9 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://d3js.org/d3.v6.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
-  <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
-    <defs>
-      <pattern id="orange-c" patternUnits="userSpaceOnUse" width="10" height="10">
-        <image
-          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAH1JREFUOE+t1EsOwCAIBFC4s8fonW1oKkFLlZ8bjcpLZjPYL+jwLmyA42zd5TzN4LiowBiswh7QGk3+W2PKNze4xRqgCzxhrsgWzAxaMRPowY6gF9uCEewXjGIqmME+YBabwAqMwSpsqi+tJCItxH24ghGMkqpgFFMjZzACbzdTSturajLDAAAAAElFTkSuQmCC"
-          x="0"
-          y="0"
-          width="10"
-          height="10"
-        ></image>
-      </pattern>
-
-      <pattern id="orange-c2" patternUnits="userSpaceOnUse" width="12" height="12">
-        <image
-          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAJZJREFUSEu11t0OwBAMBWB9Z4+xd7ZYRrCO/py6IRX9knOjVK5U0rsoJ2pn7z72rb2oFSKRDkUjD+SNaHy/xjXewaAtkhNBoBMCiU6CuCEp4oI0iBnSIibIgqghK6KCPIgY8iIiCIEcIRSyhZDIL4RGWCgC+UBRyARFIh2KRqbhhPvSkbNEn4JWCInUxFgIjbDRRSAVugGIvFzh603qCwAAAABJRU5ErkJggg=="
-          x="0"
-          y="0"
-          width="12"
-          height="12"
-        ></image>
-      </pattern>
-
-      <pattern id="green-c" patternUnits="userSpaceOnUse" width="10" height="10">
-        <image
-          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAIVJREFUOE+t1NsNgCAMBVC7kOs4iVM4ieuwkKZGmoIV+uIHAvQk9+fCemzX8q6yn1DP2p3P4wzUiwyMwCzsAbXR+L8+Jn8zgyMMk5rAGWaKrMHUoBZTgRZsClqxIejBfkEvJoIR7ANGsQbMwAjMwpr6kkrC00LUhz3owTCpCHoxMXIEQ/AG7yhaftVUrtsAAAAASUVORK5CYII="
-          x="0"
-          y="0"
-          width="10"
-          height="10"
-        ></image>
-      </pattern>
-
-      <pattern id="green-c2" patternUnits="userSpaceOnUse" width="12" height="12">
-        <image
-          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAJtJREFUSEu11tsNgCAMBVBZyHWcxCmcxHVcSCOJBJBHH/fyBT+cpKWlYT22e8nWtZ8hP3v2+d2hht6LGVgTYmBdCI3FfLTC9+UGFcaUeDZWvDAm9nvKLKxZMwysW5xobNgFkNi03aCwKYSqMxGEwMSQF1NBHkwNWTETZMHMkBZzQRrMDUkxCCTBYNAMizMD6rseYWk4YWPFFMTEHloFcoR9SeWRAAAAAElFTkSuQmCC"
-          x="0"
-          y="0"
-          width="12"
-          height="12"
-        ></image>
-      </pattern>
-
-    </defs>
-  </svg>
 </head>
 <body>
+  <h1>Disease Testing Statistics Visualizations</h1>
   <div id='plots-container'>
     <div id="normal_dist_div"><h2>Population Distribution</h2><div style="text-align: center;">(click and drag the threshold line)</div></div>
     <div id="confusion_matrix_div"><h2>Confusion Matrix</h2></div>
@@ -108,7 +65,7 @@
   </div>
   <hr>
   <h2>Visual Interpretations</h2>
-  <p>This interactive page ilustrates a fraction of the complexyty of disease testing and some of it's tradeoffs, focusing on the statistical/probabilistal side.<br>
+  <p>This interactive page illustrates a fraction of the complexity of disease testing and some of its tradeoffs, focusing on the statistical/probabilistic side.<br>
     <strong>DISCLAIMER:</strong> It's a simplification, just a toy model with some knobs, made by an electrical engineer without any medical knowledge.</p>
   <h4>Populations Distribution:</h4>
   <ul>
@@ -134,7 +91,7 @@
     <li>When  the test can't differentiate sick from healthy (poor test), the ROC curve becomes a straight diagonal line from (x=0, y=0) to (x=1, y=1)</li>
     <li>When the sick and the healthy can be totally segregated (perfect test), the ROC curve goes straight from (x=0, y=0) to (x=0, y=1) to (x=1, y=1) like an "upside-down L"</li>
     <li>Poor tests show ROC curves closer to the diagonal, and superior tests show ROC curves closer to the "upside-down L"</li>
-    <li>Every threshold value is represented by a point over the Roc curve. Dragging the threshold line you can see the point "moving" over the Roc curve</li>
+    <li>Every threshold value is represented by a point on the Roc curve. Dragging the threshold line you can see the point "moving"</li>
   </ul>
   <h4>Bayesian views:
     <button onclick="simulatePreciseTest()">simulate "precise-test"</button>
@@ -148,7 +105,7 @@
   </ul>
   <hr>
   <h2>Visualization of Real-life Disease Testing:</h2>
-  <p>To illustrate a real-life situation data from a published paper was reproduced, showing how two different tests can differ. Clicking on the "simulate" buttons below, you can simulate the conditions reported on the journal and see the differences between the two kinds of tests and what happens when some parameters are changed. There is a <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0248921">link to the article HERE</a> and on the botton of this page.</p>
+  <p>To illustrate a real-life situation data from a published paper was reproduced, showing how two different tests can differ. Clicking on the "simulate" buttons below, you can simulate the conditions reported on the journal and see the differences between the two kinds of tests and what happens when some parameters are changed. There is a <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0248921">link to the article HERE</a> and on the bottom of this page.</p>
 
   <!-- <h1>Visualização Estatística de Testes para Doenças</h1>
   <p>Esta página interativa ilustra uma fração da complexidade dos testes de doenças e algumas das relações custo/benefício, focando mais nos aspectos estatísticos/probabilísticos.</p>
@@ -290,7 +247,7 @@
   </table>
   <p>Assuming that the model and distributions are correct, the Panbio test can differentiate sick individuals from healthy individuals better than the Standard-Q test. Reducing the Panbio threshold to 50 its sensitivity and NPV are enhanced, reaching almost 100%, without degrading other indicators. <br> Apparently, both tests prioritized specificity over sensitivity.</p>
   <p>*Obs: "Sick μ" and "Healthy μ" were inverted because the model expects "Sick μ" to be greater than "Healthy μ" which was not the case for the measurements from the journal, but the inversion doesn't impact the analysis. <br></p>
-  <p>"Standard Q" and "Panbio" tests data source: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0248921">Diagnostic accuracy of two commercial SARS-CoV-2 antigen-detecting rapid tests at the point of care in community-based testing centers</a></p>
+  <p>"Standard Q" and "Panbio" test data source: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0248921">Diagnostic accuracy of two commercial SARS-CoV-2 antigen-detecting rapid tests at the point of care in community-based testing centers</a></p>
   <hr>
   <p>If you know more about the medical aspects or have real-life data from disease tests and want to enhance this page, you can <a href="https://www.linkedin.com/in/lincoln-makoto-kawakami-a19270106/">DM me</a>, <a href="https://github.com/lmkawakami/misc-notebooks/pulls">submit a pull request</a> or <a href="https://github.com/lmkawakami/misc-notebooks/issues">create an issue</a>. Any suggestions, contributions, or comments are welcome.</p>
 
@@ -301,6 +258,50 @@
   <a href="https://www.bjid.org.br/en-covid-19-meta-analysis-diagnostic-test-accuracy-articulo-S1413867020300295#:~:text=However%2C%20it%20is%20important%20to%20highlight%20that%20the%20rate%20of,ranged%20from%2010%20to%2044%25.">link-1</a>
   <a href="https://virologyj.biomedcentral.com/articles/10.1186/s12985-020-01452-5">link-2</a>
 </body>
+<svg height="0" width="00" xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+    <pattern id="orange-c" patternUnits="userSpaceOnUse" width="10" height="10">
+      <image
+        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAH1JREFUOE+t1EsOwCAIBFC4s8fonW1oKkFLlZ8bjcpLZjPYL+jwLmyA42zd5TzN4LiowBiswh7QGk3+W2PKNze4xRqgCzxhrsgWzAxaMRPowY6gF9uCEewXjGIqmME+YBabwAqMwSpsqi+tJCItxH24ghGMkqpgFFMjZzACbzdTSturajLDAAAAAElFTkSuQmCC"
+        x="0"
+        y="0"
+        width="10"
+        height="10"
+      ></image>
+    </pattern>
+
+    <pattern id="orange-c2" patternUnits="userSpaceOnUse" width="12" height="12">
+      <image
+        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAJZJREFUSEu11t0OwBAMBWB9Z4+xd7ZYRrCO/py6IRX9knOjVK5U0rsoJ2pn7z72rb2oFSKRDkUjD+SNaHy/xjXewaAtkhNBoBMCiU6CuCEp4oI0iBnSIibIgqghK6KCPIgY8iIiCIEcIRSyhZDIL4RGWCgC+UBRyARFIh2KRqbhhPvSkbNEn4JWCInUxFgIjbDRRSAVugGIvFzh603qCwAAAABJRU5ErkJggg=="
+        x="0"
+        y="0"
+        width="12"
+        height="12"
+      ></image>
+    </pattern>
+
+    <pattern id="green-c" patternUnits="userSpaceOnUse" width="10" height="10">
+      <image
+        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAIVJREFUOE+t1NsNgCAMBVC7kOs4iVM4ieuwkKZGmoIV+uIHAvQk9+fCemzX8q6yn1DP2p3P4wzUiwyMwCzsAbXR+L8+Jn8zgyMMk5rAGWaKrMHUoBZTgRZsClqxIejBfkEvJoIR7ANGsQbMwAjMwpr6kkrC00LUhz3owTCpCHoxMXIEQ/AG7yhaftVUrtsAAAAASUVORK5CYII="
+        x="0"
+        y="0"
+        width="10"
+        height="10"
+      ></image>
+    </pattern>
+
+    <pattern id="green-c2" patternUnits="userSpaceOnUse" width="12" height="12">
+      <image
+        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAJtJREFUSEu11tsNgCAMBVBZyHWcxCmcxHVcSCOJBJBHH/fyBT+cpKWlYT22e8nWtZ8hP3v2+d2hht6LGVgTYmBdCI3FfLTC9+UGFcaUeDZWvDAm9nvKLKxZMwysW5xobNgFkNi03aCwKYSqMxGEwMSQF1NBHkwNWTETZMHMkBZzQRrMDUkxCCTBYNAMizMD6rseYWk4YWPFFMTEHloFcoR9SeWRAAAAAElFTkSuQmCC"
+        x="0"
+        y="0"
+        width="12"
+        height="12"
+      ></image>
+    </pattern>
+
+  </defs>
+</svg>
 <script src="./normalDistr.js"></script>
 <script src="./normalDistPlot.js"></script>
 <script src="./confusionMatrixPlot.js"></script>
