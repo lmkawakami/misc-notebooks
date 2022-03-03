@@ -145,3 +145,7 @@ td.demo_table {
 #confusion_matrix_div {
   width: 20vw;
 }
+
+blockquote h3 {
+  margin-bottom: 0;
+}

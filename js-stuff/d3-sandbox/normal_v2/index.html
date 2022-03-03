@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://d3js.org/d3.v6.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js">
+  </script>
 </head>
 <body>
   <h1>Disease Testing Statistics Visualizations</h1>
@@ -250,12 +254,56 @@
   <p>*Obs: The journal measurements have been flipped because the model expects "Sick μ" to be greater than "Healthy μ" which was not the case for the article observations, but the inversion does not affect the analysis.</p>
   <p>"Standard Q" and "Panbio" test data source: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0248921">Diagnostic accuracy of two commercial SARS-CoV-2 antigen-detecting rapid tests at the point of care in community-based testing centers</a></p>
   <hr>
+  <h2>Test Quality Measures</h2>
+    $$True\;Positives: TP$$
+    $$False\;Positives: FP$$
+    $$True\;Negatives: TN$$
+    $$False\;Negatives: FN$$
+    $$Real\;Positives: P = TP + FN $$
+    $$Real\;Negatives: N = TN + FP$$
+  <blockquote>
+    <h3>Accuracy (ACC):</h3>
+    Accuracy is the proportion of correct predictions (both true positives and true negatives) among the total number of cases examined.
+    \[ACC = {TP + TN \over {P+N}} = {TP + TN \over {TP+FN+TN+FP}}\]
+  </blockquote>
+  <blockquote>
+    <h3>Balanced Accuracy (bACC):</h3>
+    Balanced accuracy serve as an overall performance metric for a model, whether or not the true labels are balanced in the data (Changing the "Balance" input affects the accuracy	but don't affect the balanced accuracy).
+    $$bACC = {TPR + TNR \over {2}} = {1 \over 2}{\left({TP \over P}+{TN \over N}\right)} = {1 \over 2}{\left({TP \over TP + FN}+{TN \over TN + FP}\right)}$$
+  </blockquote>
+  <blockquote>
+    <h3>Sensitivity, Recall or True Positive Rate (TPR):</h3>
+    Sensitivity (True Positive Rate) is the probability of a positive test knowing that the individual is sick.
+    $$TPR = {TP \over {P}} = {TP \over {TP+FN}}$$
+  </blockquote>
+  <blockquote>
+    <h3>Specificity, Selectivity or True Negative Rate (TNR):</h3>
+    Specificity (True Negative Rate) is the probability of a negative test knowing that the individual is healthy.
+    $$TNR = {TN \over {N}} = {TN \over {TN+FP}}$$
+  </blockquote>
+  <blockquote>
+    <h3>False Alarm Rate or False Positive Rate (FPR):</h3>
+    False Positive Rate is the probability of a positive test knowing that the individual is healthy.
+    $$FPR = {FP \over {N}} = {FP \over {FP+TN}}$$
+  </blockquote>
+  <blockquote>
+    <h3>Precision or Positive Predictive Value (PPV):</h3>
+    Positive Predictive Value is the probability that a positive test is correct. In other words, it is the probability of the individual being sick if the test is positive.
+    $$PPV = {TP \over {TP+FP}}$$
+  </blockquote>
+  <blockquote>
+    <h3>Negative Predictive Value (NPV):</h3>
+    Negative Predictive Value is the probability that a negative test is correct. In other words, it is the probability of the individual being healthy if the test is negative.
+    $$NPV = {TN \over {TN+FN}}$$
+  </blockquote>
+  Reference: <a href="https://en.wikipedia.org/wiki/Precision_and_recall#Definition_(classification_context)">Wikipedia</a>
+  <hr>
   <p>If you know more about the medical aspects or have real-life data from disease tests and want to enhance this page, you can <a href="https://www.linkedin.com/in/lincoln-makoto-kawakami-a19270106/">DM me</a>, <a href="https://github.com/lmkawakami/misc-notebooks/pulls">submit a pull request</a> or <a href="https://github.com/lmkawakami/misc-notebooks/issues">create an issue</a>. Any suggestions, contributions, or comments are welcome.</p>
 
   <p style="text-align: center;">Lincoln Makoto Kawakami</p>
 
   Other useful links:
-  <a href="https://en.wikipedia.org/wiki/Precision_and_recall#Definition_(classification_context)">link-0</a>
+  <a href="https://en.wikipedia.org/wiki/Precision_and_recall#Definition_(classification_context)">Test Quality Measures</a>
   <a href="https://www.bjid.org.br/en-covid-19-meta-analysis-diagnostic-test-accuracy-articulo-S1413867020300295#:~:text=However%2C%20it%20is%20important%20to%20highlight%20that%20the%20rate%20of,ranged%20from%2010%20to%2044%25.">link-1</a>
   <a href="https://virologyj.biomedcentral.com/articles/10.1186/s12985-020-01452-5">link-2</a>
 </body>
