@@ -154,3 +154,10 @@ blockquote h3 {
   padding-left: 3em;
   padding-right: 3em;
 }
+
+.collapse-button {
+  font-family: monospace;
+  cursor: pointer;
+  position: absolute;
+  right: 1em;
+}
