@@ -98,6 +98,7 @@ td.coefs {
   border-width: 1px !important;
   padding-top: .2em;
   padding-bottom: .2em;
+  cursor: help;
 }
 
 th.demo_table {

@@ -51,14 +51,14 @@
           <th class='coefs' title="Negative predictive value = TN/(TN+FN)">NPV</th>
         </tr>
         <tr>
-          <td class='coefs model-ACC'></td>
-          <td class='coefs model-BACC'></td>
-          <td class='coefs model-TPR'></td>
-          <td class='coefs model-TNR'></td>
-          <td class='coefs model-FPR'></td>
-          <td class='coefs model-PPV'></td>
+          <td class='coefs model-ACC' title="Accuracy = (TP + TN)/(TP+FP+TN+FN)"></td>
+          <td class='coefs model-BACC' title="Balanced Accuracy = (TPR + TNR)/2"></td>
+          <td class='coefs model-TPR' title="True positive rate = TP/(TP+FN)"></td>
+          <td class='coefs model-TNR' title="True negative rate = TN/(TN+FP)"></td>
+          <td class='coefs model-FPR' title="False positive rate = FP/(FP+TN)"></td>
+          <td class='coefs model-PPV' title="Positive predictive value = TP/(TP+FP)"></td>
 
-          <td class='coefs model-NPV'></td>
+          <td class='coefs model-NPV' title="Negative predictive value = TN/(TN+FN)"></td>
         </tr>
       </table>
     </div>
@@ -66,46 +66,46 @@
   <hr>
   <h2>Visual Interpretations</h2>
   <p>This interactive page illustrates a fraction of the complexity of disease testing and some of its tradeoffs, focusing on the statistical/probabilistic side.<br>
-    <strong>DISCLAIMER:</strong> It's a simplification, just a toy model with some knobs, made by an electrical engineer without any medical knowledge.</p>
+  <strong>DISCLAIMER:</strong> This is just a simplification, a toy model with a few knobs, designed by an electrical engineer with no medical background.</p>
   <h4>Populations Distribution:</h4>
   <ul>
-    <li>The green curve represents the distribution of healthy individuals, and the orange curve represents the distribution of sick individuals</li>
-    <li>The green hatched area represents the healthy individuals that tested negative (True Negatives)</li>
-    <li>The blue area represents the healthy individuals misdiagnosed as sick (False Positives)</li>
-    <li>The orange hatched area represents the sick individuals that tested positive (True Positives)</li>
-    <li>The red area represents the sick individuals misclassified as healthy (False Negative)</li>
-    <li>Poor tests present wide overlaps between the two distributions</li>
-    <li>When the threshold is increased, the proportion of false negatives goes down, but the false negatives go up.</li>
+    <li>The green curve represents the distribution of healthy individuals, and the orange curve represents the distribution of sick individuals.</li>
+    <li>The green hatched area represents the healthy individuals that tested negative (True Negatives).</li>
+    <li>The blue area represents the healthy individuals misdiagnosed as sick (False Positives).</li>
+    <li>The orange hatched area represents the sick individuals that tested positive (True Positives).</li>
+    <li>The red area represents the sick individuals misclassified as healthy (False Negative).</li>
+    <li>Poor tests show significant overlaps between the two distributions.</li>
+    <li>When the threshold is raised, the proportion of false positives decreases while the number of false negatives increases and vice versa.</li>
   </ul>
   <h4>Confusion Matrix:</h4>
   <ul>
-    <li>Ideally, the bottom-left cell (false negative) and the top-right cell (false positive) tend to zero</li>
+    <li>Ideally, the bottom-left (false negative) and top-right (false positive) cells tend to zero.</li>
   </ul>
-  <h4>Roc
+  <h4>Roc:
     <button onclick="simulatePerfectTest()">simulate "perfect test"</button>
     <button onclick="simulateHalfwayTest()">simulate "halfway test"</button>
     <button onclick="simulatePoorTest()">simulate "poor test"</button>
   </h4>
   <ul>
-    <li>The ROC curve shows how well the test can differentiate sick individuals from healthy ones</li>
-    <li>When  the test can't differentiate sick from healthy (poor test), the ROC curve becomes a straight diagonal line from (x=0, y=0) to (x=1, y=1)</li>
-    <li>When the sick and the healthy can be totally segregated (perfect test), the ROC curve goes straight from (x=0, y=0) to (x=0, y=1) to (x=1, y=1) like an "upside-down L"</li>
-    <li>Poor tests show ROC curves closer to the diagonal, and superior tests show ROC curves closer to the "upside-down L"</li>
-    <li>Every threshold value is represented by a point on the Roc curve. Dragging the threshold line you can see the point "moving"</li>
+    <li>The ROC curve shows how well the test can differentiate sick individuals from healthy ones.</li>
+    <li>When the test is unable to distinguish between sick and healthy individuals (poor test), the ROC curve becomes a straight diagonal line from (x=0, y=0) to (x=1, y=1).</li>
+    <li>When the sick and the healthy can be completely separated (perfect test), the ROC curve follows a straight line from (x=0, y=0) to (x=0, y=1) to (x=1, y=1) like an "upside-down L".</li>
+    <li>Poor tests have ROC curves that are closer to the diagonal, while superior tests have ROC curves that are closer to the "upside-down L."</li>
+    <li>Every threshold value is represented by a point on the Roc curve. Dragging the threshold line you can see the point "moving".</li>
   </ul>
   <h4>Bayesian views:
     <button onclick="simulatePreciseTest()">simulate "precise-test"</button>
     <button onclick="simulateSensitiveTest()">simulate "sensitive-test"</button>
   </h4>
   <ul>
-    <li>The Bayesian views show the non-intuitive behavior of testing and illustrate why a single measure isn't sufficient to corroborate how good the test is</li>
-    <li>The "precise-test" present 95% of precision, but only 42% of sensitivity (less than half of the sick individuals are correctly diagnosed as sick)</li>
-    <li>The "sensitive-test" present 95% of sensitivity, but only 30% of precision (70% of the individuals diagnosed as sick are healthy)</li>
-    <li>The only difference between the simulated "precise-test" and "sensitive-test" is the threshold value</li>
+    <li>The Bayesian views show the non-intuitive behavior of testing and illustrate why a single measure is insufficient to assure how good the test is.</li>
+    <li>The "precise-test" present 95% of precision, but merely 42% of sensitivity (less than half of the sick individuals are correctly diagnosed as sick).</li>
+    <li>The "sensitive-test" present 95% of sensitivity, but merely 30% of precision (70% of the individuals diagnosed as sick are healthy).</li>
+    <li>The threshold value is the only difference between the simulated "precise-test" and "sensitive-test".</li>
   </ul>
   <hr>
   <h2>Visualization of Real-life Disease Testing:</h2>
-  <p>To illustrate a real-life situation data from a published paper was reproduced, showing how two different tests can differ. Clicking on the "simulate" buttons below, you can simulate the conditions reported on the journal and see the differences between the two kinds of tests and what happens when some parameters are changed. There is a <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0248921">link to the article HERE</a> and on the bottom of this page.</p>
+  <p>Data from a published paper was recreated to illustrate a real-life situation and highlight how much two distinct tests can contrast. You can simulate the conditions reported in the journal by clicking on the "simulate" buttons below to observe the differences between the two types of tests and what occurs when specific factors are altered. The article can be found <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0248921">HERE</a> and at the bottom of this page.</p>
 
   <!-- <h1>Visualização Estatística de Testes para Doenças</h1>
   <p>Esta página interativa ilustra uma fração da complexidade dos testes de doenças e algumas das relações custo/benefício, focando mais nos aspectos estatísticos/probabilísticos.</p>
@@ -245,8 +245,9 @@
       </td>
     </tr>
   </table>
-  <p>Assuming that the model and distributions are correct, the Panbio test can differentiate sick individuals from healthy individuals better than the Standard-Q test. Reducing the Panbio threshold to 50 its sensitivity and NPV are enhanced, reaching almost 100%, without degrading other indicators. <br> Apparently, both tests prioritized specificity over sensitivity.</p>
-  <p>*Obs: "Sick μ" and "Healthy μ" were inverted because the model expects "Sick μ" to be greater than "Healthy μ" which was not the case for the measurements from the journal, but the inversion doesn't impact the analysis. <br></p>
+  <p>The Panbio test can distinguish sick people from healthy people better than the Standard-Q test, assuming the model and distributions are correct. When the Panbio threshold is reduced to 50, the sensitivity and NPV increase to nearly 100%, without affecting other indicators. <br>
+  Specificity appeared to be valued more than sensitivity in both tests.</p>
+  <p>*Obs: The journal measurements have been flipped because the model expects "Sick μ" to be greater than "Healthy μ" which was not the case for the article observations, but the inversion does not affect the analysis.</p>
   <p>"Standard Q" and "Panbio" test data source: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0248921">Diagnostic accuracy of two commercial SARS-CoV-2 antigen-detecting rapid tests at the point of care in community-based testing centers</a></p>
   <hr>
   <p>If you know more about the medical aspects or have real-life data from disease tests and want to enhance this page, you can <a href="https://www.linkedin.com/in/lincoln-makoto-kawakami-a19270106/">DM me</a>, <a href="https://github.com/lmkawakami/misc-notebooks/pulls">submit a pull request</a> or <a href="https://github.com/lmkawakami/misc-notebooks/issues">create an issue</a>. Any suggestions, contributions, or comments are welcome.</p>
