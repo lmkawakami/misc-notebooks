@@ -173,7 +173,13 @@ const  calcDistributions = () => {
 }
 
 const showCoefs = () => {
-  const showPercent = (val) => (100*val).toFixed(2)+'%'
+  const zeroPad = (num, places) => String(num).padStart(places, '0')
+  const blankPad = (num, places) => String(num).padStart(places, '\xa0')
+  const showPercent = (val) => {
+    if (val >= 0.9999)
+      return '100.0%'
+    return blankPad((100*val).toFixed(2),5)+'%'
+  }
   const insertText = (className, value) => {
     els = document.getElementsByClassName(className)
     for (let el of els) {
