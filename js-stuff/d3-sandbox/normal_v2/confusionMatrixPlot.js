@@ -54,10 +54,10 @@ const plotConfusionMatrixAxes = () => {
 
 const fillConfusionMatrix = () => {
   data = [
-    {test:'Negative', condition:'Healthy', P:globals.P_TN, color:TNfill},
-    {test:'Negative', condition:'Sick', P:globals.P_FN, color:FNfill},
-    {test:'Positive', condition:'Healthy', P:globals.P_FP, color:FPfill},
-    {test:'Positive', condition:'Sick', P:globals.P_TP, color:TPfill},
+    {test:'Negative', condition:'Healthy', P:globals.P_TN, color:TNfill, label:'TN'},
+    {test:'Negative', condition:'Sick', P:globals.P_FN, color:FNfill, label:'FN'},
+    {test:'Positive', condition:'Healthy', P:globals.P_FP, color:FPfill, label:'FP'},
+    {test:'Positive', condition:'Sick', P:globals.P_TP, color:TPfill, label:'TP'},
   ]
 
   confusion_matrix_svg.selectAll('.confusion-matrix-rects').remove();
@@ -79,9 +79,20 @@ const fillConfusionMatrix = () => {
     .attr("text-anchor", "middle")
     .attr("font-family", "sans-serif")
     .attr("x", function(d) { return cmv.x(d.test)+cmv.x.bandwidth()/2 })
-    .attr("y", function(d) { return cmv.y(d.condition)+cmv.x.bandwidth()/2 })
+    .attr("y", function(d) { return cmv.y(d.condition)+cmv.x.bandwidth()/2+9 })
     .attr("dy", ".35em")
     .text(function(d) { return `${(d.P*100).toFixed(2)}%` });
+
+  confusion_matrix_svg.selectAll()
+    .data(data, function(d) {return d.test+':'+d.condition;})
+    .join("text")
+    .attr('class','confusion-matrix-values')
+    .attr("text-anchor", "middle")
+    .attr("font-family", "sans-serif")
+    .attr("x", function(d) { return cmv.x(d.test)+cmv.x.bandwidth()/2 })
+    .attr("y", function(d) { return cmv.y(d.condition)+cmv.x.bandwidth()/2-9 })
+    .attr("dy", ".35em")
+    .text(function(d) { return `${d.label}` });
 }
 
 const plotConfusionMatrix = () => {

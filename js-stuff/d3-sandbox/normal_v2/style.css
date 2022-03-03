@@ -149,3 +149,8 @@ td.demo_table {
 blockquote h3 {
   margin-bottom: 0;
 }
+
+.section-div {
+  padding-left: 3em;
+  padding-right: 3em;
+}
