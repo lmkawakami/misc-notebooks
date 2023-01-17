@@ -1,0 +1,10 @@
+<html><html><head><link href="./../style.css" rel="stylesheet" type="text/css"/></head></html><body><h1>clock\angle.py</h1>Killed 0 out of 1 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<html><body><table><tr class="type-count"><th class="type-count">Mutant type</th><th class="type-count">Mutants count</th></tr><tr class="type-count"><td class="type-count">operator</td><td class="type-count">1</td></tr></table><hr/></body></html><h3 class="operator">Mutant 1 - operator</h3><pre class="operator">--- clock\angle.py
++++ clock\angle.py
+@@ -1,5 +1,5 @@
+ from clock.utils import hours_hand, minutes_hand
+ 
+ def between(hour, minutes):
+-    return abs(hours_hand(hour, minutes) - minutes_hand(hour, minutes))
++    return abs(hours_hand(hour, minutes) + minutes_hand(hour, minutes))
+ 
+</pre></body></html>

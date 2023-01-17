@@ -1,0 +1,37 @@
+<html><html><head><link href="./../style.css" rel="stylesheet" type="text/css"/></head></html><body><h1>foo\foo.py</h1>Killed 18 out of 22 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<html><body><table><tr class="type-count"><th class="type-count">Mutant type</th><th class="type-count">Mutants count</th></tr><tr class="type-count"><td class="type-count">operator</td><td class="type-count">14</td></tr><tr class="type-count"><td class="type-count">number</td><td class="type-count">14</td></tr><tr class="type-count"><td class="type-count">expr_stmt</td><td class="type-count">10</td></tr><tr class="type-count"><td class="type-count">string</td><td class="type-count">7</td></tr><tr class="type-count"><td class="type-count">or_test</td><td class="type-count">1</td></tr><tr class="type-count"><td class="type-count">and_test</td><td class="type-count">1</td></tr></table><hr/></body></html><h3 class="number">Mutant 26 - number</h3><pre class="number">--- foo\foo.py
++++ foo\foo.py
+@@ -1,4 +1,4 @@
+-a = 1
++a = 2
+ b = 'a'
+ c = {
+     "foo": ""
+</pre><h3 class="expr_stmt">Mutant 27 - expr_stmt</h3><pre class="expr_stmt">--- foo\foo.py
++++ foo\foo.py
+@@ -1,4 +1,4 @@
+-a = 1
++a = None
+ b = 'a'
+ c = {
+     "foo": ""
+</pre><h3 class="number">Mutant 33 - number</h3><pre class="number">--- foo\foo.py
++++ foo\foo.py
+@@ -3,7 +3,7 @@
+ c = {
+     "foo": ""
+ }
+-d = a or 0
++d = a or 1
+ e = a and 0
+ def f(a,b,c):
+     return str(a) + b + c['foo']
+</pre><h3 class="number">Mutant 43 - number</h3><pre class="number">--- foo\foo.py
++++ foo\foo.py
+@@ -7,5 +7,5 @@
+ e = a and 0
+ def f(a,b,c):
+     return str(a) + b + c['foo']
+-g = a&gt;1
++g = a&gt;2
+ h = a&lt;1
+</pre></body></html>

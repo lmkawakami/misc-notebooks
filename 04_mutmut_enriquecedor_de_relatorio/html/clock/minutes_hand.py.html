@@ -1,0 +1,47 @@
+<html><html><head><link href="./../style.css" rel="stylesheet" type="text/css"/></head></html><body><h1>clock\minutes_hand.py</h1>Killed 0 out of 5 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<html><body><table><tr class="type-count"><th class="type-count">Mutant type</th><th class="type-count">Mutants count</th></tr><tr class="type-count"><td class="type-count">operator</td><td class="type-count">10</td></tr><tr class="type-count"><td class="type-count">number</td><td class="type-count">9</td></tr><tr class="type-count"><td class="type-count">expr_stmt</td><td class="type-count">2</td></tr><tr class="type-count"><td class="type-count">string</td><td class="type-count">2</td></tr></table><hr/></body></html><h3 class="string">Mutant 19 - string</h3><pre class="string">--- clock\minutes_hand.py
++++ clock\minutes_hand.py
+@@ -1,6 +1,6 @@
+ import logging
+ 
+ def minutes_hand(hour, minutes):
+-    logging.warn("john doe")
++    logging.warn("XXjohn doeXX")
+     return minutes * (360 // 60)
+ 
+</pre><h3 class="operator">Mutant 20 - operator</h3><pre class="operator">--- clock\minutes_hand.py
++++ clock\minutes_hand.py
+@@ -2,5 +2,5 @@
+ 
+ def minutes_hand(hour, minutes):
+     logging.warn("john doe")
+-    return minutes * (360 // 60)
++    return minutes / (360 // 60)
+ 
+</pre><h3 class="number">Mutant 21 - number</h3><pre class="number">--- clock\minutes_hand.py
++++ clock\minutes_hand.py
+@@ -2,5 +2,5 @@
+ 
+ def minutes_hand(hour, minutes):
+     logging.warn("john doe")
+-    return minutes * (360 // 60)
++    return minutes * (361 // 60)
+ 
+</pre><h3 class="operator">Mutant 22 - operator</h3><pre class="operator">--- clock\minutes_hand.py
++++ clock\minutes_hand.py
+@@ -2,5 +2,5 @@
+ 
+ def minutes_hand(hour, minutes):
+     logging.warn("john doe")
+-    return minutes * (360 // 60)
++    return minutes * (360 / 60)
+ 
+</pre><h3 class="number">Mutant 23 - number</h3><pre class="number">--- clock\minutes_hand.py
++++ clock\minutes_hand.py
+@@ -2,5 +2,5 @@
+ 
+ def minutes_hand(hour, minutes):
+     logging.warn("john doe")
+-    return minutes * (360 // 60)
++    return minutes * (360 // 61)
+ 
+</pre></body></html>

@@ -1,0 +1,118 @@
+<html><html><head><link href="./../style.css" rel="stylesheet" type="text/css"/></head></html><body><h1>clock\hours_hand.py</h1>Killed 6 out of 17 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<html><body><table><tr class="type-count"><th class="type-count">Mutant type</th><th class="type-count">Mutants count</th></tr><tr class="type-count"><td class="type-count">operator</td><td class="type-count">8</td></tr><tr class="type-count"><td class="type-count">number</td><td class="type-count">7</td></tr><tr class="type-count"><td class="type-count">expr_stmt</td><td class="type-count">2</td></tr><tr class="type-count"><td class="type-count">string</td><td class="type-count">1</td></tr></table><hr/></body></html><h3 class="number">Mutant 5 - number</h3><pre class="number">--- clock\hours_hand.py
++++ clock\hours_hand.py
+@@ -1,7 +1,7 @@
+ import logging
+ 
+ def hours_hand(hour, minutes):
+-    base = (hour % 12) * (360//12)
++    base = (hour % 12) * (361//12)
+     correction = int((minutes / 60) * (360 // 12))
+     logging.debug(level=0, msg="lorem ipsum")
+     return base + correction
+</pre><h3 class="operator">Mutant 6 - operator</h3><pre class="operator">--- clock\hours_hand.py
++++ clock\hours_hand.py
+@@ -1,7 +1,7 @@
+ import logging
+ 
+ def hours_hand(hour, minutes):
+-    base = (hour % 12) * (360//12)
++    base = (hour % 12) * (360/12)
+     correction = int((minutes / 60) * (360 // 12))
+     logging.debug(level=0, msg="lorem ipsum")
+     return base + correction
+</pre><h3 class="operator">Mutant 9 - operator</h3><pre class="operator">--- clock\hours_hand.py
++++ clock\hours_hand.py
+@@ -2,7 +2,7 @@
+ 
+ def hours_hand(hour, minutes):
+     base = (hour % 12) * (360//12)
+-    correction = int((minutes / 60) * (360 // 12))
++    correction = int((minutes * 60) * (360 // 12))
+     logging.debug(level=0, msg="lorem ipsum")
+     return base + correction
+ 
+</pre><h3 class="number">Mutant 10 - number</h3><pre class="number">--- clock\hours_hand.py
++++ clock\hours_hand.py
+@@ -2,7 +2,7 @@
+ 
+ def hours_hand(hour, minutes):
+     base = (hour % 12) * (360//12)
+-    correction = int((minutes / 60) * (360 // 12))
++    correction = int((minutes / 61) * (360 // 12))
+     logging.debug(level=0, msg="lorem ipsum")
+     return base + correction
+ 
+</pre><h3 class="operator">Mutant 11 - operator</h3><pre class="operator">--- clock\hours_hand.py
++++ clock\hours_hand.py
+@@ -2,7 +2,7 @@
+ 
+ def hours_hand(hour, minutes):
+     base = (hour % 12) * (360//12)
+-    correction = int((minutes / 60) * (360 // 12))
++    correction = int((minutes / 60) / (360 // 12))
+     logging.debug(level=0, msg="lorem ipsum")
+     return base + correction
+ 
+</pre><h3 class="number">Mutant 12 - number</h3><pre class="number">--- clock\hours_hand.py
++++ clock\hours_hand.py
+@@ -2,7 +2,7 @@
+ 
+ def hours_hand(hour, minutes):
+     base = (hour % 12) * (360//12)
+-    correction = int((minutes / 60) * (360 // 12))
++    correction = int((minutes / 60) * (361 // 12))
+     logging.debug(level=0, msg="lorem ipsum")
+     return base + correction
+ 
+</pre><h3 class="operator">Mutant 13 - operator</h3><pre class="operator">--- clock\hours_hand.py
++++ clock\hours_hand.py
+@@ -2,7 +2,7 @@
+ 
+ def hours_hand(hour, minutes):
+     base = (hour % 12) * (360//12)
+-    correction = int((minutes / 60) * (360 // 12))
++    correction = int((minutes / 60) * (360 / 12))
+     logging.debug(level=0, msg="lorem ipsum")
+     return base + correction
+ 
+</pre><h3 class="number">Mutant 14 - number</h3><pre class="number">--- clock\hours_hand.py
++++ clock\hours_hand.py
+@@ -2,7 +2,7 @@
+ 
+ def hours_hand(hour, minutes):
+     base = (hour % 12) * (360//12)
+-    correction = int((minutes / 60) * (360 // 12))
++    correction = int((minutes / 60) * (360 // 13))
+     logging.debug(level=0, msg="lorem ipsum")
+     return base + correction
+ 
+</pre><h3 class="number">Mutant 16 - number</h3><pre class="number">--- clock\hours_hand.py
++++ clock\hours_hand.py
+@@ -3,6 +3,6 @@
+ def hours_hand(hour, minutes):
+     base = (hour % 12) * (360//12)
+     correction = int((minutes / 60) * (360 // 12))
+-    logging.debug(level=0, msg="lorem ipsum")
++    logging.debug(level=1, msg="lorem ipsum")
+     return base + correction
+ 
+</pre><h3 class="string">Mutant 17 - string</h3><pre class="string">--- clock\hours_hand.py
++++ clock\hours_hand.py
+@@ -3,6 +3,6 @@
+ def hours_hand(hour, minutes):
+     base = (hour % 12) * (360//12)
+     correction = int((minutes / 60) * (360 // 12))
+-    logging.debug(level=0, msg="lorem ipsum")
++    logging.debug(level=0, msg="XXlorem ipsumXX")
+     return base + correction
+ 
+</pre><h3 class="operator">Mutant 18 - operator</h3><pre class="operator">--- clock\hours_hand.py
++++ clock\hours_hand.py
+@@ -4,5 +4,5 @@
+     base = (hour % 12) * (360//12)
+     correction = int((minutes / 60) * (360 // 12))
+     logging.debug(level=0, msg="lorem ipsum")
+-    return base + correction
++    return base - correction
+ 
+</pre></body></html>
