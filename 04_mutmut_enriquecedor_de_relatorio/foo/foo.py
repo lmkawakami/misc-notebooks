@@ -9,3 +9,5 @@ def f(a,b,c):
     return str(a) + b + c['foo']
 g = a>1
 h = a<1
+
+asd = 456

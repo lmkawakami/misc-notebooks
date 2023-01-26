@@ -28,3 +28,7 @@ def test_7():
 
 def test_8():
     assert foo.h == False
+
+
+def test_9():
+    assert foo.asd == 456

@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<testsuites failures="0" errors="0" tests="4" disabled="0" time="0.0">
+	<testsuite name="mutmut" disabled="0" failures="0" errors="0" skipped="0" time="0" tests="4">
+		<testcase name="Mutant #1" file="foo/bar.py" line="1">
+			<system-out>bar = &quot;bar&quot;</system-out>
+		</testcase>
+		<testcase name="Mutant #2" file="foo/bar.py" line="1">
+			<system-out>bar = &quot;bar&quot;</system-out>
+		</testcase>
+		<testcase name="Mutant #3" file="foo/bar.py" line="3">
+			<system-out>a = 123</system-out>
+		</testcase>
+		<testcase name="Mutant #4" file="foo/bar.py" line="3">
+			<system-out>a = 123</system-out>
+		</testcase>
+	</testsuite>
+</testsuites>
+

@@ -1,7 +1,7 @@
 DEL .mutmut-cache
 DEL log.txt
 DEL mut-types.txt
-mutmut run --paths-to-mutate clock,foo
+mutmut run --paths-to-mutate foo/bar.py
 @REM mutmut run --paths-to-mutate foo
 @REM mutmut run --paths-to-mutate foo --enable-mutation-types=expr_stmt
 @REM mutmut run --paths-to-mutate foo --disable-mutation-types=string,argument
