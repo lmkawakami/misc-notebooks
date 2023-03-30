@@ -1,0 +1,45 @@
+<html><html><head><style>html{font-family:monospace;color:#ccd4db;background-color:#1f1d1d}table{padding:1em}td.type-count,th.type-count{border:1px solid #ddd;text-align:center;padding:8px;display:block}tr.type-count{float:left;display:block}a{color:#6289dc}a:visited{color:#ba66ea}.operator{color:#fa6060}.keyword{color:#faad60}.number{color:#fafa60}.name{color:#adfa60}.string{color:#60fa60}.argument{color:#60faad}.or_test{color:#60fafa}.and_test{color:#60adfa}.lambdef{color:#6060fa}.expr_stmt{color:#ad60fa}.decorator{color:#fa60fa}.annassign{color:#fa60ad}</style></head></html><body><h1>app\operacoes_financeiras.py</h1>Killed 25 out of 29 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<html><body><table><tr class="type-count"><th class="type-count">Mutant type</th><th class="type-count">Mutants count</th></tr><tr class="type-count"><td class="type-count">string</td><td class="type-count">19</td></tr><tr class="type-count"><td class="type-count">operator</td><td class="type-count">10</td></tr></table><hr/></body></html><h3 class="operator">Mutant 11 - operator</h3><pre class="operator">--- app\operacoes_financeiras.py
++++ app\operacoes_financeiras.py
+@@ -21,7 +21,7 @@
+ 
+ def sacar(contas, client_id, valor):
+     conta = pegar_conta(contas, client_id)
+-    if conta["saldo"] &lt; valor:
++    if conta["saldo"] &lt;= valor:
+         raise Exception("Saldo insuficiente")
+     conta["saldo"] -= valor
+     registrar_historico(conta, {
+</pre><h3 class="string">Mutant 12 - string</h3><pre class="string">--- app\operacoes_financeiras.py
++++ app\operacoes_financeiras.py
+@@ -22,7 +22,7 @@
+ def sacar(contas, client_id, valor):
+     conta = pegar_conta(contas, client_id)
+     if conta["saldo"] &lt; valor:
+-        raise Exception("Saldo insuficiente")
++        raise Exception("XXSaldo insuficienteXX")
+     conta["saldo"] -= valor
+     registrar_historico(conta, {
+         "operacao": "saque",
+</pre><h3 class="operator">Mutant 20 - operator</h3><pre class="operator">--- app\operacoes_financeiras.py
++++ app\operacoes_financeiras.py
+@@ -32,7 +32,7 @@
+ def transferir(contas, client_id_origem, client_id_destino, valor):
+     conta_origem = pegar_conta(contas, client_id_origem)
+     conta_destino = pegar_conta(contas, client_id_destino)
+-    if conta_origem["saldo"] &lt; valor:
++    if conta_origem["saldo"] &lt;= valor:
+         raise Exception("Saldo insuficiente")
+     conta_origem["saldo"] -= valor
+     conta_destino["saldo"] += valor
+</pre><h3 class="string">Mutant 21 - string</h3><pre class="string">--- app\operacoes_financeiras.py
++++ app\operacoes_financeiras.py
+@@ -33,7 +33,7 @@
+     conta_origem = pegar_conta(contas, client_id_origem)
+     conta_destino = pegar_conta(contas, client_id_destino)
+     if conta_origem["saldo"] &lt; valor:
+-        raise Exception("Saldo insuficiente")
++        raise Exception("XXSaldo insuficienteXX")
+     conta_origem["saldo"] -= valor
+     conta_destino["saldo"] += valor
+     registro = {
+</pre></body></html>

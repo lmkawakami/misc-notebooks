@@ -1,0 +1,811 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" /><title>Cosmic Ray Report</title></head><body><div class="container"><h1><p class="text-dark">Cosmic Ray Report</p></h1></div><div class="container"><div class="mb-1" id="summary_info___accordion"><div class="card"><a data-toggle="collapse" data-target="#summary_info___collapse_1" aria-expanded="true" aria-controls="summary_info___collapse_1" href="#"><div class="card-header" id="summary_info___heading_1"><button class="btn btn-outline-dark"><h4 class="m-0">Summary info</h4></button></div></a><div aria-labelledby="summary_info___heading_1" data-parent="#summary_info___accordion" class="collapse show" id="summary_info___collapse_1"><div class="card-body"><p>Date time: 30/03/2023 06:22:17</p><p>Total jobs: 18</p><p>Complete: 18 (100.00%)</p><p>Surviving mutants: 2 (11.11%)</p></div></div></div></div><div class="mb-1" id="job_list___accordion"><div class="card"><a data-toggle="collapse" data-target="#job_list___collapse_1" aria-expanded="false" aria-controls="job_list___collapse_1" href="#"><div class="card-header" id="job_list___heading_1"><button class="btn btn-outline-dark"><h4 class="m-0">Job list</h4></button></div></a><div aria-labelledby="job_list___heading_1" data-parent="#job_list___accordion" class="collapse" id="job_list___collapse_1"><div class="card-body"><div class="text-right mb-1"><div class="mx-1" id="job_item_expand_all"><a href="#" onclick="$('div.job_list___sub_multi_collapse').collapse('show');"><button class="btn btn-outline-dark"><span>Expand All</span></button></a></div><div class="mx-1" id="job_item_collapse_all"><a href="#" onclick="$('div.job_list___sub_multi_collapse').collapse('hide');"><button class="btn btn-outline-dark"><span>Collapse All</span></button></a></div></div><div class="mb-1" id="job_list___sub_accordion_1"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_1_1" aria-expanded="false" aria-controls="job_list___sub_collapse_1_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_1_1"><button class="btn btn-outline-success"><span class="job_id">1 : Job ID 78469eb3519841229e9c11c716463c3a</span></button></div></a><div aria-labelledby="job_list___sub_heading_1_1" data-parent="#job_list___sub_accordion_1" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_1_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=app\operacoes_financeiras.py&amp;line=24" class="text-secondary"><button class="btn btn-outline-dark">app\operacoes_financeiras.py, start pos: (24, 22), end pos: (24, 23)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Lt_Eq, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\operacoes_financeiras.py
++++ bapp\operacoes_financeiras.py
+@@ -21,7 +21,7 @@
+ 
+ def sacar(contas, client_id, valor):
+     conta = pegar_conta(contas, client_id)
+-    if conta["saldo"] &lt; valor:
++    if conta["saldo"] == valor:
+         raise Exception("Saldo insuficiente")
+     conta["saldo"] -= valor
+     registrar_historico(conta, {</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py .F.                               [ 60%]
+tests\test_utils_v0.py ..                                                [100%]
+
+================================== FAILURES ===================================
+____________________________ TestContas.test_sacar ____________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_sacar&gt;
+
+    def test_sacar(self):
+        with self.assertRaises(Exception):
+&gt;           sacar(self.contas, "client_id_123", 1100)
+E           AssertionError: Exception not raised
+
+tests\test_operacoes_financeiras_v0.py:22: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_sacar - Asser...
+========================= 1 failed, 4 passed in 0.12s =========================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_2"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_2_1" aria-expanded="false" aria-controls="job_list___sub_collapse_2_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_2_1"><button class="btn btn-outline-success"><span class="job_id">2 : Job ID 6b053ba770f340e3930e325b4262e708</span></button></div></a><div aria-labelledby="job_list___sub_heading_2_1" data-parent="#job_list___sub_accordion_2" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_2_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=app\operacoes_financeiras.py&amp;line=35" class="text-secondary"><button class="btn btn-outline-dark">app\operacoes_financeiras.py, start pos: (35, 29), end pos: (35, 30)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Lt_Eq, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\operacoes_financeiras.py
++++ bapp\operacoes_financeiras.py
+@@ -32,7 +32,7 @@
+ def transferir(contas, client_id_origem, client_id_destino, valor):
+     conta_origem = pegar_conta(contas, client_id_origem)
+     conta_destino = pegar_conta(contas, client_id_destino)
+-    if conta_origem["saldo"] &lt; valor:
++    if conta_origem["saldo"] == valor:
+         raise Exception("Saldo insuficiente")
+     conta_origem["saldo"] -= valor
+     conta_destino["saldo"] += valor</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py ..F                               [ 60%]
+tests\test_utils_v0.py ..                                                [100%]
+
+================================== FAILURES ===================================
+_________________________ TestContas.test_transferir __________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_transferir&gt;
+
+    def test_transferir(self):
+        with self.assertRaises(Exception):
+&gt;           transferir(self.contas, "client_id_123", "client_id_abc", 1100)
+E           AssertionError: Exception not raised
+
+tests\test_operacoes_financeiras_v0.py:27: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_transferir - ...
+========================= 1 failed, 4 passed in 0.12s =========================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_3"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_3_1" aria-expanded="false" aria-controls="job_list___sub_collapse_3_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_3_1"><button class="btn btn-outline-success"><span class="job_id">3 : Job ID c30262be038e423f8ae33eba1f51ef14</span></button></div></a><div aria-labelledby="job_list___sub_heading_3_1" data-parent="#job_list___sub_accordion_3" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_3_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=app\operacoes_financeiras.py&amp;line=24" class="text-secondary"><button class="btn btn-outline-dark">app\operacoes_financeiras.py, start pos: (24, 22), end pos: (24, 23)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Lt_NotEq, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\operacoes_financeiras.py
++++ bapp\operacoes_financeiras.py
+@@ -21,7 +21,7 @@
+ 
+ def sacar(contas, client_id, valor):
+     conta = pegar_conta(contas, client_id)
+-    if conta["saldo"] &lt; valor:
++    if conta["saldo"] != valor:
+         raise Exception("Saldo insuficiente")
+     conta["saldo"] -= valor
+     registrar_historico(conta, {</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py .F.                               [ 60%]
+tests\test_utils_v0.py ..                                                [100%]
+
+================================== FAILURES ===================================
+____________________________ TestContas.test_sacar ____________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_sacar&gt;
+
+    def test_sacar(self):
+        with self.assertRaises(Exception):
+            sacar(self.contas, "client_id_123", 1100)
+&gt;       sacar(self.contas, "client_id_123", 100)
+
+tests\test_operacoes_financeiras_v0.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+contas = {'client_id_123': {'historico': [], 'saldo': 1000}, 'client_id_abc': {'historico': [], 'saldo': 500}}
+client_id = 'client_id_123', valor = 100
+
+    def sacar(contas, client_id, valor):
+        conta = pegar_conta(contas, client_id)
+        if conta["saldo"] != valor:
+&gt;           raise Exception("Saldo insuficiente")
+E           Exception: Saldo insuficiente
+
+app\operacoes_financeiras.py:25: Exception
+=========================== short test summary info ===========================
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_sacar - Excep...
+========================= 1 failed, 4 passed in 0.12s =========================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_4"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_4_1" aria-expanded="false" aria-controls="job_list___sub_collapse_4_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_4_1"><button class="btn btn-outline-success"><span class="job_id">4 : Job ID 5dce759a3f0241a5acb14a4d15723482</span></button></div></a><div aria-labelledby="job_list___sub_heading_4_1" data-parent="#job_list___sub_accordion_4" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_4_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=app\operacoes_financeiras.py&amp;line=35" class="text-secondary"><button class="btn btn-outline-dark">app\operacoes_financeiras.py, start pos: (35, 29), end pos: (35, 30)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Lt_NotEq, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\operacoes_financeiras.py
++++ bapp\operacoes_financeiras.py
+@@ -32,7 +32,7 @@
+ def transferir(contas, client_id_origem, client_id_destino, valor):
+     conta_origem = pegar_conta(contas, client_id_origem)
+     conta_destino = pegar_conta(contas, client_id_destino)
+-    if conta_origem["saldo"] &lt; valor:
++    if conta_origem["saldo"] != valor:
+         raise Exception("Saldo insuficiente")
+     conta_origem["saldo"] -= valor
+     conta_destino["saldo"] += valor</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py ..F                               [ 60%]
+tests\test_utils_v0.py ..                                                [100%]
+
+================================== FAILURES ===================================
+_________________________ TestContas.test_transferir __________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_transferir&gt;
+
+    def test_transferir(self):
+        with self.assertRaises(Exception):
+            transferir(self.contas, "client_id_123", "client_id_abc", 1100)
+&gt;       transferir(self.contas, "client_id_123", "client_id_abc", 100)
+
+tests\test_operacoes_financeiras_v0.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+contas = {'client_id_123': {'historico': [], 'saldo': 1000}, 'client_id_abc': {'historico': [], 'saldo': 500}}
+client_id_origem = 'client_id_123', client_id_destino = 'client_id_abc'
+valor = 100
+
+    def transferir(contas, client_id_origem, client_id_destino, valor):
+        conta_origem = pegar_conta(contas, client_id_origem)
+        conta_destino = pegar_conta(contas, client_id_destino)
+        if conta_origem["saldo"] != valor:
+&gt;           raise Exception("Saldo insuficiente")
+E           Exception: Saldo insuficiente
+
+app\operacoes_financeiras.py:36: Exception
+=========================== short test summary info ===========================
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_transferir - ...
+========================= 1 failed, 4 passed in 0.12s =========================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_5"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_5_1" aria-expanded="false" aria-controls="job_list___sub_collapse_5_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_5_1"><button class="btn btn-outline-danger"><span class="job_id">5 : Job ID 7a8ab2e5cda94fb2b238a6ac73a9bc8c</span></button></div></a><div aria-labelledby="job_list___sub_heading_5_1" data-parent="#job_list___sub_accordion_5" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_5_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=app\operacoes_financeiras.py&amp;line=24" class="text-secondary"><button class="btn btn-outline-dark">app\operacoes_financeiras.py, start pos: (24, 22), end pos: (24, 23)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Lt_LtE, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\operacoes_financeiras.py
++++ bapp\operacoes_financeiras.py
+@@ -21,7 +21,7 @@
+ 
+ def sacar(contas, client_id, valor):
+     conta = pegar_conta(contas, client_id)
+-    if conta["saldo"] &lt; valor:
++    if conta["saldo"] &lt;= valor:
+         raise Exception("Saldo insuficiente")
+     conta["saldo"] -= valor
+     registrar_historico(conta, {</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py ...                               [ 60%]
+tests\test_utils_v0.py ..                                                [100%]
+
+============================== 5 passed in 0.05s ==============================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_6"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_6_1" aria-expanded="false" aria-controls="job_list___sub_collapse_6_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_6_1"><button class="btn btn-outline-danger"><span class="job_id">6 : Job ID 5c2a0b58fcff4744b8cc29b778cda634</span></button></div></a><div aria-labelledby="job_list___sub_heading_6_1" data-parent="#job_list___sub_accordion_6" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_6_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=app\operacoes_financeiras.py&amp;line=35" class="text-secondary"><button class="btn btn-outline-dark">app\operacoes_financeiras.py, start pos: (35, 29), end pos: (35, 30)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Lt_LtE, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\operacoes_financeiras.py
++++ bapp\operacoes_financeiras.py
+@@ -32,7 +32,7 @@
+ def transferir(contas, client_id_origem, client_id_destino, valor):
+     conta_origem = pegar_conta(contas, client_id_origem)
+     conta_destino = pegar_conta(contas, client_id_destino)
+-    if conta_origem["saldo"] &lt; valor:
++    if conta_origem["saldo"] &lt;= valor:
+         raise Exception("Saldo insuficiente")
+     conta_origem["saldo"] -= valor
+     conta_destino["saldo"] += valor</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py ...                               [ 60%]
+tests\test_utils_v0.py ..                                                [100%]
+
+============================== 5 passed in 0.05s ==============================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_7"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_7_1" aria-expanded="false" aria-controls="job_list___sub_collapse_7_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_7_1"><button class="btn btn-outline-success"><span class="job_id">7 : Job ID 94eb2bea596941f18409197c924dae75</span></button></div></a><div aria-labelledby="job_list___sub_heading_7_1" data-parent="#job_list___sub_accordion_7" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_7_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=app\operacoes_financeiras.py&amp;line=24" class="text-secondary"><button class="btn btn-outline-dark">app\operacoes_financeiras.py, start pos: (24, 22), end pos: (24, 23)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Lt_Gt, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\operacoes_financeiras.py
++++ bapp\operacoes_financeiras.py
+@@ -21,7 +21,7 @@
+ 
+ def sacar(contas, client_id, valor):
+     conta = pegar_conta(contas, client_id)
+-    if conta["saldo"] &lt; valor:
++    if conta["saldo"] &gt; valor:
+         raise Exception("Saldo insuficiente")
+     conta["saldo"] -= valor
+     registrar_historico(conta, {</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py .F.                               [ 60%]
+tests\test_utils_v0.py ..                                                [100%]
+
+================================== FAILURES ===================================
+____________________________ TestContas.test_sacar ____________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_sacar&gt;
+
+    def test_sacar(self):
+        with self.assertRaises(Exception):
+&gt;           sacar(self.contas, "client_id_123", 1100)
+E           AssertionError: Exception not raised
+
+tests\test_operacoes_financeiras_v0.py:22: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_sacar - Asser...
+========================= 1 failed, 4 passed in 0.12s =========================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_8"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_8_1" aria-expanded="false" aria-controls="job_list___sub_collapse_8_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_8_1"><button class="btn btn-outline-success"><span class="job_id">8 : Job ID 0a8d599c547b422ea4caa7f351537494</span></button></div></a><div aria-labelledby="job_list___sub_heading_8_1" data-parent="#job_list___sub_accordion_8" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_8_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=app\operacoes_financeiras.py&amp;line=35" class="text-secondary"><button class="btn btn-outline-dark">app\operacoes_financeiras.py, start pos: (35, 29), end pos: (35, 30)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Lt_Gt, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\operacoes_financeiras.py
++++ bapp\operacoes_financeiras.py
+@@ -32,7 +32,7 @@
+ def transferir(contas, client_id_origem, client_id_destino, valor):
+     conta_origem = pegar_conta(contas, client_id_origem)
+     conta_destino = pegar_conta(contas, client_id_destino)
+-    if conta_origem["saldo"] &lt; valor:
++    if conta_origem["saldo"] &gt; valor:
+         raise Exception("Saldo insuficiente")
+     conta_origem["saldo"] -= valor
+     conta_destino["saldo"] += valor</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py ..F                               [ 60%]
+tests\test_utils_v0.py ..                                                [100%]
+
+================================== FAILURES ===================================
+_________________________ TestContas.test_transferir __________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_transferir&gt;
+
+    def test_transferir(self):
+        with self.assertRaises(Exception):
+&gt;           transferir(self.contas, "client_id_123", "client_id_abc", 1100)
+E           AssertionError: Exception not raised
+
+tests\test_operacoes_financeiras_v0.py:27: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_transferir - ...
+========================= 1 failed, 4 passed in 0.12s =========================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_9"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_9_1" aria-expanded="false" aria-controls="job_list___sub_collapse_9_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_9_1"><button class="btn btn-outline-success"><span class="job_id">9 : Job ID 4bafaf35fa2b44689a4c3447fe483271</span></button></div></a><div aria-labelledby="job_list___sub_heading_9_1" data-parent="#job_list___sub_accordion_9" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_9_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=app\operacoes_financeiras.py&amp;line=24" class="text-secondary"><button class="btn btn-outline-dark">app\operacoes_financeiras.py, start pos: (24, 22), end pos: (24, 23)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Lt_GtE, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\operacoes_financeiras.py
++++ bapp\operacoes_financeiras.py
+@@ -21,7 +21,7 @@
+ 
+ def sacar(contas, client_id, valor):
+     conta = pegar_conta(contas, client_id)
+-    if conta["saldo"] &lt; valor:
++    if conta["saldo"] &gt;= valor:
+         raise Exception("Saldo insuficiente")
+     conta["saldo"] -= valor
+     registrar_historico(conta, {</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py .F.                               [ 60%]
+tests\test_utils_v0.py ..                                                [100%]
+
+================================== FAILURES ===================================
+____________________________ TestContas.test_sacar ____________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_sacar&gt;
+
+    def test_sacar(self):
+        with self.assertRaises(Exception):
+&gt;           sacar(self.contas, "client_id_123", 1100)
+E           AssertionError: Exception not raised
+
+tests\test_operacoes_financeiras_v0.py:22: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_sacar - Asser...
+========================= 1 failed, 4 passed in 0.12s =========================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_10"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_10_1" aria-expanded="false" aria-controls="job_list___sub_collapse_10_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_10_1"><button class="btn btn-outline-success"><span class="job_id">10 : Job ID 0a40aad58116445bb4c6ec6e33ed6da2</span></button></div></a><div aria-labelledby="job_list___sub_heading_10_1" data-parent="#job_list___sub_accordion_10" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_10_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=app\operacoes_financeiras.py&amp;line=35" class="text-secondary"><button class="btn btn-outline-dark">app\operacoes_financeiras.py, start pos: (35, 29), end pos: (35, 30)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Lt_GtE, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\operacoes_financeiras.py
++++ bapp\operacoes_financeiras.py
+@@ -32,7 +32,7 @@
+ def transferir(contas, client_id_origem, client_id_destino, valor):
+     conta_origem = pegar_conta(contas, client_id_origem)
+     conta_destino = pegar_conta(contas, client_id_destino)
+-    if conta_origem["saldo"] &lt; valor:
++    if conta_origem["saldo"] &gt;= valor:
+         raise Exception("Saldo insuficiente")
+     conta_origem["saldo"] -= valor
+     conta_destino["saldo"] += valor</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py ..F                               [ 60%]
+tests\test_utils_v0.py ..                                                [100%]
+
+================================== FAILURES ===================================
+_________________________ TestContas.test_transferir __________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_transferir&gt;
+
+    def test_transferir(self):
+        with self.assertRaises(Exception):
+&gt;           transferir(self.contas, "client_id_123", "client_id_abc", 1100)
+E           AssertionError: Exception not raised
+
+tests\test_operacoes_financeiras_v0.py:27: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_transferir - ...
+========================= 1 failed, 4 passed in 0.12s =========================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_11"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_11_1" aria-expanded="false" aria-controls="job_list___sub_collapse_11_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_11_1"><button class="btn btn-outline-success"><span class="job_id">11 : Job ID 6eddd6b126d34196a044535544cca842</span></button></div></a><div aria-labelledby="job_list___sub_heading_11_1" data-parent="#job_list___sub_accordion_11" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_11_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=app\operacoes_financeiras.py&amp;line=24" class="text-secondary"><button class="btn btn-outline-dark">app\operacoes_financeiras.py, start pos: (24, 22), end pos: (24, 23)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Lt_Is, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\operacoes_financeiras.py
++++ bapp\operacoes_financeiras.py
+@@ -21,7 +21,7 @@
+ 
+ def sacar(contas, client_id, valor):
+     conta = pegar_conta(contas, client_id)
+-    if conta["saldo"] &lt; valor:
++    if conta["saldo"] is valor:
+         raise Exception("Saldo insuficiente")
+     conta["saldo"] -= valor
+     registrar_historico(conta, {</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py .F.                               [ 60%]
+tests\test_utils_v0.py ..                                                [100%]
+
+================================== FAILURES ===================================
+____________________________ TestContas.test_sacar ____________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_sacar&gt;
+
+    def test_sacar(self):
+        with self.assertRaises(Exception):
+&gt;           sacar(self.contas, "client_id_123", 1100)
+E           AssertionError: Exception not raised
+
+tests\test_operacoes_financeiras_v0.py:22: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_sacar - Asser...
+========================= 1 failed, 4 passed in 0.11s =========================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_12"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_12_1" aria-expanded="false" aria-controls="job_list___sub_collapse_12_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_12_1"><button class="btn btn-outline-success"><span class="job_id">12 : Job ID 4e80543c066149b58dd0bcb69a676c56</span></button></div></a><div aria-labelledby="job_list___sub_heading_12_1" data-parent="#job_list___sub_accordion_12" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_12_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=app\operacoes_financeiras.py&amp;line=35" class="text-secondary"><button class="btn btn-outline-dark">app\operacoes_financeiras.py, start pos: (35, 29), end pos: (35, 30)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Lt_Is, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\operacoes_financeiras.py
++++ bapp\operacoes_financeiras.py
+@@ -32,7 +32,7 @@
+ def transferir(contas, client_id_origem, client_id_destino, valor):
+     conta_origem = pegar_conta(contas, client_id_origem)
+     conta_destino = pegar_conta(contas, client_id_destino)
+-    if conta_origem["saldo"] &lt; valor:
++    if conta_origem["saldo"] is valor:
+         raise Exception("Saldo insuficiente")
+     conta_origem["saldo"] -= valor
+     conta_destino["saldo"] += valor</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py ..F                               [ 60%]
+tests\test_utils_v0.py ..                                                [100%]
+
+================================== FAILURES ===================================
+_________________________ TestContas.test_transferir __________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_transferir&gt;
+
+    def test_transferir(self):
+        with self.assertRaises(Exception):
+&gt;           transferir(self.contas, "client_id_123", "client_id_abc", 1100)
+E           AssertionError: Exception not raised
+
+tests\test_operacoes_financeiras_v0.py:27: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_transferir - ...
+========================= 1 failed, 4 passed in 0.12s =========================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_13"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_13_1" aria-expanded="false" aria-controls="job_list___sub_collapse_13_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_13_1"><button class="btn btn-outline-success"><span class="job_id">13 : Job ID 735cdc062cc147b997e3f3f9003b025a</span></button></div></a><div aria-labelledby="job_list___sub_heading_13_1" data-parent="#job_list___sub_accordion_13" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_13_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=app\operacoes_financeiras.py&amp;line=24" class="text-secondary"><button class="btn btn-outline-dark">app\operacoes_financeiras.py, start pos: (24, 22), end pos: (24, 23)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Lt_IsNot, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\operacoes_financeiras.py
++++ bapp\operacoes_financeiras.py
+@@ -21,7 +21,7 @@
+ 
+ def sacar(contas, client_id, valor):
+     conta = pegar_conta(contas, client_id)
+-    if conta["saldo"] &lt; valor:
++    if conta["saldo"] is not valor:
+         raise Exception("Saldo insuficiente")
+     conta["saldo"] -= valor
+     registrar_historico(conta, {</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py .F.                               [ 60%]
+tests\test_utils_v0.py ..                                                [100%]
+
+================================== FAILURES ===================================
+____________________________ TestContas.test_sacar ____________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_sacar&gt;
+
+    def test_sacar(self):
+        with self.assertRaises(Exception):
+            sacar(self.contas, "client_id_123", 1100)
+&gt;       sacar(self.contas, "client_id_123", 100)
+
+tests\test_operacoes_financeiras_v0.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+contas = {'client_id_123': {'historico': [], 'saldo': 1000}, 'client_id_abc': {'historico': [], 'saldo': 500}}
+client_id = 'client_id_123', valor = 100
+
+    def sacar(contas, client_id, valor):
+        conta = pegar_conta(contas, client_id)
+        if conta["saldo"] is not valor:
+&gt;           raise Exception("Saldo insuficiente")
+E           Exception: Saldo insuficiente
+
+app\operacoes_financeiras.py:25: Exception
+=========================== short test summary info ===========================
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_sacar - Excep...
+========================= 1 failed, 4 passed in 0.12s =========================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_14"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_14_1" aria-expanded="false" aria-controls="job_list___sub_collapse_14_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_14_1"><button class="btn btn-outline-success"><span class="job_id">14 : Job ID 5a833c1dd4aa440788d2cd16aaaec7a2</span></button></div></a><div aria-labelledby="job_list___sub_heading_14_1" data-parent="#job_list___sub_accordion_14" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_14_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=app\operacoes_financeiras.py&amp;line=35" class="text-secondary"><button class="btn btn-outline-dark">app\operacoes_financeiras.py, start pos: (35, 29), end pos: (35, 30)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Lt_IsNot, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\operacoes_financeiras.py
++++ bapp\operacoes_financeiras.py
+@@ -32,7 +32,7 @@
+ def transferir(contas, client_id_origem, client_id_destino, valor):
+     conta_origem = pegar_conta(contas, client_id_origem)
+     conta_destino = pegar_conta(contas, client_id_destino)
+-    if conta_origem["saldo"] &lt; valor:
++    if conta_origem["saldo"] is not valor:
+         raise Exception("Saldo insuficiente")
+     conta_origem["saldo"] -= valor
+     conta_destino["saldo"] += valor</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py ..F                               [ 60%]
+tests\test_utils_v0.py ..                                                [100%]
+
+================================== FAILURES ===================================
+_________________________ TestContas.test_transferir __________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_transferir&gt;
+
+    def test_transferir(self):
+        with self.assertRaises(Exception):
+            transferir(self.contas, "client_id_123", "client_id_abc", 1100)
+&gt;       transferir(self.contas, "client_id_123", "client_id_abc", 100)
+
+tests\test_operacoes_financeiras_v0.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+contas = {'client_id_123': {'historico': [], 'saldo': 1000}, 'client_id_abc': {'historico': [], 'saldo': 500}}
+client_id_origem = 'client_id_123', client_id_destino = 'client_id_abc'
+valor = 100
+
+    def transferir(contas, client_id_origem, client_id_destino, valor):
+        conta_origem = pegar_conta(contas, client_id_origem)
+        conta_destino = pegar_conta(contas, client_id_destino)
+        if conta_origem["saldo"] is not valor:
+&gt;           raise Exception("Saldo insuficiente")
+E           Exception: Saldo insuficiente
+
+app\operacoes_financeiras.py:36: Exception
+=========================== short test summary info ===========================
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_transferir - ...
+========================= 1 failed, 4 passed in 0.12s =========================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_15"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_15_1" aria-expanded="false" aria-controls="job_list___sub_collapse_15_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_15_1"><button class="btn btn-outline-success"><span class="job_id">15 : Job ID 6fb0bd5bb1734ae4a32236fa70dae778</span></button></div></a><div aria-labelledby="job_list___sub_heading_15_1" data-parent="#job_list___sub_accordion_15" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_15_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=app\operacoes_financeiras.py&amp;line=24" class="text-secondary"><button class="btn btn-outline-dark">app\operacoes_financeiras.py, start pos: (24, 7), end pos: (24, 29)</button></a></pre><pre>operator: core/AddNot, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\operacoes_financeiras.py
++++ bapp\operacoes_financeiras.py
+@@ -21,7 +21,7 @@
+ 
+ def sacar(contas, client_id, valor):
+     conta = pegar_conta(contas, client_id)
+-    if conta["saldo"] &lt; valor:
++    if not conta["saldo"] &lt; valor:
+         raise Exception("Saldo insuficiente")
+     conta["saldo"] -= valor
+     registrar_historico(conta, {</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py .F.                               [ 60%]
+tests\test_utils_v0.py ..                                                [100%]
+
+================================== FAILURES ===================================
+____________________________ TestContas.test_sacar ____________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_sacar&gt;
+
+    def test_sacar(self):
+        with self.assertRaises(Exception):
+&gt;           sacar(self.contas, "client_id_123", 1100)
+E           AssertionError: Exception not raised
+
+tests\test_operacoes_financeiras_v0.py:22: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_sacar - Asser...
+========================= 1 failed, 4 passed in 0.12s =========================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_16"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_16_1" aria-expanded="false" aria-controls="job_list___sub_collapse_16_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_16_1"><button class="btn btn-outline-success"><span class="job_id">16 : Job ID 49a24b776940442da49edac4cd8d7ab3</span></button></div></a><div aria-labelledby="job_list___sub_heading_16_1" data-parent="#job_list___sub_accordion_16" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_16_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=app\operacoes_financeiras.py&amp;line=35" class="text-secondary"><button class="btn btn-outline-dark">app\operacoes_financeiras.py, start pos: (35, 7), end pos: (35, 36)</button></a></pre><pre>operator: core/AddNot, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\operacoes_financeiras.py
++++ bapp\operacoes_financeiras.py
+@@ -32,7 +32,7 @@
+ def transferir(contas, client_id_origem, client_id_destino, valor):
+     conta_origem = pegar_conta(contas, client_id_origem)
+     conta_destino = pegar_conta(contas, client_id_destino)
+-    if conta_origem["saldo"] &lt; valor:
++    if not conta_origem["saldo"] &lt; valor:
+         raise Exception("Saldo insuficiente")
+     conta_origem["saldo"] -= valor
+     conta_destino["saldo"] += valor</pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py ..F                               [ 60%]
+tests\test_utils_v0.py ..                                                [100%]
+
+================================== FAILURES ===================================
+_________________________ TestContas.test_transferir __________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_transferir&gt;
+
+    def test_transferir(self):
+        with self.assertRaises(Exception):
+&gt;           transferir(self.contas, "client_id_123", "client_id_abc", 1100)
+E           AssertionError: Exception not raised
+
+tests\test_operacoes_financeiras_v0.py:27: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_transferir - ...
+========================= 1 failed, 4 passed in 0.12s =========================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_17"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_17_1" aria-expanded="false" aria-controls="job_list___sub_collapse_17_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_17_1"><button class="btn btn-outline-success"><span class="job_id">17 : Job ID 40dfd74b378a4d0aa557a7f96e03c5c2</span></button></div></a><div aria-labelledby="job_list___sub_heading_17_1" data-parent="#job_list___sub_accordion_17" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_17_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=app\utils.py&amp;line=14" class="text-secondary"><button class="btn btn-outline-dark">app\utils.py, start pos: (14, 13), end pos: (14, 15)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Is_IsNot, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\utils.py
++++ bapp\utils.py
+@@ -11,7 +11,7 @@
+ 
+ def pegar_conta(contas, client_id):
+     conta = contas.get(client_id)
+-    if conta is None:
++    if conta is not None:
+         raise Exception("Conta inexistente")
+     return conta
+ </pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py FFF                               [ 60%]
+tests\test_utils_v0.py F.                                                [100%]
+
+================================== FAILURES ===================================
+__________________________ TestContas.test_depositar __________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_depositar&gt;
+
+    def test_depositar(self):
+&gt;       depositar(self.contas, "client_id_123", 100)
+
+tests\test_operacoes_financeiras_v0.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\operacoes_financeiras.py:15: in depositar
+    conta = pegar_conta(contas, client_id)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+contas = {'client_id_123': {'historico': [], 'saldo': 1000}, 'client_id_abc': {'historico': [], 'saldo': 500}}
+client_id = 'client_id_123'
+
+    def pegar_conta(contas, client_id):
+        conta = contas.get(client_id)
+        if conta is not None:
+&gt;           raise Exception("Conta inexistente")
+E           Exception: Conta inexistente
+
+app\utils.py:15: Exception
+____________________________ TestContas.test_sacar ____________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_sacar&gt;
+
+    def test_sacar(self):
+        with self.assertRaises(Exception):
+            sacar(self.contas, "client_id_123", 1100)
+&gt;       sacar(self.contas, "client_id_123", 100)
+
+tests\test_operacoes_financeiras_v0.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\operacoes_financeiras.py:23: in sacar
+    conta = pegar_conta(contas, client_id)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+contas = {'client_id_123': {'historico': [], 'saldo': 1000}, 'client_id_abc': {'historico': [], 'saldo': 500}}
+client_id = 'client_id_123'
+
+    def pegar_conta(contas, client_id):
+        conta = contas.get(client_id)
+        if conta is not None:
+&gt;           raise Exception("Conta inexistente")
+E           Exception: Conta inexistente
+
+app\utils.py:15: Exception
+_________________________ TestContas.test_transferir __________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_transferir&gt;
+
+    def test_transferir(self):
+        with self.assertRaises(Exception):
+            transferir(self.contas, "client_id_123", "client_id_abc", 1100)
+&gt;       transferir(self.contas, "client_id_123", "client_id_abc", 100)
+
+tests\test_operacoes_financeiras_v0.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\operacoes_financeiras.py:33: in transferir
+    conta_origem = pegar_conta(contas, client_id_origem)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+contas = {'client_id_123': {'historico': [], 'saldo': 1000}, 'client_id_abc': {'historico': [], 'saldo': 500}}
+client_id = 'client_id_123'
+
+    def pegar_conta(contas, client_id):
+        conta = contas.get(client_id)
+        if conta is not None:
+&gt;           raise Exception("Conta inexistente")
+E           Exception: Conta inexistente
+
+app\utils.py:15: Exception
+_________________________ TestContas.test_pegar_conta _________________________
+
+self = &lt;test_utils_v0.TestContas testMethod=test_pegar_conta&gt;
+
+    def test_pegar_conta(self):
+&gt;       pegar_conta(self.contas, "client_id_123")
+
+tests\test_utils_v0.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+contas = {'client_id_123': {'historico': [], 'saldo': 1000}, 'client_id_abc': {'historico': [], 'saldo': 500}}
+client_id = 'client_id_123'
+
+    def pegar_conta(contas, client_id):
+        conta = contas.get(client_id)
+        if conta is not None:
+&gt;           raise Exception("Conta inexistente")
+E           Exception: Conta inexistente
+
+app\utils.py:15: Exception
+=========================== short test summary info ===========================
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_depositar - E...
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_sacar - Excep...
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_transferir - ...
+FAILED tests/test_utils_v0.py::TestContas::test_pegar_conta - Exception: Cont...
+========================= 4 failed, 1 passed in 0.13s =========================
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_18"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_18_1" aria-expanded="false" aria-controls="job_list___sub_collapse_18_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_18_1"><button class="btn btn-outline-success"><span class="job_id">18 : Job ID 5966b3e4fe8a43f797b5471b18b7668f</span></button></div></a><div aria-labelledby="job_list___sub_heading_18_1" data-parent="#job_list___sub_accordion_18" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_18_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=app\utils.py&amp;line=14" class="text-secondary"><button class="btn btn-outline-dark">app\utils.py, start pos: (14, 7), end pos: (14, 20)</button></a></pre><pre>operator: core/AddNot, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- aapp\utils.py
++++ bapp\utils.py
+@@ -11,7 +11,7 @@
+ 
+ def pegar_conta(contas, client_id):
+     conta = contas.get(client_id)
+-    if conta is None:
++    if not conta is None:
+         raise Exception("Conta inexistente")
+     return conta
+ </pre></div><div class="alert alert-secondary"><pre class="diff">============================= test session starts =============================
+platform win32 -- Python 3.9.13, pytest-7.2.2, pluggy-1.0.0
+rootdir: C:\Users\lmkaw\OneDrive\Documentos\GitHub\misc-notebooks\09_mutmut_presentation
+plugins: cov-4.0.0
+collected 5 items
+
+tests\test_operacoes_financeiras_v0.py FFF                               [ 60%]
+tests\test_utils_v0.py F.                                                [100%]
+
+================================== FAILURES ===================================
+__________________________ TestContas.test_depositar __________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_depositar&gt;
+
+    def test_depositar(self):
+&gt;       depositar(self.contas, "client_id_123", 100)
+
+tests\test_operacoes_financeiras_v0.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\operacoes_financeiras.py:15: in depositar
+    conta = pegar_conta(contas, client_id)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+contas = {'client_id_123': {'historico': [], 'saldo': 1000}, 'client_id_abc': {'historico': [], 'saldo': 500}}
+client_id = 'client_id_123'
+
+    def pegar_conta(contas, client_id):
+        conta = contas.get(client_id)
+        if not conta is None:
+&gt;           raise Exception("Conta inexistente")
+E           Exception: Conta inexistente
+
+app\utils.py:15: Exception
+____________________________ TestContas.test_sacar ____________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_sacar&gt;
+
+    def test_sacar(self):
+        with self.assertRaises(Exception):
+            sacar(self.contas, "client_id_123", 1100)
+&gt;       sacar(self.contas, "client_id_123", 100)
+
+tests\test_operacoes_financeiras_v0.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\operacoes_financeiras.py:23: in sacar
+    conta = pegar_conta(contas, client_id)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+contas = {'client_id_123': {'historico': [], 'saldo': 1000}, 'client_id_abc': {'historico': [], 'saldo': 500}}
+client_id = 'client_id_123'
+
+    def pegar_conta(contas, client_id):
+        conta = contas.get(client_id)
+        if not conta is None:
+&gt;           raise Exception("Conta inexistente")
+E           Exception: Conta inexistente
+
+app\utils.py:15: Exception
+_________________________ TestContas.test_transferir __________________________
+
+self = &lt;test_operacoes_financeiras_v0.TestContas testMethod=test_transferir&gt;
+
+    def test_transferir(self):
+        with self.assertRaises(Exception):
+            transferir(self.contas, "client_id_123", "client_id_abc", 1100)
+&gt;       transferir(self.contas, "client_id_123", "client_id_abc", 100)
+
+tests\test_operacoes_financeiras_v0.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\operacoes_financeiras.py:33: in transferir
+    conta_origem = pegar_conta(contas, client_id_origem)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+contas = {'client_id_123': {'historico': [], 'saldo': 1000}, 'client_id_abc': {'historico': [], 'saldo': 500}}
+client_id = 'client_id_123'
+
+    def pegar_conta(contas, client_id):
+        conta = contas.get(client_id)
+        if not conta is None:
+&gt;           raise Exception("Conta inexistente")
+E           Exception: Conta inexistente
+
+app\utils.py:15: Exception
+_________________________ TestContas.test_pegar_conta _________________________
+
+self = &lt;test_utils_v0.TestContas testMethod=test_pegar_conta&gt;
+
+    def test_pegar_conta(self):
+&gt;       pegar_conta(self.contas, "client_id_123")
+
+tests\test_utils_v0.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+contas = {'client_id_123': {'historico': [], 'saldo': 1000}, 'client_id_abc': {'historico': [], 'saldo': 500}}
+client_id = 'client_id_123'
+
+    def pegar_conta(contas, client_id):
+        conta = contas.get(client_id)
+        if not conta is None:
+&gt;           raise Exception("Conta inexistente")
+E           Exception: Conta inexistente
+
+app\utils.py:15: Exception
+=========================== short test summary info ===========================
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_depositar - E...
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_sacar - Excep...
+FAILED tests/test_operacoes_financeiras_v0.py::TestContas::test_transferir - ...
+FAILED tests/test_utils_v0.py::TestContas::test_pegar_conta - Exception: Cont...
+========================= 4 failed, 1 passed in 0.13s =========================
+</pre></div></div></div></div></div></div></div></div></div></div><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script><script type="text/javascript">$('div.job_list___sub_multi_collapse').on('shown.bs.collapse',  function () {    correct_behavior_functional_buttons();  });$('div.job_list___sub_multi_collapse').on('hidden.bs.collapse',  function () {    correct_behavior_functional_buttons();  });function correct_behavior_functional_buttons() {    var expand = false;    var collapse = false;    $('a.job_list___sub_multi_heading').each(function(index) {      if ($(this).attr('aria-expanded') == 'false') {        expand = true;        return false;      };    });    $('a.job_list___sub_multi_heading').each(function(index) {      if ($(this).attr('aria-expanded') == 'true') {        collapse = true;        return false;      };    });    if (expand) {      $('div#job_item_expand_all').css('display', 'inline-block');    } else {      $('div#job_item_expand_all').css('display', 'none');    };    if (collapse) {      $('div#job_item_collapse_all').css('display', 'inline-block');    } else {      $('div#job_item_collapse_all').css('display', 'none');    };  };correct_behavior_functional_buttons();</script></body></html>
