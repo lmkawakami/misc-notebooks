@@ -86,7 +86,10 @@ for _path, muts in mut_tree.items():
     recurrency = count_recurency(muts.values(), {})         #aqui
     table = create_mutations_table(recurrency)
     total_recurrency = count_recurency(muts.values(), total_recurrency)
-    insert_table(table, soup)
+    try:
+        insert_table(table, soup)
+    except AttributeError:
+        continue
     print("🟢inserting table for path:", _path, recurrency, total_recurrency)
     link_stylesheet(soup)
     for h3 in soup.find_all('h3'):
