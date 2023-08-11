@@ -1,7 +1,16 @@
 from typing import List, Dict
 from metrics.labels_models import CommonLabels
 from metrics.batch_running_status_enum import BatchRunningStatus
-from metrics.metrics import task_processing_status_enum, task_steps_processing_histogram
+from metrics.metrics import (
+    task_processing_status_enum,
+    task_steps_processing_histogram,
+)
+from metrics.testing_helpers import (
+    get_task_processing_status_enum_status,
+    get_task_steps_processing_histogram_count,
+    get_file_processing_status_enum_status,
+    get_file_steps_processing_histogram_count,
+)
 from contextlib import contextmanager
 from metrics._batch_file_tracker import BatchFileTracker
 import time
@@ -47,7 +56,8 @@ class BatchMetrics:
 
     @classmethod
     def _set_common_labels(cls, trace_id, source_app, vendor, service) -> None:
-        cls.common_labels = CommonLabels(
+        print("setting common labels")
+        cls._common_labels = CommonLabels(
             trace_id=trace_id,
             source_app=source_app,
             vendor=vendor,
@@ -56,13 +66,13 @@ class BatchMetrics:
 
     @classmethod
     def _register_task_status(cls, status: BatchRunningStatus):
-        cls._task_processing_status_enum.labels(**cls.common_labels.dict()).state(status.value)
+        cls._task_processing_status_enum.labels(**cls._common_labels.dict()).state(status.value)
 
     @classmethod
     def _observe_step_processing_duration(cls, status: BatchRunningStatus, duration_ms: int):
         duration_s = duration_ms / 1000
         labels = dict(
-            **cls.common_labels.dict(),
+            **cls._common_labels.dict(),
             status=status.value
         )
         cls._task_steps_processing_histogram.labels(
@@ -73,7 +83,7 @@ class BatchMetrics:
     def track_new_file(cls, file_name: str, origin_file_name: str = None):
         if origin_file_name is None:
             origin_file_name = file_name
-        file_tracker = BatchFileTracker(file_name=file_name, origin_file_name=file_name)
+        file_tracker = BatchFileTracker(file_name=file_name, origin_file_name=origin_file_name)
         cls._tracked_files[file_name] = file_tracker
 
     @classmethod
@@ -84,6 +94,32 @@ class BatchMetrics:
     @classmethod
     def track_file_status(cls, file_name: str):
         return cls._tracked_files[file_name].track_file_status
+
+    @classmethod
+    def get_task_enum_status(cls):
+        return get_task_processing_status_enum_status(cls._common_labels.dict())
+
+    @classmethod
+    def get_file_enum_status(cls, file_name: str):
+        file_tracker = cls._tracked_files.get(file_name)
+        if file_tracker:
+            return get_file_processing_status_enum_status(file_tracker._enum_labels)
+
+    @classmethod
+    def get_task_histogram_count(cls, status: BatchRunningStatus):
+        return get_task_steps_processing_histogram_count(
+            cls._common_labels.dict(),
+            status
+        )
+
+    @classmethod
+    def get_file_histogram_count(cls, file_name, status: BatchRunningStatus):
+        file_tracker = cls._tracked_files.get(file_name)
+        if file_tracker:
+            return get_file_steps_processing_histogram_count(
+                file_tracker._enum_labels,
+                status
+            )
 
 # batch
 # self._metrics.increment_counter(Metric.EXECUTIONS_COUNTE)

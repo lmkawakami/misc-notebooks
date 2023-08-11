@@ -3,7 +3,7 @@ from typing import List, Dict
 from metrics.metrics import (
     task_processing_status_enum,
     task_steps_processing_histogram,
-    task_enum_states,
+    task_enum_status,
     files_running_status_enum,
     file_step_processing_histogram
 )
@@ -13,13 +13,13 @@ class PrometheusRegistry:
     @staticmethod
     def get_task_running_status(common_labels: Dict[str, str]):
         return PrometheusRegistry._get_enum_state(
-            task_processing_status_enum._name, common_labels, task_enum_states
+            task_processing_status_enum._name, common_labels, task_enum_status
         )
 
     @staticmethod
     def get_file_running_status(file_enum_labels: Dict[str, str]):
         return PrometheusRegistry._get_enum_state(
-            files_running_status_enum._name, file_enum_labels, task_enum_states
+            files_running_status_enum._name, file_enum_labels, task_enum_status
         )
 
     @staticmethod
