@@ -20,6 +20,14 @@ def get_epoch() -> int:
     return int(time.time() * 1000)
 
 
+class SpawnedFilesTracker:
+    def __init__(self, origin_file_name) -> None:
+        self.origin_file_name = origin_file_name
+
+    def track_new_files(self, spawned_files_names: List[str]):
+        return BatchMetrics.track_new_spawned_files(spawned_files_names, self.origin_file_name)
+
+
 class BatchMetrics:
     _started = False
     _common_labels = CommonLabels()
@@ -92,8 +100,24 @@ class BatchMetrics:
             cls.track_new_file(file_name=file_name, origin_file_name=origin_file_name)
 
     @classmethod
-    def track_file_status(cls, file_name: str):
-        return cls._tracked_files[file_name].track_file_status
+    @contextmanager
+    def track_file_status(cls, file_name: str, status: BatchRunningStatus):
+
+        file_tracker = cls._tracked_files[file_name]
+        file_tracker.register_file_status(status)
+        start_epoch = get_epoch()
+        try:
+            yield SpawnedFilesTracker(file_name)
+        except Exception as err:
+            next_status = BatchRunningStatus.FAILED
+            raise err
+        else:
+            next_status = BatchRunningStatus.IDLE
+        finally:
+            end_epoch = get_epoch()
+            file_tracker.register_file_status(next_status)
+            duration = end_epoch - start_epoch
+            file_tracker.observe_file_step_processing_duration(status, duration)
 
     @classmethod
     def get_task_enum_status(cls):
@@ -103,7 +127,7 @@ class BatchMetrics:
     def get_file_enum_status(cls, file_name: str):
         file_tracker = cls._tracked_files.get(file_name)
         if file_tracker:
-            return get_file_processing_status_enum_status(file_tracker._enum_labels)
+            return get_file_processing_status_enum_status(file_tracker.enum_labels)
 
     @classmethod
     def get_task_histogram_count(cls, status: BatchRunningStatus):
@@ -117,7 +141,7 @@ class BatchMetrics:
         file_tracker = cls._tracked_files.get(file_name)
         if file_tracker:
             return get_file_steps_processing_histogram_count(
-                file_tracker._enum_labels,
+                file_tracker.enum_labels,
                 status
             )
 

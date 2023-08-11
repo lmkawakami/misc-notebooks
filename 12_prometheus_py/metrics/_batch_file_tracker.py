@@ -4,7 +4,6 @@ from metrics.metrics import (
     files_running_status_enum,
     file_step_processing_histogram,
 )
-from contextlib import contextmanager
 import time
 
 
@@ -32,10 +31,10 @@ class BatchFileTracker:
             file_name=file_name,
             origin_file_name=origin_file_name
         )
-        self._register_file_status(BatchRunningStatus.IDLE)
+        self.register_file_status(BatchRunningStatus.IDLE)
 
-    def _register_file_status(self, status: BatchRunningStatus):
-        self._files_running_status_enum.labels(**self._enum_labels).state(status.value)
+    def register_file_status(self, status: BatchRunningStatus):
+        self._files_running_status_enum.labels(**self.enum_labels).state(status.value)
 
     @property
     def _enum_labels(self):
@@ -44,7 +43,7 @@ class BatchFileTracker:
             **self._file_labels.dict()
         )
 
-    def _observe_file_step_processing_duration(self, status: BatchRunningStatus, duration_ms: int):
+    def observe_file_step_processing_duration(self, status: BatchRunningStatus, duration_ms: int):
         duration_s = duration_ms / 1000
         histogram_labels = self._histogram_labels(status)
         self._file_step_processing_histogram.labels(**histogram_labels).observe(duration_s)
@@ -55,20 +54,3 @@ class BatchFileTracker:
             **self._file_labels.dict(),
             status = status.value
         )
-
-    @contextmanager
-    def track_file_status(self, status: BatchRunningStatus):
-        self._register_file_status(status)
-        start_epoch = get_epoch()
-        try:
-            yield
-        except Exception as err:
-            next_status = BatchRunningStatus.FAILED
-            raise err
-        else:
-            next_status = BatchRunningStatus.IDLE
-        finally:
-            end_epoch = get_epoch()
-            self._register_file_status(next_status)
-            duration = end_epoch - start_epoch
-            self._observe_file_step_processing_duration(status, duration)

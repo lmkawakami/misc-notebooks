@@ -20,17 +20,18 @@ zip_file_tracker = BatchMetrics._tracked_files[zip_file_name]
 assert BatchMetrics.get_file_enum_status(zip_file_name) == BatchRunningStatus.IDLE.value
 
 transfer_counts_before = BatchMetrics.get_file_histogram_count(zip_file_name, BatchRunningStatus.TRANSFERRING)
-with BatchMetrics.track_file_status(zip_file_name)(BatchRunningStatus.TRANSFERRING):
+with BatchMetrics.track_file_status(zip_file_name, BatchRunningStatus.TRANSFERRING):
     assert BatchMetrics.get_file_enum_status(zip_file_name) == BatchRunningStatus.TRANSFERRING.value
 transfer_counts_after = BatchMetrics.get_file_histogram_count(zip_file_name, BatchRunningStatus.TRANSFERRING)
 assert BatchMetrics.get_file_enum_status(zip_file_name) == BatchRunningStatus.IDLE.value
 assert transfer_counts_after - transfer_counts_before == 1
 
 unzip_counts_before = BatchMetrics.get_file_histogram_count(zip_file_name, BatchRunningStatus.UNZIPPING)
-with BatchMetrics.track_file_status(zip_file_name)(BatchRunningStatus.UNZIPPING):
+with BatchMetrics.track_file_status(zip_file_name, BatchRunningStatus.UNZIPPING) as unzip_tracker:
     a_xlsx_file_name = "a.xlsx"
     b_xlsx_file_name = "b.xlsx"
-    BatchMetrics.track_new_spawned_files([a_xlsx_file_name, b_xlsx_file_name], zip_file_name)
+    # BatchMetrics.track_new_spawned_files([a_xlsx_file_name, b_xlsx_file_name], zip_file_name)
+    unzip_tracker.track_new_files([a_xlsx_file_name, b_xlsx_file_name])
     a_xlsx_file_tracker = BatchMetrics._tracked_files[a_xlsx_file_name]
     b_xlsx_file_tracker = BatchMetrics._tracked_files[b_xlsx_file_name]
     # assert BatchMetrics.get_file_enum_status(a_xlsx_file_name) == BatchRunningStatus.UNZIPPING.value
@@ -43,9 +44,10 @@ assert BatchMetrics.get_file_enum_status(zip_file_name) == BatchRunningStatus.ID
 assert unzip_counts_after - unzip_counts_before == 1
 
 convert_counts_before = BatchMetrics.get_file_histogram_count(a_xlsx_file_name, BatchRunningStatus.CONVERTING)
-with BatchMetrics.track_file_status(a_xlsx_file_name)(BatchRunningStatus.CONVERTING):
+with BatchMetrics.track_file_status(a_xlsx_file_name, BatchRunningStatus.CONVERTING) as convertion_tracker:
     a_csv_file_name = "a.csv"
-    BatchMetrics.track_new_spawned_files([a_csv_file_name], a_xlsx_file_name)
+    convertion_tracker.track_new_files([a_csv_file_name])
+    # BatchMetrics.track_new_spawned_files([a_csv_file_name], a_xlsx_file_name)
     a_csv_file_tracker = BatchMetrics._tracked_files[a_csv_file_name]
     # assert BatchMetrics.get_file_enum_status(a_csv_file_name) == BatchRunningStatus.CONVERTING.value
     assert BatchMetrics.get_file_enum_status(a_xlsx_file_name) == BatchRunningStatus.CONVERTING.value
@@ -55,8 +57,9 @@ assert BatchMetrics.get_file_enum_status(a_xlsx_file_name) == BatchRunningStatus
 assert convert_counts_after - convert_counts_before == 1
 
 convert_counts_before = BatchMetrics.get_file_histogram_count(b_xlsx_file_name, BatchRunningStatus.CONVERTING)
-with BatchMetrics.track_file_status(b_xlsx_file_name)(BatchRunningStatus.CONVERTING):
+with BatchMetrics.track_file_status(b_xlsx_file_name, BatchRunningStatus.CONVERTING) as convertion_tracker:
     b_csv_file_name = "b.csv"
+    convertion_tracker.track_new_files([b_csv_file_name])
     BatchMetrics.track_new_spawned_files([b_csv_file_name], b_xlsx_file_name)
     b_csv_file_tracker = BatchMetrics._tracked_files[b_csv_file_name]
     # assert BatchMetrics.get_file_enum_status(b_csv_file_name) == BatchRunningStatus.CONVERTING.value
@@ -67,14 +70,14 @@ assert BatchMetrics.get_file_enum_status(b_xlsx_file_name) == BatchRunningStatus
 assert convert_counts_after - convert_counts_before == 1
 
 transfer_counts_before = BatchMetrics.get_file_histogram_count(a_csv_file_name, BatchRunningStatus.TRANSFERRING)
-with BatchMetrics.track_file_status(a_csv_file_name)(BatchRunningStatus.TRANSFERRING):
+with BatchMetrics.track_file_status(a_csv_file_name, BatchRunningStatus.TRANSFERRING):
     assert BatchMetrics.get_file_enum_status(a_csv_file_name) == BatchRunningStatus.TRANSFERRING.value
 transfer_counts_after = BatchMetrics.get_file_histogram_count(a_csv_file_name, BatchRunningStatus.TRANSFERRING)
 assert BatchMetrics.get_file_enum_status(a_csv_file_name) == BatchRunningStatus.IDLE.value
 assert transfer_counts_after - transfer_counts_before == 1
 
 transfer_counts_before = BatchMetrics.get_file_histogram_count(b_csv_file_name, BatchRunningStatus.TRANSFERRING)
-with BatchMetrics.track_file_status(b_csv_file_name)(BatchRunningStatus.TRANSFERRING):
+with BatchMetrics.track_file_status(b_csv_file_name, BatchRunningStatus.TRANSFERRING):
     assert BatchMetrics.get_file_enum_status(b_csv_file_name) == BatchRunningStatus.TRANSFERRING.value
 transfer_counts_after = BatchMetrics.get_file_histogram_count(b_csv_file_name, BatchRunningStatus.TRANSFERRING)
 assert BatchMetrics.get_file_enum_status(b_csv_file_name) == BatchRunningStatus.IDLE.value
